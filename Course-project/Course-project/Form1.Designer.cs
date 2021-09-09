@@ -94,11 +94,11 @@ namespace Course_project {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label1.Location = new System.Drawing.Point(111, 41);
+            this.label1.Location = new System.Drawing.Point(65, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 32);
+            this.label1.Size = new System.Drawing.Size(313, 45);
             this.label1.TabIndex = 3;
             this.label1.Text = "Welcome to GrabIt!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,6 +131,7 @@ namespace Course_project {
             this.textBox2.PlaceholderText = "password";
             this.textBox2.Size = new System.Drawing.Size(151, 29);
             this.textBox2.TabIndex = 6;
+            this.textBox2.UseSystemPasswordChar = true;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // pictureBox1

@@ -28,7 +28,6 @@ namespace Course_project {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
@@ -47,7 +46,10 @@ namespace Course_project {
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -70,7 +72,7 @@ namespace Course_project {
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(142, 80);
+            this.textBox1.Location = new System.Drawing.Point(30, 83);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "username";
@@ -80,27 +82,13 @@ namespace Course_project {
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(142, 130);
+            this.textBox2.Location = new System.Drawing.Point(30, 155);
             this.textBox2.Margin = new System.Windows.Forms.Padding(5);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "password";
             this.textBox2.Size = new System.Drawing.Size(151, 29);
             this.textBox2.TabIndex = 2;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(142, 220);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Size = new System.Drawing.Size(151, 76);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
             // 
             // radioButton2
             // 
@@ -109,7 +97,7 @@ namespace Course_project {
             this.radioButton2.FlatAppearance.BorderSize = 0;
             this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.radioButton2.Location = new System.Drawing.Point(9, 45);
+            this.radioButton2.Location = new System.Drawing.Point(3, 28);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(81, 25);
@@ -126,7 +114,7 @@ namespace Course_project {
             this.radioButton1.FlatAppearance.BorderSize = 0;
             this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.radioButton1.Location = new System.Drawing.Point(10, 12);
+            this.radioButton1.Location = new System.Drawing.Point(4, 4);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(80, 25);
@@ -144,7 +132,7 @@ namespace Course_project {
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.button2.Location = new System.Drawing.Point(142, 299);
+            this.button2.Location = new System.Drawing.Point(145, 187);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(151, 37);
             this.button2.TabIndex = 18;
@@ -157,7 +145,7 @@ namespace Course_project {
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(302, 83);
+            this.label1.Location = new System.Drawing.Point(31, 117);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 21);
@@ -167,7 +155,7 @@ namespace Course_project {
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(142, 180);
+            this.textBox3.Location = new System.Drawing.Point(30, 236);
             this.textBox3.Margin = new System.Windows.Forms.Padding(5);
             this.textBox3.Name = "textBox3";
             this.textBox3.PlaceholderText = "repeat password";
@@ -179,7 +167,7 @@ namespace Course_project {
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(302, 126);
+            this.label2.Location = new System.Drawing.Point(30, 189);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 42);
@@ -191,7 +179,7 @@ namespace Course_project {
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(302, 185);
+            this.label3.Location = new System.Drawing.Point(36, 271);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 42);
@@ -214,11 +202,11 @@ namespace Course_project {
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label5.Location = new System.Drawing.Point(118, 31);
+            this.label5.Location = new System.Drawing.Point(64, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(218, 32);
+            this.label5.Size = new System.Drawing.Size(316, 45);
             this.label5.TabIndex = 8;
             this.label5.Text = "GrabIt! Registration";
             // 
@@ -226,7 +214,7 @@ namespace Course_project {
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label6.Location = new System.Drawing.Point(142, 313);
+            this.label6.Location = new System.Drawing.Point(254, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 21);
             this.label6.TabIndex = 9;
@@ -241,7 +229,7 @@ namespace Course_project {
             "2",
             "3",
             "4"});
-            this.comboBox1.Location = new System.Drawing.Point(230, 310);
+            this.comboBox1.Location = new System.Drawing.Point(342, 160);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(63, 29);
             this.comboBox1.TabIndex = 10;
@@ -251,7 +239,7 @@ namespace Course_project {
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label7.Location = new System.Drawing.Point(142, 353);
+            this.label7.Location = new System.Drawing.Point(254, 203);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 21);
             this.label7.TabIndex = 11;
@@ -266,7 +254,7 @@ namespace Course_project {
             "122",
             "123",
             "172"});
-            this.comboBox2.Location = new System.Drawing.Point(230, 350);
+            this.comboBox2.Location = new System.Drawing.Point(342, 200);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(63, 29);
             this.comboBox2.TabIndex = 12;
@@ -276,7 +264,7 @@ namespace Course_project {
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label8.Location = new System.Drawing.Point(142, 393);
+            this.label8.Location = new System.Drawing.Point(254, 243);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 21);
             this.label8.TabIndex = 13;
@@ -286,7 +274,10 @@ namespace Course_project {
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(230, 390);
+            this.comboBox3.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBox3.Location = new System.Drawing.Point(342, 240);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(63, 29);
             this.comboBox3.TabIndex = 14;
@@ -296,7 +287,7 @@ namespace Course_project {
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label9.Location = new System.Drawing.Point(142, 313);
+            this.label9.Location = new System.Drawing.Point(254, 163);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 21);
             this.label9.TabIndex = 15;
@@ -307,7 +298,16 @@ namespace Course_project {
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(230, 310);
+            this.comboBox4.Items.AddRange(new object[] {
+            "Higher Mathematics",
+            "OOP",
+            "ADS",
+            "English",
+            "Ukrainian",
+            "History",
+            "Philosophy",
+            "Sociology"});
+            this.comboBox4.Location = new System.Drawing.Point(342, 160);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(63, 29);
             this.comboBox4.TabIndex = 16;
@@ -318,12 +318,40 @@ namespace Course_project {
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label10.Location = new System.Drawing.Point(41, 164);
+            this.label10.Location = new System.Drawing.Point(38, 112);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(360, 45);
             this.label10.TabIndex = 17;
             this.label10.Text = "Registration complete!";
             this.label10.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Location = new System.Drawing.Point(282, 83);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(98, 63);
+            this.panel1.TabIndex = 19;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(30, 387);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(151, 29);
+            this.textBox4.TabIndex = 20;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Name of your first pet",
+            "City where you were born"});
+            this.comboBox5.Location = new System.Drawing.Point(30, 329);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(151, 29);
+            this.comboBox5.TabIndex = 21;
+            this.comboBox5.Text = "Secret question";
             // 
             // Registration
             // 
@@ -331,8 +359,9 @@ namespace Course_project {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(444, 581);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBox3);
@@ -347,18 +376,19 @@ namespace Course_project {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Registration";
             this.Text = "Registration";
             this.Load += new System.EventHandler(this.Registration_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,7 +399,6 @@ namespace Course_project {
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label1;
@@ -388,5 +417,8 @@ namespace Course_project {
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox5;
     }
 }

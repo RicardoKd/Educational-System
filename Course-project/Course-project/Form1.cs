@@ -22,12 +22,18 @@ namespace Course_project {
             while (reader.BaseStream.Position < reader.BaseStream.Length) {
                 string usrNm = reader.ReadString();
                 string pass = reader.ReadString();
+                string secretQuestion = reader.ReadString();
+                string secrAnswer = reader.ReadString();
                 bool teacher = reader.ReadBoolean();
                 if (teacher) {
-                    Teacher t = new Teacher(usrNm, pass, "Programming");
+                    string subject = reader.ReadString();
+                    Teacher t = new Teacher(usrNm, pass, secretQuestion, secrAnswer, subject);
                     users.Add(t);
                 } else {
-                    Student s = new Student(usrNm, pass, 1);
+                    int year = reader.ReadInt32();
+                    int specialty = reader.ReadInt32();
+                    int group = reader.ReadInt32();
+                    Student s = new Student(usrNm, pass, secretQuestion, secrAnswer, year, specialty, group);
                     users.Add(s);
                 }
             }

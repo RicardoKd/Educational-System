@@ -38,12 +38,12 @@ namespace Course_project {
             }
 
             Regex checkPass = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-            if (!(checkPass.IsMatch(password))) { // Pass validation
+            if (!(checkPass.IsMatch(password))) { // pass validation
                 label2.Visible = true;
                 return;
             }
 
-            if (!(string.Compare(password, passwordCheck) == 0)) { // Passwords don't match
+            if (!(string.Compare(password, passwordCheck) == 0)) { // password match
                 label3.Visible = true;
                 return;
             }
@@ -53,17 +53,20 @@ namespace Course_project {
                 writer.Seek(0, SeekOrigin.End); // end of file
                 writer.Write(username);
                 writer.Write(password);
-                if (radioButton1.Checked)
+                writer.Write(Convert.ToString(comboBox5.Text)); // secret question
+                writer.Write(Convert.ToString(textBox4.Text)); // secret answer
+
+                if (radioButton1.Checked) {
                     writer.Write(true); // true = teacher
-                else
+                    writer.Write(Convert.ToString(comboBox4.Text)); // subject
+                } else {
                     writer.Write(false); // false = student
+                    writer.Write(Convert.ToInt32(comboBox1.Text)); // year
+                    writer.Write(Convert.ToInt32(comboBox2.Text)); // specialty
+                    writer.Write(Convert.ToInt32(comboBox3.Text)); // group
+                }
 
                 writer.Close();
-                textBox1.Clear();
-                textBox2.Clear();
-                textBox3.Clear();
-                radioButton1.Checked = false;
-                radioButton2.Checked = false;
             } catch (Exception) {
                 throw;
             }
@@ -79,12 +82,14 @@ namespace Course_project {
             textBox1.Visible = false;
             textBox2.Visible = false;
             textBox3.Visible = false;
+            textBox4.Visible = false;
             comboBox1.Visible = false;
             comboBox2.Visible = false;
             comboBox3.Visible = false;
             comboBox4.Visible = false;
+            comboBox5.Visible = false;
             button1.Visible = false;
-            groupBox1.Visible = false;
+            panel1.Visible = false;
 
             label10.Visible = true;
             button2.Visible = true;
