@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Course_project {
+﻿namespace Course_project {
 
     public class Teacher : User {
         private string subject;
