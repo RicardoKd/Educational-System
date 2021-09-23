@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj": {}
+    "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj": {
+    "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj",
-        "projectName": "Course-project",
-        "projectPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj",
+        "projectUniqueName": "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj",
+        "projectName": "Lab_1",
+        "projectPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj",
         "packagesPath": "C:\\Users\\dikka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\obj\\",
+        "outputPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dikka\\AppData\\Roaming\\NuGet\\NuGet.Config",

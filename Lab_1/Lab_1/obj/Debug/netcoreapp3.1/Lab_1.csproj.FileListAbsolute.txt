@@ -1,0 +1,16 @@
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\bin\Debug\netcoreapp3.1\Lab_1.exe
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\bin\Debug\netcoreapp3.1\Lab_1.deps.json
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\bin\Debug\netcoreapp3.1\Lab_1.runtimeconfig.json
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\bin\Debug\netcoreapp3.1\Lab_1.runtimeconfig.dev.json
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\bin\Debug\netcoreapp3.1\Lab_1.dll
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\bin\Debug\netcoreapp3.1\Lab_1.pdb
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.csproj.AssemblyReference.cache
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.Form1.resources
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.csproj.GenerateResource.cache
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.AssemblyInfoInputs.cache
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.AssemblyInfo.cs
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.csproj.CoreCompileInputs.cache
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.dll
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.pdb
+C:\Users\dikka\Documents\University\OOP\Lab_1\Lab_1\obj\Debug\netcoreapp3.1\Lab_1.genruntimeconfig.cache

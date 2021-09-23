@@ -12,6 +12,8 @@ namespace Course_project {
 
         public ForgotPass(List<User> userslst) {
             InitializeComponent();
+            button1.Focus();
+
             users.AddRange(userslst);
         }
 
