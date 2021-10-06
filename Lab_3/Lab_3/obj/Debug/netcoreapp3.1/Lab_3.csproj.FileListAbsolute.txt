@@ -1,0 +1,16 @@
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\bin\Debug\netcoreapp3.1\Lab_3.exe
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\bin\Debug\netcoreapp3.1\Lab_3.deps.json
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\bin\Debug\netcoreapp3.1\Lab_3.runtimeconfig.json
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\bin\Debug\netcoreapp3.1\Lab_3.runtimeconfig.dev.json
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\bin\Debug\netcoreapp3.1\Lab_3.dll
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\bin\Debug\netcoreapp3.1\Lab_3.pdb
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.csproj.AssemblyReference.cache
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.Form1.resources
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.csproj.GenerateResource.cache
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.AssemblyInfoInputs.cache
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.AssemblyInfo.cs
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.dll
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.pdb
+C:\Users\Ricardo\Documents\University\OOP\Lab_3\Lab_3\obj\Debug\netcoreapp3.1\Lab_3.genruntimeconfig.cache
