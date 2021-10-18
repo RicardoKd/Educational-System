@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj": {}
+    "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj": {
+    "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj",
+        "projectUniqueName": "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj",
         "projectName": "Course-project",
-        "projectPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj",
-        "packagesPath": "C:\\Users\\dikka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Course-project\\Course-project\\obj\\",
+        "projectPath": "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Course-project\\Course-project\\Course-project.csproj",
+        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Course-project\\Course-project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dikka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

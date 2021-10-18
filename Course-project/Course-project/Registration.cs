@@ -1,26 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.ComponentModel;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
 namespace Course_project {
 
     public partial class Registration : Form {
-        public static List<User> users = new List<User>();
+        public List<User> users = new List<User>();
 
-        public Registration(List<User> userslst) {
+        public Registration() {
             InitializeComponent();
-            users.AddRange(userslst);
         }
 
         private void Registration_Load(object sender, EventArgs e) {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+            users.Clear();
+            BinaryReader reader = new BinaryReader(File.Open(@"users.txt", FileMode.Open));
+            while (reader.BaseStream.Position < reader.BaseStream.Length) {
+                string usrNm = reader.ReadString();
+                string pass = reader.ReadString();
+                string secretQuestion = reader.ReadString();
+                string secrAnswer = reader.ReadString();
+                bool teacher = reader.ReadBoolean();
+                if (teacher) {
+                    string subject = reader.ReadString();
+                    Teacher t = new Teacher(usrNm, pass, secretQuestion, secrAnswer, subject);
+                    users.Add(t);
+                } else {
+                    int year = reader.ReadInt32();
+                    int specialty = reader.ReadInt32();
+                    int group = reader.ReadInt32();
+                    Student s = new Student(usrNm, pass, secretQuestion, secrAnswer, year, specialty, group);
+                    users.Add(s);
+                }
+            }
+            reader.Close();
+
             string username = Convert.ToString(textBox1.Text);
             string password = Convert.ToString(textBox2.Text);
             string passwordCheck = Convert.ToString(textBox3.Text);

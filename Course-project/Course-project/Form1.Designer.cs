@@ -29,7 +29,6 @@ namespace Course_project {
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -104,15 +103,6 @@ namespace Course_project {
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(394, 557);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
-            // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -153,7 +143,6 @@ namespace Course_project {
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -174,7 +163,6 @@ namespace Course_project {
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.PictureBox pictureBox1;

@@ -12,31 +12,10 @@ namespace Course_project {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            users.Clear();
-            BinaryReader reader = new BinaryReader(File.Open(@"users.txt", FileMode.Open));
-            while (reader.BaseStream.Position < reader.BaseStream.Length) {
-                string usrNm = reader.ReadString();
-                string pass = reader.ReadString();
-                string secretQuestion = reader.ReadString();
-                string secrAnswer = reader.ReadString();
-                bool teacher = reader.ReadBoolean();
-                if (teacher) {
-                    string subject = reader.ReadString();
-                    Teacher t = new Teacher(usrNm, pass, secretQuestion, secrAnswer, subject);
-                    users.Add(t);
-                } else {
-                    int year = reader.ReadInt32();
-                    int specialty = reader.ReadInt32();
-                    int group = reader.ReadInt32();
-                    Student s = new Student(usrNm, pass, secretQuestion, secrAnswer, year, specialty, group);
-                    users.Add(s);
-                }
-            }
-            reader.Close();
         }
 
         // all users
-        public static List<User> users = new List<User>();
+        public List<User> users = new List<User>();
 
         private void button1_Click(object sender, EventArgs e) { // Log in
             users.Clear();
@@ -87,12 +66,12 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) { // Registration
-            Registration r = new Registration(users);
+            Registration r = new Registration();
             r.Show();
         }
 
         private void button3_Click(object sender, EventArgs e) { // Forgot password
-            ForgotPass f = new ForgotPass(users);
+            ForgotPass f = new ForgotPass();
             f.Show();
         }
 
