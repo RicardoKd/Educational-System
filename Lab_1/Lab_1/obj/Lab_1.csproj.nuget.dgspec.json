@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj": {}
+    "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj": {
+    "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj",
+        "projectUniqueName": "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj",
         "projectName": "Lab_1",
-        "projectPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj",
-        "packagesPath": "C:\\Users\\dikka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dikka\\Documents\\University\\OOP\\Lab_1\\Lab_1\\obj\\",
+        "projectPath": "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Lab_1\\Lab_1\\Lab_1.csproj",
+        "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ricardo\\Documents\\University\\OOP\\Lab_1\\Lab_1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dikka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
