@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,55 +13,46 @@ namespace Course_project {
         private void Form1_Load(object sender, EventArgs e) {
         }
 
-        // all users
-        public List<User> users = new List<User>();
-
         private void button1_Click(object sender, EventArgs e) { // Log in
-            users.Clear();
-            BinaryReader reader = new BinaryReader(File.Open(@"users.txt", FileMode.Open));
+            string loginUsername = Convert.ToString(textBox1.Text);
+            string loginPassword = Convert.ToString(textBox2.Text);
+            BinaryReader reader = new BinaryReader(File.Open(@"users.txt", FileMode.OpenOrCreate));
             while (reader.BaseStream.Position < reader.BaseStream.Length) {
-                string usrNm = reader.ReadString();
-                string pass = reader.ReadString();
+                string username = reader.ReadString();
+                string password = reader.ReadString();
                 string secretQuestion = reader.ReadString();
                 string secrAnswer = reader.ReadString();
                 bool teacher = reader.ReadBoolean();
-                if (teacher) {
-                    string subject = reader.ReadString();
-                    Teacher t = new Teacher(usrNm, pass, secretQuestion, secrAnswer, subject);
-                    users.Add(t);
-                } else {
-                    int year = reader.ReadInt32();
-                    int specialty = reader.ReadInt32();
-                    int group = reader.ReadInt32();
-                    Student s = new Student(usrNm, pass, secretQuestion, secrAnswer, year, specialty, group);
-                    users.Add(s);
-                }
-            }
-            reader.Close();
+                string subject_group = reader.ReadString();
 
-            string loginUserName = Convert.ToString(textBox1.Text);
-            string loginPassword = Convert.ToString(textBox2.Text);
-
-            foreach (User user in users)
-                if (string.Compare(user.Username, loginUserName) == 0) {
-                    if (string.Compare(user.Password, loginPassword) == 0) {
-                        MainMenu mm = new MainMenu(user);
-                        mm.Show();
-                        return;
+                if (string.Compare(username, loginUsername) == 0) {
+                    if (string.Compare(password, loginPassword) == 0) {
+                        if (teacher) {
+                            Teacher t = new Teacher(username, password, secretQuestion, secrAnswer, subject_group);
+                            TeacherMainMenu tm = new TeacherMainMenu(t);
+                            tm.Show();
+                            textBox1.Clear();
+                            textBox2.Clear();
+                            reader.Close();
+                            return;
+                        } else {
+                            Student s = new Student(username, password, secretQuestion, secrAnswer, subject_group);
+                            StudentMainMenu sm = new StudentMainMenu(s);
+                            sm.Show();
+                            textBox1.Clear();
+                            textBox2.Clear();
+                            reader.Close();
+                            return;
+                        }
                     } else {
                         MessageBox.Show("Incorrect password!");
+                        reader.Close();
                         return;
                     }
                 }
-
-            MessageBox.Show("Username not found!");
-
-            foreach (User user in users) {
-                if (string.Compare(user.Username, loginUserName) == 0 && string.Compare(user.Password, loginPassword) == 0) {
-                    MainMenu mm = new MainMenu(user);
-                    mm.Show();
-                }
             }
+            reader.Close();
+            MessageBox.Show("Username not found!");
         }
 
         private void button2_Click(object sender, EventArgs e) { // Registration

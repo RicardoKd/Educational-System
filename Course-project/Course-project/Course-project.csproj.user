@@ -7,10 +7,13 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainMenu.cs">
+    <Compile Update="Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Registration.cs">
+    <Compile Update="StudentMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TeacherMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -41,14 +41,12 @@ namespace Course_project {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -260,29 +258,6 @@ namespace Course_project {
             this.comboBox2.TabIndex = 12;
             this.comboBox2.Visible = false;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label8.Location = new System.Drawing.Point(254, 243);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 21);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Group";
-            this.label8.Visible = false;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.comboBox3.Location = new System.Drawing.Point(342, 240);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(63, 29);
-            this.comboBox3.TabIndex = 14;
-            this.comboBox3.Visible = false;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -294,24 +269,6 @@ namespace Course_project {
             this.label9.Text = "Subject";
             this.label9.UseWaitCursor = true;
             this.label9.Visible = false;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "Higher Mathematics",
-            "OOP",
-            "ADS",
-            "English",
-            "Ukrainian",
-            "History",
-            "Philosophy",
-            "Sociology"});
-            this.comboBox4.Location = new System.Drawing.Point(342, 160);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(63, 29);
-            this.comboBox4.TabIndex = 16;
-            this.comboBox4.Visible = false;
             // 
             // label10
             // 
@@ -353,19 +310,31 @@ namespace Course_project {
             this.comboBox5.TabIndex = 21;
             this.comboBox5.Text = "Secret question";
             // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "OOP",
+            "ADS",
+            "Philosophy",
+            "English"});
+            this.comboBox3.Location = new System.Drawing.Point(342, 160);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(63, 29);
+            this.comboBox3.TabIndex = 22;
+            this.comboBox3.Visible = false;
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(444, 581);
+            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox1);
@@ -411,14 +380,12 @@ namespace Course_project {
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

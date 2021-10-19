@@ -1,19 +1,12 @@
 ﻿namespace Course_project {
 
     public class Student : User {
-        private int year;
-        private int specialty;
-        private int group;
-        // rukovoditel gruppi
+        private string group;
 
-        public Student(string username, string password, string secretQuestion, string secretAnswer, int year, int specialty, int group) : base(username, password, secretQuestion, secretAnswer) {
-            this.year = year;
-            this.specialty = specialty;
+        public Student(string username, string password, string secretQuestion, string secretAnswer, string group) : base(username, password, secretQuestion, secretAnswer) {
             this.group = group;
         }
 
-        public int Year { get => year; set => year = value; }
-        public int Specialty { get => specialty; set => specialty = value; }
-        public int Group { get => group; set => group = value; }
+        public string Group { get => group; set => group = value; }
     }
 }

@@ -17,7 +17,6 @@ C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debu
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course-project.genruntimeconfig.cache
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.Registration.resources
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.ForgotPass.resources
-C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.MainMenu.resources
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\bin\Debug\netcoreapp3.1\Course-project.exe
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\bin\Debug\netcoreapp3.1\Course-project.deps.json
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\bin\Debug\netcoreapp3.1\Course-project.runtimeconfig.json
@@ -38,3 +37,5 @@ C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\obj\Debug\
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course-project.dll
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course-project.pdb
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course-project.genruntimeconfig.cache
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.StudentMainMenu.resources
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.TeacherMainMenu.resources
