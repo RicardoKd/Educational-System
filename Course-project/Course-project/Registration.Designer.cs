@@ -28,8 +28,8 @@ namespace Course_project {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radBtn2 = new System.Windows.Forms.RadioButton();
+            this.radBtn1 = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -88,39 +88,39 @@ namespace Course_project {
             this.textBox2.TabIndex = 2;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // radioButton2
+            // radBtn2
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButton2.FlatAppearance.BorderSize = 0;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.radioButton2.Location = new System.Drawing.Point(3, 28);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(81, 25);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Student";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radBtn2.AutoSize = true;
+            this.radBtn2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radBtn2.FlatAppearance.BorderSize = 0;
+            this.radBtn2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radBtn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.radBtn2.Location = new System.Drawing.Point(3, 28);
+            this.radBtn2.Margin = new System.Windows.Forms.Padding(4);
+            this.radBtn2.Name = "radBtn2";
+            this.radBtn2.Size = new System.Drawing.Size(81, 25);
+            this.radBtn2.TabIndex = 1;
+            this.radBtn2.TabStop = true;
+            this.radBtn2.Text = "Student";
+            this.radBtn2.UseVisualStyleBackColor = true;
+            this.radBtn2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton1
+            // radBtn1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButton1.FlatAppearance.BorderSize = 0;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.radioButton1.Location = new System.Drawing.Point(4, 4);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(80, 25);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Teacher";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radBtn1.AutoSize = true;
+            this.radBtn1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radBtn1.FlatAppearance.BorderSize = 0;
+            this.radBtn1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.radBtn1.Location = new System.Drawing.Point(4, 4);
+            this.radBtn1.Margin = new System.Windows.Forms.Padding(4);
+            this.radBtn1.Name = "radBtn1";
+            this.radBtn1.Size = new System.Drawing.Size(80, 25);
+            this.radBtn1.TabIndex = 0;
+            this.radBtn1.TabStop = true;
+            this.radBtn1.Text = "Teacher";
+            this.radBtn1.UseVisualStyleBackColor = true;
+            this.radBtn1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // button2
             // 
@@ -284,8 +284,8 @@ namespace Course_project {
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.radBtn2);
+            this.panel1.Controls.Add(this.radBtn1);
             this.panel1.Location = new System.Drawing.Point(282, 83);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(98, 63);
@@ -368,8 +368,8 @@ namespace Course_project {
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radBtn2;
+        private System.Windows.Forms.RadioButton radBtn1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label2;

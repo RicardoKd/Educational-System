@@ -6,39 +6,42 @@ using System.IO;
 namespace Course_project {
 
     public partial class Registration : Form {
+        private Form1 form1;
 
-        public Registration() {
+        public Registration(Form1 form) {
             InitializeComponent();
+            form1 = form;
         }
 
         private void Registration_Load(object sender, EventArgs e) {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            string NewUsername = Convert.ToString(textBox1.Text);
-            string NewPassword = Convert.ToString(textBox2.Text);
-            string passwordCheck = Convert.ToString(textBox3.Text);
-            string secretAns = Convert.ToString(textBox4.Text);
+            string newUsrname = Convert.ToString(textBox1.Text);
+            string newPass = Convert.ToString(textBox2.Text);
+            string passCheck = Convert.ToString(textBox3.Text);
+            string secrQ = Convert.ToString(comboBox5.Text);
+            string secrA = Convert.ToString(textBox4.Text);
 
-            if (string.IsNullOrEmpty(NewUsername) || // if main fields are empty
-                string.IsNullOrEmpty(NewPassword) ||
-                string.IsNullOrEmpty(passwordCheck) ||
-                string.IsNullOrEmpty(secretAns) ||
-                (!radioButton1.Checked && !radioButton2.Checked) ||
-                string.Compare(Convert.ToString(comboBox5.Text), "Secret question") == 0) {
+            if (string.IsNullOrEmpty(newUsrname) || // if main fields are empty
+                string.IsNullOrEmpty(newPass) ||
+                string.IsNullOrEmpty(passCheck) ||
+                string.IsNullOrEmpty(secrA) ||
+                (!radBtn1.Checked && !radBtn2.Checked) ||
+                string.Compare(secrQ, "Secret question") == 0) {
                 label4.Visible = true;
                 return;
             }
 
-            Regex regexChecker = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-            if (!(regexChecker.IsMatch(NewUsername))) {
+            Regex regex = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+            if (!(regex.IsMatch(newUsrname))) {
                 MessageBox.Show("Username must contain at least 8 symbols, one digit, and one special symbol");
             }
 
             BinaryReader reader = new BinaryReader(File.Open(@"users.txt", FileMode.OpenOrCreate));
             while (reader.BaseStream.Position < reader.BaseStream.Length) { // importing all users
                 string username = reader.ReadString();
-                if (string.Compare(username, NewUsername) == 0) { // if username taken
+                if (string.Compare(username, newUsrname) == 0) { // if username taken
                     label1.Visible = true;
                     reader.Close();
                     return;
@@ -51,39 +54,62 @@ namespace Course_project {
             }
             reader.Close();
 
-            if (!(regexChecker.IsMatch(NewPassword))) { // pass validation
+            if (!(regex.IsMatch(newPass))) { // pass validation
                 MessageBox.Show("Password must contain at least 8 symbols, one digit, and one special symbol");
                 label2.Visible = true;
                 return;
             }
 
-            if (!(string.Compare(NewPassword, passwordCheck) == 0)) { // password match
+            if (!(string.Compare(newPass, passCheck) == 0)) { // password match
                 label3.Visible = true;
                 return;
             }
 
-            if (radioButton1.Checked && string.IsNullOrEmpty(comboBox3.Text)) { // check if field "subject" is not empty
+            string year = Convert.ToString(comboBox1.Text);
+            string spec = Convert.ToString(comboBox2.Text);
+            string subject = Convert.ToString(comboBox3.Text);
+
+            if (radBtn1.Checked && string.IsNullOrEmpty(subject)) { // if variable fields are empty
                 label4.Visible = true;
                 return;
             }
 
-            if (radioButton2.Checked && (string.IsNullOrEmpty(comboBox1.Text) || string.IsNullOrEmpty(comboBox2.Text))) { // check if fields "year" and "specialty" are not empty
+            if (radBtn2.Checked && (string.IsNullOrEmpty(year) || string.IsNullOrEmpty(spec))) { // if variable fields are empty
                 label4.Visible = true;
                 return;
             }
 
             try {
                 BinaryWriter writer = new BinaryWriter(File.Open(@"users.txt", FileMode.Append));
-                writer.Write(NewUsername);
-                writer.Write(NewPassword);
-                writer.Write(Convert.ToString(comboBox5.Text)); // secret question
-                writer.Write(secretAns);
-                if (radioButton1.Checked) {
+                writer.Write(newUsrname);
+                writer.Write(newPass);
+                writer.Write(secrQ);
+                writer.Write(secrA);
+                if (radBtn1.Checked) {
                     writer.Write(true); // true = teacher
-                    writer.Write(Convert.ToString(comboBox3.Text)); // subject
+                    writer.Write(subject);
                 } else {
                     writer.Write(false); // false = student
-                    writer.Write(Convert.ToInt32(comboBox2.Text) + "." + Convert.ToInt32(comboBox1.Text)); // group name
+                    string grName = spec + "." + year;
+                    writer.Write(grName);
+
+                    string dir = "Groups/" + grName + "/";
+                    string fName = grName + ".txt";
+                    string tracker = dir + newUsrname + "-tracker.txt";
+                    if (Directory.Exists(@dir)) {
+                        File.Create(tracker);
+                        StreamWriter grWriter = new StreamWriter(File.Open(dir + fName, FileMode.Append));
+                        grWriter.Write(", " + newUsrname);
+                        grWriter.Close();
+                    } else {
+                        Directory.CreateDirectory(dir);
+                        File.Create(tracker);
+                        StreamWriter grWriter = new StreamWriter(File.Open(dir + fName, FileMode.OpenOrCreate));
+                        grWriter.WriteLine(spec);
+                        grWriter.WriteLine(year);
+                        grWriter.Write(newUsrname);
+                        grWriter.Close();
+                    }
                 }
                 writer.Close();
             } catch (Exception) {
@@ -145,6 +171,7 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) {
+            form1.Show();
             Close();
         }
     }

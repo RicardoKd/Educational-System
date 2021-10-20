@@ -14,21 +14,21 @@ namespace Course_project {
         }
 
         private void button1_Click(object sender, EventArgs e) { // Log in
-            string loginUsername = Convert.ToString(textBox1.Text);
-            string loginPassword = Convert.ToString(textBox2.Text);
+            string loginUsrname = Convert.ToString(textBox1.Text);
+            string loginPass = Convert.ToString(textBox2.Text);
             BinaryReader reader = new BinaryReader(File.Open(@"users.txt", FileMode.OpenOrCreate));
             while (reader.BaseStream.Position < reader.BaseStream.Length) {
-                string username = reader.ReadString();
-                string password = reader.ReadString();
-                string secretQuestion = reader.ReadString();
-                string secrAnswer = reader.ReadString();
+                string usrname = reader.ReadString();
+                string pass = reader.ReadString();
+                string secrQ = reader.ReadString();
+                string secrA = reader.ReadString();
                 bool teacher = reader.ReadBoolean();
-                string subject_group = reader.ReadString();
+                string subj_gr = reader.ReadString();
 
-                if (string.Compare(username, loginUsername) == 0) {
-                    if (string.Compare(password, loginPassword) == 0) {
+                if (string.Compare(usrname, loginUsrname) == 0) {
+                    if (string.Compare(pass, loginPass) == 0) {
                         if (teacher) {
-                            Teacher t = new Teacher(username, password, secretQuestion, secrAnswer, subject_group);
+                            Teacher t = new Teacher(usrname, pass, secrQ, secrA, subj_gr);
                             TeacherMainMenu tm = new TeacherMainMenu(t);
                             tm.Show();
                             textBox1.Clear();
@@ -36,7 +36,7 @@ namespace Course_project {
                             reader.Close();
                             return;
                         } else {
-                            Student s = new Student(username, password, secretQuestion, secrAnswer, subject_group);
+                            Student s = new Student(usrname, pass, secrQ, secrA, subj_gr);
                             StudentMainMenu sm = new StudentMainMenu(s);
                             sm.Show();
                             textBox1.Clear();
@@ -56,8 +56,9 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) { // Registration
-            Registration r = new Registration();
+            Registration r = new Registration(this);
             r.Show();
+            Hide();
         }
 
         private void button3_Click(object sender, EventArgs e) { // Forgot password
