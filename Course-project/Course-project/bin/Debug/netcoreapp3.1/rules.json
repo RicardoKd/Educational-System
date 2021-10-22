@@ -1,0 +1,40 @@
+{
+  "121": {
+    "1y": {
+      "1s": "English, Math, C++, Git, Systematic View, Physics, History",
+      "2s": "English, Math, C#, OOP, Algorithms, Physics, Philosophy"
+    },
+    "2y": {
+      "1s": "English, Math, C#, OOP, Design, Testing",
+      "2s": "English, Math, C#, OOP, Databases, Docker"
+    },
+    "3y": {
+      "1s": "English, Math, JS, Networks, Databases, Soft Skills",
+      "2s": "English, Math, JS, Networks, PM, Soft Skills"
+    },
+    "4y": {
+      "1s": "English, Math, Python, Project Architecture, Soft Skills",
+      "2s": "English, Math, Python, Project Architecture, Soft Skills"
+    }
+  },
+  "122": {
+    "1y": {
+      "1s": "English, Math, C++, Git, Physics, History",
+      "2s": "English, Math, C#, OOP, AlgoritMaths, Physics, DM, Ukrainian, "
+    },
+    "2y": {
+      "1s": "English, Math, C#, OOP, Design, Philosophy,",
+      "2s": "English, Math, C#, OOP,"
+    },
+    "3y": {
+      "1s": "English, Math, JS, Networks",
+      "2s": "English, Math, JS, Networks"
+    },
+    "4y": {
+      "1s": "English, Math, Python",
+      "2s": "English, Math, Python"
+    }
+  },
+  "123": {},
+  "172": {}
+}

@@ -109,6 +109,10 @@ namespace Course_project {
                         grWriter.WriteLine(year);
                         grWriter.Write(newUsrname);
                         grWriter.Close();
+
+                        StreamWriter grListWriter = new StreamWriter(File.Open(@"groupList.txt", FileMode.Append));
+                        grListWriter.Write(grName + " ");
+                        grListWriter.Close();
                     }
                 }
                 writer.Close();
