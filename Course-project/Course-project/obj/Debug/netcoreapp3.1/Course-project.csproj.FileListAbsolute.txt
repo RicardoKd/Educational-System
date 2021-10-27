@@ -39,3 +39,4 @@ C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\obj\Debug\
 C:\Users\dikka\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course-project.genruntimeconfig.cache
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.StudentMainMenu.resources
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.TeacherMainMenu.resources
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.GroupInfo.resources

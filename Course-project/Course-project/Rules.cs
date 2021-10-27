@@ -107,5 +107,25 @@ namespace Course_project {
                     return null;
             }
         }
+
+        public string getSubjList1(string spec, string year) {
+            int semester = DateTime.Now.Month > 6 ? 0 : 1; // 1st semester = 1
+            switch (Convert.ToInt32(spec)) {
+                case 121:
+                    return S121[Convert.ToInt32(year) - 1, semester];
+
+                case 122:
+                    return S122[Convert.ToInt32(year) - 1, semester];
+
+                case 123:
+                    return S123[Convert.ToInt32(year) - 1, semester];
+
+                case 172:
+                    return S172[Convert.ToInt32(year) - 1, semester];
+
+                default:
+                    return null;
+            }
+        }
     }
 }
