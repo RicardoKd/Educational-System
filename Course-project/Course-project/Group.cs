@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Course_project {
 
-    internal class Group {
+    public class Group {
         private string name;
         private string specialty;
         private string year;
@@ -14,8 +16,35 @@ namespace Course_project {
             this.year = year;
             name = specialty + "." + year;
             students = new List<string>();
-            subjects = new List<string>();
-            subjects.AddRange(new Rules().getSubjList(specialty, year));
+            subjects = new List<string>(new Rules().getSubjList(specialty, year));
+            string grFileDir = "Groups/" + name + "/" + name + ".txt";
+            if (File.Exists(@grFileDir)) {
+                StreamReader grDataReader = new StreamReader(File.Open(@grFileDir, FileMode.Open));
+                grDataReader.ReadLine();
+                grDataReader.ReadLine();
+                string[] studenList = grDataReader.ReadLine().Split(",", StringSplitOptions.RemoveEmptyEntries);
+                students.AddRange(studenList);
+                grDataReader.Close();
+            }
+        }
+
+        public Group(string grName) {
+            string[] grNameArr = grName.Split(".", StringSplitOptions.RemoveEmptyEntries);
+            specialty = grNameArr[0];
+            year = grNameArr[1];
+            name = grName;
+            students = new List<string>();
+            subjects = new List<string>(new Rules().getSubjList(specialty, year));
+
+            string grFileDir = "Groups/" + name + "/" + name + ".txt";
+            if (File.Exists(@grFileDir)) {
+                StreamReader grDataReader = new StreamReader(File.Open(@grFileDir, FileMode.Open));
+                grDataReader.ReadLine();
+                grDataReader.ReadLine();
+                string[] studenList = grDataReader.ReadLine().Split(",", StringSplitOptions.RemoveEmptyEntries);
+                students.AddRange(studenList);
+                grDataReader.Close();
+            }
         }
 
         public string Name { get => name; set => name = value; }

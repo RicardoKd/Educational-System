@@ -114,13 +114,12 @@ namespace Course_project {
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.button2.Location = new System.Drawing.Point(140, 266);
+            this.button2.Location = new System.Drawing.Point(12, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 37);
+            this.button2.Size = new System.Drawing.Size(80, 30);
             this.button2.TabIndex = 6;
             this.button2.Text = "Go back";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
@@ -193,7 +192,7 @@ namespace Course_project {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Name = "ForgotPass";
-            this.Text = "ForgotPass";
+            this.Text = "Forgot password";
             this.Load += new System.EventHandler(this.ForgotPass_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

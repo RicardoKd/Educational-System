@@ -29,19 +29,21 @@ namespace Course_project {
                     if (string.Compare(pass, loginPass) == 0) {
                         if (teacher) {
                             Teacher t = new Teacher(usrname, pass, secrQ, secrA, subj_gr);
-                            TeacherMainMenu tm = new TeacherMainMenu(t);
+                            TeacherMainMenu tm = new TeacherMainMenu(t, this);
                             tm.Show();
                             textBox1.Clear();
                             textBox2.Clear();
                             reader.Close();
+                            Hide();
                             return;
                         } else {
                             Student s = new Student(usrname, pass, secrQ, secrA, subj_gr);
-                            StudentMainMenu sm = new StudentMainMenu(s);
+                            StudentMainMenu sm = new StudentMainMenu(s, this);
                             sm.Show();
                             textBox1.Clear();
                             textBox2.Clear();
                             reader.Close();
+                            /*Hide();*/
                             return;
                         }
                     } else {
@@ -62,8 +64,9 @@ namespace Course_project {
         }
 
         private void button3_Click(object sender, EventArgs e) { // Forgot password
-            ForgotPass f = new ForgotPass();
+            ForgotPass f = new ForgotPass(this);
             f.Show();
+            Hide();
         }
 
         private void label1_Click(object sender, EventArgs e) {

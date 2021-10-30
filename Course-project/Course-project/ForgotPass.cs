@@ -10,9 +10,11 @@ namespace Course_project {
         private string currentUsrname;
         private string secrA;
         private List<User> users = new List<User>();
+        private Form1 form1;
 
-        public ForgotPass() {
+        public ForgotPass(Form1 form1) {
             InitializeComponent();
+            this.form1 = form1;
         }
 
         private void ForgotPass_Load(object sender, EventArgs e) {
@@ -62,10 +64,10 @@ namespace Course_project {
             textBox2.Visible = false;
             textBox3.Visible = false;
             label2.Visible = true;
-            button2.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e) { // Go back button
+            form1.Show();
             Close();
         }
 

@@ -8,9 +8,13 @@ namespace Course_project {
     public partial class Registration : Form {
         private Form1 form1;
 
-        public Registration(Form1 form) {
+        public Registration(Form1 form1) {
             InitializeComponent();
-            form1 = form;
+            this.form1 = form1;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox5.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void Registration_Load(object sender, EventArgs e) {
@@ -138,7 +142,6 @@ namespace Course_project {
             button1.Visible = false;
             panel1.Visible = false;
             label10.Visible = true;
-            button2.Visible = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {

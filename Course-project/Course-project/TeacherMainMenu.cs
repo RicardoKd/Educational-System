@@ -8,10 +8,12 @@ namespace Course_project {
 
     public partial class TeacherMainMenu : Form {
         private User user;
+        private Form1 form1;
 
-        public TeacherMainMenu(User user) {
+        public TeacherMainMenu(User user, Form1 form1) {
             InitializeComponent();
             this.user = user;
+            this.form1 = form1;
         }
 
         private void TeacherMainMenu_Load(object sender, EventArgs e) {
@@ -24,9 +26,7 @@ namespace Course_project {
 
                 List<string> grListSort = new List<string>();
                 foreach (string grName in grList) {
-                    string[] grNameArr = grName.Split(".");
-                    List<string> grSubjList = new List<string>(new Rules().getSubjList(grNameArr[0], grNameArr[1]));
-
+                    List<string> grSubjList = new List<string>(new Rules().getSubjList(grName));
                     if (grSubjList.Contains((user as Teacher).Subject))
                         grListSort.Add(grName);
                 }
@@ -51,11 +51,18 @@ namespace Course_project {
         }
 
         private void DynamicButton_Click(object sender, EventArgs e) {
-            MessageBox.Show("Dynamic button is clicked");
-            // This must be a universal handler
+            string grName = Convert.ToString((sender as Button).Text); // get text of the btn that wa clicked
+            GroupInfo grInfo = new GroupInfo(grName, this);
+            grInfo.Show();
+            Hide();
         }
 
         private void button1_Click(object sender, EventArgs e) {
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            form1.Show();
+            Close();
         }
     }
 }

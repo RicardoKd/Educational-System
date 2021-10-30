@@ -108,20 +108,23 @@ namespace Course_project {
             }
         }
 
-        public string getSubjList1(string spec, string year) {
+        public string[] getSubjList(string grName) {
+            string[] grNameArr = grName.Split(".", StringSplitOptions.RemoveEmptyEntries);
+            int spec = Convert.ToInt32(grNameArr[0]);
+            int year = Convert.ToInt32(grNameArr[1]) - 1;
             int semester = DateTime.Now.Month > 6 ? 0 : 1; // 1st semester = 1
-            switch (Convert.ToInt32(spec)) {
+            switch (spec) {
                 case 121:
-                    return S121[Convert.ToInt32(year) - 1, semester];
+                    return S121[year, semester].Split(",");
 
                 case 122:
-                    return S122[Convert.ToInt32(year) - 1, semester];
+                    return S122[year, semester].Split(",");
 
                 case 123:
-                    return S123[Convert.ToInt32(year) - 1, semester];
+                    return S123[year, semester].Split(",");
 
                 case 172:
-                    return S172[Convert.ToInt32(year) - 1, semester];
+                    return S172[year, semester].Split(",");
 
                 default:
                     return null;
