@@ -4,28 +4,28 @@ using System.IO;
 
 namespace Course_project {
 
-    internal class Lecture {
+    public class Lecture {
         private string name;
-        private int index;
         private string text;
+        private int semester;
         private List<string> imgList = new List<string>();
 
-        public Lecture(string name, string text, int index, List<string> imgList) {
+        public Lecture(string name, string text, int semester, List<string> imgList) {
             this.name = name;
-            this.index = index;
             this.text = text;
             this.imgList = imgList;
+            this.semester = semester;
         }
 
         public Lecture() {
             name = null;
-            index = 0;
             text = null;
+            semester = 1;
         }
 
         public string Name { get => name; set => name = value; }
-        public int Index { get => index; set => index = value; }
         public string Text { get => text; set => text = value; }
+        public int Semester { get => semester; set => semester = value; }
         public List<string> ImgList { get => imgList; set => imgList = value; }
 
         public bool addImg(string fileName) {
@@ -36,9 +36,9 @@ namespace Course_project {
             return false;
         }
 
-        public void WriteToJson(string pathToFile) {
-            Directory.CreateDirectory(@pathToFile);
-            StreamWriter sw = new StreamWriter(File.Open(@pathToFile + index + ".json", FileMode.Create));
+        public void WriteToJson(string dir) {
+            Directory.CreateDirectory(@dir);
+            StreamWriter sw = new StreamWriter(File.Open(@dir + name + ".json", FileMode.Create));
             string output = JsonConvert.SerializeObject(this);
             sw.WriteLine(output);
             sw.Close();

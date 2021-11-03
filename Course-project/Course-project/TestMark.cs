@@ -1,10 +1,20 @@
-﻿namespace Course_project {
+﻿using System.Collections.Generic;
 
-    internal class TestMark {
+namespace Course_project {
+
+    public class TestMark {
         private string studentUsrName;
-        private int mark;
+        private List<int> marks;
 
         public string StudentUsrName { get => studentUsrName; set => studentUsrName = value; }
-        public int Mark { get => mark; set => mark = value; }
+        public List<int> Marks { get => marks; set => marks = value; }
+
+        public int getStudentMark(int maxScore) {
+            int totalScore = 0;
+            foreach (int mark in marks)
+                totalScore += mark;
+            totalScore = (totalScore * 100) / maxScore; // formula to covert to 100-point scale
+            return totalScore;
+        }
     }
 }

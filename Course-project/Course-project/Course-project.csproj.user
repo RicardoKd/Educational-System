@@ -4,6 +4,12 @@
     <Compile Update="Add Lecture.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Add Test Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ForgotPass.cs">
       <SubType>Form</SubType>
     </Compile>

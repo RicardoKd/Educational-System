@@ -7,18 +7,20 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class TeacherMainMenu : Form {
-        private User user;
+        private Teacher teacher;
         private Form1 form1;
 
-        public TeacherMainMenu(User user, Form1 form1) {
+        public Teacher Teacher { get => teacher; set => teacher = value; }
+
+        public TeacherMainMenu(Teacher teacher, Form1 form1) {
             InitializeComponent();
-            this.user = user;
+            this.teacher = teacher;
             this.form1 = form1;
         }
 
         private void TeacherMainMenu_Load(object sender, EventArgs e) {
-            label1.Text = (user as Teacher).Subject;
-            label2.Text = "Hello, " + (user as Teacher).Username;
+            label1.Text = Teacher.Subject;
+            label2.Text = "Hello, " + Teacher.Username;
             if (File.Exists(@"groupList.txt")) {
                 StreamReader grListReader = new StreamReader(File.Open(@"groupList.txt", FileMode.Open));
                 List<string> grList = new List<string>(grListReader.ReadToEnd().Split(" ", StringSplitOptions.RemoveEmptyEntries));
@@ -27,7 +29,7 @@ namespace Course_project {
                 List<string> grListSort = new List<string>();
                 foreach (string grName in grList) {
                     List<string> grSubjList = new List<string>(new Rules().getSubjList(grName));
-                    if (grSubjList.Contains((user as Teacher).Subject))
+                    if (grSubjList.Contains(Teacher.Subject))
                         grListSort.Add(grName);
                 }
 
@@ -51,7 +53,7 @@ namespace Course_project {
         }
 
         private void DynamicButton_Click(object sender, EventArgs e) {
-            string grName = Convert.ToString((sender as Button).Text); // get text of the btn that wa clicked
+            string grName = (sender as Button).Text; // get text of the btn that was clicked
             GroupInfo grInfo = new GroupInfo(grName, this);
             grInfo.Show();
             Hide();

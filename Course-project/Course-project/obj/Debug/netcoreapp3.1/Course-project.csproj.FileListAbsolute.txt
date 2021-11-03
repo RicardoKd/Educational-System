@@ -42,3 +42,5 @@ C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debu
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.GroupInfo.resources
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.Add_Lecture.resources
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.Add_Test_Question.resources
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.AddTest.resources

@@ -220,6 +220,7 @@ namespace Course_project {
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "1",
@@ -245,6 +246,7 @@ namespace Course_project {
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "121",
@@ -299,6 +301,7 @@ namespace Course_project {
             // 
             // comboBox5
             // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
             "Name of your first pet",
@@ -307,10 +310,10 @@ namespace Course_project {
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(151, 29);
             this.comboBox5.TabIndex = 21;
-            this.comboBox5.Text = "Secret question";
             // 
             // comboBox3
             // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "OOP",

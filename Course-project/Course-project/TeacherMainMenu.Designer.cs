@@ -24,10 +24,10 @@ namespace Course_project {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherMainMenu));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -35,7 +35,7 @@ namespace Course_project {
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label1.Location = new System.Drawing.Point(440, 12);
+            this.label1.Location = new System.Drawing.Point(364, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 30);
             this.label1.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace Course_project {
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.label2.Location = new System.Drawing.Point(194, 12);
+            this.label2.Location = new System.Drawing.Point(342, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 30);
             this.label2.TabIndex = 2;
@@ -68,16 +68,6 @@ namespace Course_project {
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(638, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Manage my groups";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // TeacherMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -86,8 +76,8 @@ namespace Course_project {
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TeacherMainMenu";
             this.Text = "Main menu";
             this.Load += new System.EventHandler(this.TeacherMainMenu_Load);
@@ -101,6 +91,5 @@ namespace Course_project {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -11,10 +11,6 @@ namespace Course_project {
         public Registration(Form1 form1) {
             InitializeComponent();
             this.form1 = form1;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox5.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void Registration_Load(object sender, EventArgs e) {
