@@ -6,8 +6,7 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class AddTest : Form {
-        private TeacherMainMenu teacherMM;
-        private Group curGr;
+        private GroupInfo grInfoForm;
         private Test test;
         private string dir; // without semester
         private bool changed;
@@ -19,22 +18,32 @@ namespace Course_project {
         private int curTestInd; // needed when this form is used to edit test
 
         // Constructor for creating new tests
-        public AddTest(Group curGr, TeacherMainMenu teacherMM) {
+        public AddTest(GroupInfo grInfoForm) {
             InitializeComponent();
-            this.curGr = curGr;
-            this.teacherMM = teacherMM;
+            this.grInfoForm = grInfoForm;
             test = new Test();
             changed = false;
             editMode = false;
             savedToOrder = false;
-            dir = "Tests/" + curGr.Specialty + "/" + curGr.Year + "/" + teacherMM.Teacher.Subject + "/";
+            dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
             FormClosing += new FormClosingEventHandler(beforeClosing);
             comboBox3.SelectedIndex = 0;
         }
 
         // Constructor for editing tests
-        public AddTest(Group curGr, Test test, TeacherMainMenu teacherMM, bool savedToOrder = false) {
+        public AddTest(GroupInfo grInfoForm, Test test, bool savedToOrder = false) {
             InitializeComponent();
+            this.grInfoForm = grInfoForm;
+
+            semester = test.Semester;
+            dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
+            changed = false;
+            this.test = test;
+            editMode = true;
+            this.savedToOrder = savedToOrder;
+            textBox1.Text = test.Name;
+            comboBox3.Text = Convert.ToString(semester);
+            checkBox1.Checked = test.RandQuestionOrder == true ? true : false;
             if (savedToOrder) {
                 Text = "Edit test";
                 StreamReader r = new StreamReader(File.Open(@dir + semester + "/order.txt", FileMode.Open));
@@ -45,18 +54,6 @@ namespace Course_project {
                         break;
                 MessageBox.Show("curTestInd = " + curTestInd);
             }
-            changed = false;
-            this.curGr = curGr;
-            this.teacherMM = teacherMM;
-            this.test = test;
-            editMode = true;
-            this.savedToOrder = savedToOrder;
-            textBox1.Text = test.Name;
-            semester = test.Semester;
-            comboBox3.Text = Convert.ToString(semester);
-            dir = "Tests/" + curGr.Specialty + "/" + curGr.Year + "/" + teacherMM.Teacher.Subject + "/";
-            checkBox1.Checked = test.RandQuestionOrder == true ? true : false;
-            checkBox2.Checked = test.RandAnswerOrder == true ? true : false;
             int i = 0;
             foreach (TestQuestion q in test.Questions) {
                 dataGridView1.Rows.Add();
@@ -70,8 +67,12 @@ namespace Course_project {
             FormClosing += new FormClosingEventHandler(beforeClosing);
         }
 
+        public GroupInfo GrInfoForm { get => grInfoForm; set => grInfoForm = value; }
+        public Test Test { get => test; set => test = value; }
+        public bool SavedToOrder { get => savedToOrder; set => savedToOrder = value; }
+
         private void button1_Click(object sender, EventArgs e) { // Back
-            GroupInfo grInfo = new GroupInfo(curGr.Name, teacherMM);
+            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
             grInfo.Show();
             Close();
         }
@@ -80,7 +81,6 @@ namespace Course_project {
             changed = false;
             string newTName = textBox1.Text;
             bool randQOrder = checkBox1.Checked == true ? true : false;
-            bool randAOrder = checkBox2.Checked == true ? true : false;
             int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
             if (string.IsNullOrEmpty(newTName)) {
                 MessageBox.Show("Fill in test name field!");
@@ -113,13 +113,13 @@ namespace Course_project {
                 wr.Close();
                 savedToOrder = true;
             }
-            Test newTest = new Test(newTName, test.Questions, randQOrder, randAOrder, newSemester);
+            Test newTest = new Test(newTName, test.Questions, randQOrder, newSemester);
             newTest.WriteToJson(@dir + newSemester + "/");
             MessageBox.Show("The test is succesfuly saved!");
         }
 
         private void button3_Click(object sender, EventArgs e) { // Add question
-            Add_Test_Question atq = new Add_Test_Question(curGr, test, teacherMM, savedToOrder);
+            Add_Test_Question atq = new Add_Test_Question(this);
             atq.Show();
             Hide();
         }
@@ -141,20 +141,20 @@ namespace Course_project {
                     if (string.Compare(clickedQText, q.Question) == 0)
                         clickedQ = q;
 
-                Add_Test_Question tq = new Add_Test_Question(curGr, clickedQ, test, teacherMM, savedToOrder);
+                Add_Test_Question tq = new Add_Test_Question(this, clickedQ);
                 tq.Show();
                 Hide();
             }
         }
 
         private void beforeClosing(object sender, FormClosingEventArgs e) {
-            if (changed) {
+            /*if (changed) {
                 DialogResult dr = MessageBox.Show("Data is not saved. Want to exit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.No) {
                     e.Cancel = true;
                     return;
                 }
-            }
+            }*/
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
@@ -177,8 +177,6 @@ namespace Course_project {
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e) {
-            changed = true;
-            test.RandAnswerOrder = checkBox2.Checked == true ? true : false;
         }
 
         // For reordering questions

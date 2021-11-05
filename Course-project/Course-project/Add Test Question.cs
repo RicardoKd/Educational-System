@@ -5,33 +5,24 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class Add_Test_Question : Form {
-        private TeacherMainMenu teacherMM;
-        private Test test;
-        private Group curGr;
+        private AddTest addTestForm;
         private string oldQText;
         private bool editMode;
         private bool changed;
-        private bool savedToOrder;
 
         // Constructor for creating new questions
-        public Add_Test_Question(Group curGr, Test test, TeacherMainMenu teacherMM, bool savedToOrder) {
+        public Add_Test_Question(AddTest addTestForm) {
             InitializeComponent();
-            this.test = test;
-            this.curGr = curGr;
-            this.teacherMM = teacherMM;
-            this.savedToOrder = savedToOrder;
+            this.addTestForm = addTestForm;
             editMode = false;
             comboBox1.SelectedIndex = 0;
         }
 
         // Constructor for editing questions
-        public Add_Test_Question(Group curGr, TestQuestion question, Test test, TeacherMainMenu teacherMM, bool savedToOrder) {
+        public Add_Test_Question(AddTest addTestForm, TestQuestion question) {
             InitializeComponent();
             Text = "Edit question";
-            this.test = test;
-            this.curGr = curGr;
-            this.teacherMM = teacherMM;
-            this.savedToOrder = savedToOrder;
+            this.addTestForm = addTestForm;
             editMode = true;
             oldQText = question.Question;
             textBox1.Text = question.Question;
@@ -48,7 +39,7 @@ namespace Course_project {
         }
 
         private void button1_Click(object sender, EventArgs e) { // Back
-            AddTest at = new AddTest(curGr, test, teacherMM, savedToOrder);
+            AddTest at = new AddTest(addTestForm.GrInfoForm, addTestForm.Test, addTestForm.SavedToOrder);
             at.Show();
             Close();
         }
@@ -67,26 +58,26 @@ namespace Course_project {
             tq.RightAns = new List<string>(Convert.ToString(richTextBox1.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries));
             tq.WrongAns = new List<string>(Convert.ToString(richTextBox2.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries));
             if (editMode) {
-                for (int i = 0; i < test.Questions.Count; i++)
-                    if (string.Compare(oldQText, test.Questions[i].Question) == 0) {
-                        test.Questions[i] = tq;
+                for (int i = 0; i < addTestForm.Test.Questions.Count; i++)
+                    if (string.Compare(oldQText, addTestForm.Test.Questions[i].Question) == 0) {
+                        addTestForm.Test.Questions[i] = tq;
                         break;
                     }
             } else {
-                test.Questions.Add(tq);
+                addTestForm.Test.Questions.Add(tq);
             }
             changed = false;
             MessageBox.Show("Question is succesfuly saved!");
         }
 
         private void beforeClosing(object sender, FormClosingEventArgs e) {
-            if (changed) {
+            /*if (changed) {
                 DialogResult dr = MessageBox.Show("Data is not saved. Want to exit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.No) {
                     e.Cancel = true;
                     return;
                 }
-            }
+            }*/
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {

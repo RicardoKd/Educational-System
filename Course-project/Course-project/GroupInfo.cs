@@ -22,6 +22,9 @@ namespace Course_project {
             testDir = "Tests/" + curGr.Specialty + "/" + curGr.Year + "/" + teacherMM.Teacher.Subject + "/" + semester + "/";
         }
 
+        public TeacherMainMenu TeacherMM { get => teacherMM; set => teacherMM = value; }
+        public Group CurGr { get => curGr; set => curGr = value; }
+
         private void GroupInfo_Load(object sender, EventArgs e) {
             label1.Text = curGr.Name;
             // Fill student list
@@ -74,7 +77,7 @@ namespace Course_project {
         }
 
         private void button4_Click(object sender, EventArgs e) { // Add test
-            AddTest at = new AddTest(curGr, teacherMM);
+            AddTest at = new AddTest(this);
             at.Show();
             Close();
         }
@@ -116,10 +119,10 @@ namespace Course_project {
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0) {
                 string testName = (string)senderGrid.Rows[e.RowIndex].Cells[1].Value;
-                StreamReader r = new StreamReader(File.Open(testDir + testName + ".json", FileMode.Open));
+                StreamReader r = new StreamReader(File.Open(@testDir + testName + ".json", FileMode.Open));
                 Test test = JsonConvert.DeserializeObject<Test>(r.ReadToEnd());
                 r.Close();
-                AddTest at = new AddTest(curGr, test, teacherMM, true);
+                AddTest at = new AddTest(this, test, true);
                 at.Show();
                 Hide();
             }
