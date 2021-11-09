@@ -4,66 +4,61 @@ using System.IO;
 
 namespace Course_project {
 
-    public class Group {
-        private string name;
-        private string specialty;
-        private string year;
-        private List<string> students;
-        private List<string> subjects;
+    public class Group : IGroup {
 
         public Group(string specialty, string year) {
-            this.specialty = specialty;
-            this.year = year;
-            name = specialty + "." + year;
-            students = new List<string>();
-            subjects = new List<string>(new Rules().getSubjList(specialty, year));
-            string grFileDir = "Groups/" + name + "/" + name + ".txt";
+            Specialty = specialty;
+            Year = year;
+            Name = specialty + "." + year;
+            Students = new List<string>();
+            Subjects = new List<string>(new Rules().getSubjList(specialty, year));
+            string grFileDir = "Groups/" + Name + "/" + Name + ".txt";
             if (File.Exists(@grFileDir)) {
                 StreamReader grDataReader = new StreamReader(File.Open(@grFileDir, FileMode.Open));
                 grDataReader.ReadLine();
                 grDataReader.ReadLine();
                 string[] studenList = grDataReader.ReadLine().Split(",", StringSplitOptions.RemoveEmptyEntries);
-                students.AddRange(studenList);
+                Students.AddRange(studenList);
                 grDataReader.Close();
             }
         }
 
         public Group(string grName) {
             string[] grNameArr = grName.Split(".", StringSplitOptions.RemoveEmptyEntries);
-            specialty = grNameArr[0];
-            year = grNameArr[1];
-            name = grName;
-            students = new List<string>();
-            subjects = new List<string>(new Rules().getSubjList(specialty, year));
+            Specialty = grNameArr[0];
+            Year = grNameArr[1];
+            Name = grName;
+            Students = new List<string>();
+            Subjects = new List<string>(new Rules().getSubjList(Specialty, Year));
 
-            string grFileDir = "Groups/" + name + "/" + name + ".txt";
+            string grFileDir = "Groups/" + Name + "/" + Name + ".txt";
             if (File.Exists(@grFileDir)) {
                 StreamReader grDataReader = new StreamReader(File.Open(@grFileDir, FileMode.Open));
                 grDataReader.ReadLine();
                 grDataReader.ReadLine();
                 string[] studenList = grDataReader.ReadLine().Split(",", StringSplitOptions.RemoveEmptyEntries);
-                students.AddRange(studenList);
+                Students.AddRange(studenList);
                 grDataReader.Close();
             }
         }
 
-        public string Name { get => name; set => name = value; }
-        public string Specialty { get => specialty; set => specialty = value; }
-        public string Year { get => year; set => year = value; }
-        public List<string> Students { get => students; set => students = value; }
-        public List<string> Subjects { get => subjects; set => subjects = value; }
+        public string Name { get; set; }
+        public string Specialty { get; set; }
+        public string Year { get; set; }
+        public List<string> Students { get; set; }
+        public List<string> Subjects { get; set; }
 
         public bool addStudent(string username) {
-            if (!students.Contains(username)) {
-                students.Add(username);
+            if (!Students.Contains(username)) {
+                Students.Add(username);
                 return true;
             }
             return false;
         }
 
         public bool rmStudent(string username) {
-            if (students.Contains(username)) {
-                students.Remove(username);
+            if (Students.Contains(username)) {
+                Students.Remove(username);
                 return true;
             }
             return false;

@@ -5,10 +5,12 @@ namespace Course_project {
 
     public partial class StudentMainMenu : Form {
         private Form1 form1;
+        public Student Student { get; set; }
 
         public StudentMainMenu(Student student, Form1 form1) {
             InitializeComponent();
             this.form1 = form1;
+            Student = student;
         }
 
         private void StudentMainMenu_Load(object sender, EventArgs e) {
