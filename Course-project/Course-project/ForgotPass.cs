@@ -9,7 +9,7 @@ namespace Course_project {
     public partial class ForgotPass : Form {
         private string currentUsrname;
         private string secrA;
-        private List<User> users = new List<User>();
+        private List<IUser> users = new List<IUser>();
         private Form1 form1;
 
         public ForgotPass(Form1 form1) {
@@ -33,12 +33,12 @@ namespace Course_project {
                 return;
             }
 
-            foreach (User user in users)
+            foreach (IUser user in users)
                 if (string.Compare(user.Username, currentUsrname) == 0)
                     user.Password = newPass;
 
             // Change the binary file
-            foreach (User user in users) {
+            foreach (IUser user in users) {
                 try {
                     BinaryWriter writer = new BinaryWriter(File.Open(@"users.txt", FileMode.Truncate));
                     writer.Write(user.Username);
@@ -83,7 +83,7 @@ namespace Course_project {
                 secrA = reader.ReadString();
                 bool teacher = reader.ReadBoolean();
                 string subj_gr = reader.ReadString();
-                User u;
+                IUser u;
                 if (teacher)
                     u = new Teacher(usrname, pass, secrQ, secrA, subj_gr);
                 else

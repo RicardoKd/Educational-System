@@ -72,7 +72,6 @@ namespace Course_project {
             if (editMode) {
                 List<string> lectOrder = Services.getOrder(dir + lecture.Semester);
                 int lectInd = lectOrder.FindIndex(x => x.Equals(lecture.Name));
-                MessageBox.Show("curTestInd = " + lectInd);
 
                 File.Delete(@dir + lecture.Semester + "/" + lectOrder[lectInd] + ".json"); // delete old version
                 if (newSemester == lecture.Semester) {

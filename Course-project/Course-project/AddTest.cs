@@ -77,18 +77,17 @@ namespace Course_project {
 
             if (editMode && savedToOrder) {
                 List<string> testOrder = Services.getOrder(dir + test.Semester);
-                int curTestInd = testOrder.FindIndex(x => x.Equals(oldName));
-                MessageBox.Show("curTestInd = " + curTestInd);
+                int testInd = testOrder.FindIndex(x => x.Equals(oldName));
 
-                File.Delete(@dir + test.Semester + "/" + testOrder[curTestInd] + ".json"); // delete old version
+                File.Delete(@dir + test.Semester + "/" + testOrder[testInd] + ".json"); // delete old version
                 if (newSemester == test.Semester) {
-                    testOrder[curTestInd] = newTName;
+                    testOrder[testInd] = newTName;
                     StreamWriter wr = new StreamWriter(File.Open(@dir + test.Semester + "/order.txt", FileMode.Create));
                     foreach (string lectName in testOrder)
                         wr.Write(lectName + ",");
                     wr.Close();
                 } else {
-                    testOrder[curTestInd] = ""; // delete the lecture because it's moved to another semester
+                    testOrder.RemoveAt(testInd); // delete the lecture because it's moved to another semester
                     /*
                       Error happens here:
                     directory of new semester not found
@@ -149,22 +148,22 @@ namespace Course_project {
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
-            test.Name = textBox1.Text;
+            /*test.Name = textBox1.Text;*/
             changed = true;
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
-            test.Semester = Convert.ToInt32(comboBox3.SelectedItem);
+            /*test.Semester = Convert.ToInt32(comboBox3.SelectedItem);*/
             changed = true;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
             changed = true;
-            test.RandQuestionOrder = checkBox1.Checked == true ? true : false;
+            /*test.RandQuestionOrder = checkBox1.Checked == true ? true : false;
             if (checkBox1.Checked)
                 button4.Enabled = false;
             else
-                button4.Enabled = true;
+                button4.Enabled = true;*/
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e) {

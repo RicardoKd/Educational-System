@@ -7,14 +7,13 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class TeacherMainMenu : Form {
-        private Teacher teacher;
         private Form1 form1;
 
-        public Teacher Teacher { get => teacher; set => teacher = value; }
+        public Teacher Teacher { get; set; }
 
         public TeacherMainMenu(Teacher teacher, Form1 form1) {
             InitializeComponent();
-            this.teacher = teacher;
+            Teacher = teacher;
             this.form1 = form1;
         }
 
