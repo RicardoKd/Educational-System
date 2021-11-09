@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Course_project {
 
     internal class Rules {
 
-        private readonly string[,] s121 = new string[4, 2] {
+        public static string[,] S121 { get; } = new string[4, 2] {
             {
                 "English, Math, C++, Git, Systematic View, Physics, History",
                 "English, Math, C#, OOP, Algorithms, Physics, Philosophy"
@@ -23,7 +24,7 @@ namespace Course_project {
             }
         };
 
-        private readonly string[,] s122 = new string[4, 2] {
+        public static string[,] S122 { get; } = new string[4, 2] {
             {
                 "English, Math, C++, Git, Systematic View, Physics, History",
                 "English, Math, C#, OOP, Algorithms, Physics, Philosophy"
@@ -42,7 +43,7 @@ namespace Course_project {
             }
         };
 
-        private readonly string[,] s123 = new string[4, 2] {
+        public static string[,] S123 { get; } = new string[4, 2] {
             {
                 "English, Math, C++, Git, Systematic View, Physics, History",
                 "English, Math, C#, OOP, Algorithms, Physics, Philosophy"
@@ -61,7 +62,7 @@ namespace Course_project {
             }
         };
 
-        private string[,] s172 = new string[4, 2] {
+        public static string[,] S172 { get; } = new string[4, 2] {
             {
                 "English, Math, C++, Git, Systematic View, Physics, History",
                 "English, Math, C#, OOP, Algorithms, Physics, Philosophy"
@@ -79,14 +80,6 @@ namespace Course_project {
                 "English, Math, Python, Project Architecture, Soft Skills"
             }
         };
-
-        public Rules() {
-        }
-
-        public string[,] S121 { get => s121; }
-        public string[,] S122 { get => s122; }
-        public string[,] S123 { get => s123; }
-        public string[,] S172 { get => s172; }
 
         public string[] getSubjList(string spec, string year) {
             int semester = DateTime.Now.Month > 6 ? 0 : 1; // 1st semester = 1
@@ -108,27 +101,30 @@ namespace Course_project {
             }
         }
 
-        public string[] getSubjList(string grName) {
+        public static List<string> getSubjList(string grName) {
+            List<string> subjList = new List<string>();
             string[] grNameArr = grName.Split(".", StringSplitOptions.RemoveEmptyEntries);
             int spec = Convert.ToInt32(grNameArr[0]);
             int year = Convert.ToInt32(grNameArr[1]) - 1;
             int semester = DateTime.Now.Month > 6 ? 0 : 1; // 1st semester = 1
             switch (spec) {
                 case 121:
-                    return S121[year, semester].Split(",");
+                    subjList.AddRange(S121[year, semester].Split(","));
+                    break;
 
                 case 122:
-                    return S122[year, semester].Split(",");
+                    subjList.AddRange(S122[year, semester].Split(","));
+                    break;
 
                 case 123:
-                    return S123[year, semester].Split(",");
+                    subjList.AddRange(S123[year, semester].Split(","));
+                    break;
 
                 case 172:
-                    return S172[year, semester].Split(",");
-
-                default:
-                    return null;
+                    subjList.AddRange(S172[year, semester].Split(","));
+                    break;
             }
+            return subjList;
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Course_project {
             if (grList.Count > 0) {
                 List<string> grListSort = new List<string>();
                 foreach (string grName in grList) {
-                    List<string> grSubjList = new List<string>(new Rules().getSubjList(grName));
+                    List<string> grSubjList = Rules.getSubjList(grName);
                     if (grSubjList.Contains(subject))
                         grListSort.Add(grName);
                 }
