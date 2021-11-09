@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Course_project {
@@ -26,9 +25,9 @@ namespace Course_project {
                 return;
             }
 
-            Regex regex = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
             string newPass = Convert.ToString(textBox3.Text);
-            if (!(regex.IsMatch(newPass))) { // new pass validation
+            bool passwordState = RegistrationServices.validatePass(newPass);
+            if (!passwordState) {
                 label5.Visible = true;
                 return;
             }
