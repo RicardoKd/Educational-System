@@ -13,6 +13,9 @@ namespace Course_project {
         private string lectDir; // with semester
         private string testDir; // with semester
 
+        private int rowIndexFromMouseDown; // For reordering rows
+        private DataGridViewRow rw; // For reordering rows
+
         public GroupInfo(string grName, TeacherMainMenu teacherMM) {
             InitializeComponent();
             curGr = new Group(grName);
@@ -71,9 +74,9 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) { // Add lecture
-            Add_Lecture al = new Add_Lecture(curGr, teacherMM);
+            Add_Lecture al = new Add_Lecture(this);
             al.Show();
-            Close(); // Maybe Close() ???
+            Close();
         }
 
         private void button4_Click(object sender, EventArgs e) { // Add test
@@ -108,7 +111,7 @@ namespace Course_project {
                 StreamReader r = new StreamReader(File.Open(lectDir + lectName + ".json", FileMode.Open));
                 Lecture lect = JsonConvert.DeserializeObject<Lecture>(r.ReadToEnd());
                 r.Close();
-                Add_Lecture al = new Add_Lecture(curGr, lect, teacherMM);
+                Add_Lecture al = new Add_Lecture(this, lect);
                 al.Show();
                 Hide();
             }
@@ -129,10 +132,6 @@ namespace Course_project {
         }
 
         // For reordering rows of lectures
-        private int rowIndexFromMouseDown;
-
-        private DataGridViewRow rw;
-
         private void dataGridView2_MouseClick(object sender, MouseEventArgs e) {
             if (dataGridView2.SelectedRows.Count == 1)
                 if (e.Button == MouseButtons.Left) {

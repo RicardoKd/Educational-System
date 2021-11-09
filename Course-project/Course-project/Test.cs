@@ -4,45 +4,40 @@ using System.IO;
 
 namespace Course_project {
 
-    public class Test {
-        private string name;
-        private List<TestQuestion> questions;
-        private List<TestMark> studentMarksList; // List of students who took this test
-        private bool randQuestionOrder;
-        private int semester;
+    public class Test : ITest {
 
         public Test(string name, List<TestQuestion> questions, List<TestMark> studentMarksList, bool randQuestionOrder, int semester) {
-            this.name = name;
-            this.questions = questions;
-            this.studentMarksList = studentMarksList;
-            this.randQuestionOrder = randQuestionOrder;
-            this.semester = semester;
+            Name = name;
+            Questions = questions;
+            StudentMarksList = studentMarksList;
+            RandQuestionOrder = randQuestionOrder;
+            Semester = semester;
         }
 
         public Test(string name, List<TestQuestion> questions, bool randQuestionOrder, int semester) {
-            this.name = name;
-            this.questions = questions;
-            this.studentMarksList = new List<TestMark>();
-            this.randQuestionOrder = randQuestionOrder;
-            this.semester = semester;
+            Name = name;
+            Questions = questions;
+            StudentMarksList = new List<TestMark>();
+            RandQuestionOrder = randQuestionOrder;
+            Semester = semester;
         }
 
         public Test() {
-            name = null;
-            questions = new List<TestQuestion>();
-            studentMarksList = new List<TestMark>();
-            randQuestionOrder = false;
-            semester = 1;
+            Name = null;
+            Questions = new List<TestQuestion>();
+            StudentMarksList = new List<TestMark>();
+            RandQuestionOrder = false;
+            Semester = 1;
         }
 
-        public string Name { get => name; set => name = value; }
-        public List<TestQuestion> Questions { get => questions; set => questions = value; }
-        public List<TestMark> StudentMarksList { get => studentMarksList; set => studentMarksList = value; }
-        public bool RandQuestionOrder { get => randQuestionOrder; set => randQuestionOrder = value; }
-        public int Semester { get => semester; set => semester = value; }
+        public string Name { get; set; }
+        public List<TestQuestion> Questions { get; set; }
+        public List<TestMark> StudentMarksList { get; set; } // List of students who took this test
+        public bool RandQuestionOrder { get; set; }
+        public int Semester { get; set; }
 
         public int getStudentMark(string studentUsrName) {
-            foreach (TestMark mark in studentMarksList)
+            foreach (TestMark mark in StudentMarksList)
                 if (string.Compare(mark.StudentUsrName, studentUsrName) == 0)
                     return mark.getStudentMark(maxScore());
             return 0;
@@ -50,14 +45,14 @@ namespace Course_project {
 
         public int maxScore() {
             int MaxScore = 0;
-            foreach (TestQuestion question in questions)
+            foreach (TestQuestion question in Questions)
                 MaxScore += question.Value;
             return MaxScore;
         }
 
         public void WriteToJson(string dir) {
             Directory.CreateDirectory(@dir);
-            StreamWriter sw = new StreamWriter(File.Open(@dir + name + ".json", FileMode.Create));
+            StreamWriter sw = new StreamWriter(File.Open(@dir + Name + ".json", FileMode.Create));
             string output = JsonConvert.SerializeObject(this);
             sw.WriteLine(output);
             sw.Close();

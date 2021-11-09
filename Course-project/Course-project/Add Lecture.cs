@@ -7,57 +7,42 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class Add_Lecture : Form {
-        private Group curGr;
-        private TeacherMainMenu teacherMM;
+        private GroupInfo grInfoForm;
         private string dir; // without semester
         private bool editMode;
-
+        private Lecture lecture;
         private List<string> imgList = new List<string>(); // for images
         private int currentPic = -1; // for images
 
-        private int semester; // needed when this form is used to edit lect
-        private string[] lectOrder; // needed when this form is used to edit lect
-        private int curLectInd; // needed when this form is used to edit lect
-
         // Constructor for creating a new lect
-        public Add_Lecture(Group curGr, TeacherMainMenu teacherMM) {
+        public Add_Lecture(GroupInfo grInfoForm) {
             InitializeComponent();
-            this.curGr = curGr;
-            this.teacherMM = teacherMM;
-            dir = "Lectures/" + curGr.Specialty + "/" + curGr.Year + "/" + teacherMM.Teacher.Subject + "/";
+            this.grInfoForm = grInfoForm;
+            dir = "Lectures/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
             editMode = false;
         }
 
         // Constructor for editing a lect
-        public Add_Lecture(Group curGr, Lecture lect, TeacherMainMenu teacherMM) {
+        public Add_Lecture(GroupInfo grInfoForm, Lecture lecture) {
             InitializeComponent();
             Text = "Edit lecture";
-            this.curGr = curGr;
-            this.teacherMM = teacherMM;
-            semester = lect.Semester;
+            this.grInfoForm = grInfoForm;
+            this.lecture = lecture;
             editMode = true;
-            comboBox3.Text = Convert.ToString(semester);
-            textBox1.Text = lect.Name;
-            richTextBox1.Text = lect.Text;
-            imgList.AddRange(lect.ImgList);
-            dir = "Lectures/" + curGr.Specialty + "/" + curGr.Year + "/" + teacherMM.Teacher.Subject + "/";
-            // To save the index of the current lect
-            StreamReader r = new StreamReader(File.Open(@dir + semester + "/order.txt", FileMode.Open));
-            lectOrder = r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries);
-            r.Close();
-            for (curLectInd = 0; curLectInd < lectOrder.Length; curLectInd++)
-                if (string.Compare(lectOrder[curLectInd], lect.Name) == 0)
-                    break;
+            dir = "Lectures/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
+            comboBox3.Text = Convert.ToString(lecture.Semester);
+            textBox1.Text = lecture.Name;
+            richTextBox1.Text = lecture.Text;
+            imgList.AddRange(lecture.ImgList);
         }
 
         private void Add_Lecture_Load(object sender, EventArgs e) {
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             openFileDialog2.Filter = "Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*";
-            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void button1_Click(object sender, EventArgs e) { // Back
-            GroupInfo grInfo = new GroupInfo(curGr.Name, teacherMM);
+            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
             grInfo.Show();
             Close();
         }
@@ -83,16 +68,21 @@ namespace Course_project {
                 MessageBox.Show("Fill in all cells!");
                 return;
             }
+
             if (editMode) {
-                File.Delete(@dir + semester + "/" + lectOrder[curLectInd] + ".json"); // delete old version
-                if (newSemester == semester) {
-                    lectOrder[curLectInd] = newName;
-                    StreamWriter wr = new StreamWriter(File.Open(@dir + semester + "/order.txt", FileMode.Create));
+                List<string> lectOrder = Services.getOrder(dir + lecture.Semester);
+                int lectInd = lectOrder.FindIndex(x => x.Equals(lecture.Name));
+                MessageBox.Show("curTestInd = " + lectInd);
+
+                File.Delete(@dir + lecture.Semester + "/" + lectOrder[lectInd] + ".json"); // delete old version
+                if (newSemester == lecture.Semester) {
+                    lectOrder[lectInd] = newName;
+                    StreamWriter wr = new StreamWriter(File.Open(@dir + lecture.Semester + "/order.txt", FileMode.Create));
                     foreach (string lectName in lectOrder)
                         wr.Write(lectName + ",");
                     wr.Close();
                 } else {
-                    lectOrder[curLectInd] = ""; // delete the lecture because it's moved to another semester
+                    lectOrder[lectInd] = ""; // delete the lecture because it's moved to another semester
                     /*
                       Error happens here:
                     directory of new semester not found
@@ -111,6 +101,9 @@ namespace Course_project {
             Lecture lect = new Lecture(newName, newText, newSemester, imgList);
             lect.WriteToJson(@dir + newSemester + "/");
             MessageBox.Show("The lecture is succesfuly added!");
+            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
+            grInfo.Show();
+            Close();
         }
 
         private void button4_Click(object sender, EventArgs e) { // Import text

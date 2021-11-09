@@ -4,29 +4,25 @@ using System.IO;
 
 namespace Course_project {
 
-    public class Lecture {
-        private string name;
-        private string text;
-        private int semester;
-        private List<string> imgList = new List<string>();
+    public class Lecture : ILecture {
 
         public Lecture(string name, string text, int semester, List<string> imgList) {
-            this.name = name;
-            this.text = text;
-            this.imgList = imgList;
-            this.semester = semester;
+            Name = name;
+            Text = text;
+            Semester = semester;
+            ImgList = new List<string>(imgList);
         }
 
         public Lecture() {
-            name = null;
-            text = null;
-            semester = 1;
+            Name = null;
+            Text = null;
+            Semester = 1;
         }
 
-        public string Name { get => name; set => name = value; }
-        public string Text { get => text; set => text = value; }
-        public int Semester { get => semester; set => semester = value; }
-        public List<string> ImgList { get => imgList; set => imgList = value; }
+        public string Name { get; set; }
+        public string Text { get; set; }
+        public int Semester { get; set; }
+        public List<string> ImgList { get; set; }
 
         public bool addImg(string fileName) {
             if (!string.IsNullOrEmpty(fileName)) {
@@ -38,7 +34,7 @@ namespace Course_project {
 
         public void WriteToJson(string dir) {
             Directory.CreateDirectory(@dir);
-            StreamWriter sw = new StreamWriter(File.Open(@dir + name + ".json", FileMode.Create));
+            StreamWriter sw = new StreamWriter(File.Open(@dir + Name + ".json", FileMode.Create));
             string output = JsonConvert.SerializeObject(this);
             sw.WriteLine(output);
             sw.Close();

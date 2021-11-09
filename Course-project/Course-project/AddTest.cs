@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -12,10 +13,7 @@ namespace Course_project {
         private bool changed;
         private bool editMode;
         private bool savedToOrder; // true when this from is loaded for the first
-
-        private int semester; // needed when this form is used to edit test
-        private string[] testOrder; // needed when this form is used to edit test
-        private int curTestInd; // needed when this form is used to edit test
+        private string oldName;
 
         // Constructor for creating new tests
         public AddTest(GroupInfo grInfoForm) {
@@ -34,26 +32,18 @@ namespace Course_project {
         public AddTest(GroupInfo grInfoForm, Test test, bool savedToOrder = false) {
             InitializeComponent();
             this.grInfoForm = grInfoForm;
-
-            semester = test.Semester;
-            dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
-            changed = false;
             this.test = test;
-            editMode = true;
             this.savedToOrder = savedToOrder;
+            changed = false;
+            editMode = true;
+            oldName = test.Name;
+            dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
             textBox1.Text = test.Name;
-            comboBox3.Text = Convert.ToString(semester);
+            comboBox3.Text = Convert.ToString(test.Semester);
             checkBox1.Checked = test.RandQuestionOrder == true ? true : false;
-            if (savedToOrder) {
+            if (savedToOrder)
                 Text = "Edit test";
-                StreamReader r = new StreamReader(File.Open(@dir + semester + "/order.txt", FileMode.Open));
-                testOrder = r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries);
-                r.Close();
-                for (curTestInd = 0; curTestInd < testOrder.Length; curTestInd++)
-                    if (string.Compare(testOrder[curTestInd], test.Name) == 0)
-                        break;
-                MessageBox.Show("curTestInd = " + curTestInd);
-            }
+
             int i = 0;
             foreach (TestQuestion q in test.Questions) {
                 dataGridView1.Rows.Add();
@@ -62,8 +52,6 @@ namespace Course_project {
                 dataGridView1.Rows[i].Cells[2].Value = "Edit";
                 i++;
             }
-            // To save the index of the current test
-
             FormClosing += new FormClosingEventHandler(beforeClosing);
         }
 
@@ -88,10 +76,14 @@ namespace Course_project {
             }
 
             if (editMode && savedToOrder) {
-                File.Delete(@dir + semester + "/" + testOrder[curTestInd] + ".json"); // delete old version
-                if (newSemester == semester) {
+                List<string> testOrder = Services.getOrder(dir + test.Semester);
+                int curTestInd = testOrder.FindIndex(x => x.Equals(oldName));
+                MessageBox.Show("curTestInd = " + curTestInd);
+
+                File.Delete(@dir + test.Semester + "/" + testOrder[curTestInd] + ".json"); // delete old version
+                if (newSemester == test.Semester) {
                     testOrder[curTestInd] = newTName;
-                    StreamWriter wr = new StreamWriter(File.Open(@dir + semester + "/order.txt", FileMode.Create));
+                    StreamWriter wr = new StreamWriter(File.Open(@dir + test.Semester + "/order.txt", FileMode.Create));
                     foreach (string lectName in testOrder)
                         wr.Write(lectName + ",");
                     wr.Close();
@@ -116,6 +108,9 @@ namespace Course_project {
             Test newTest = new Test(newTName, test.Questions, randQOrder, newSemester);
             newTest.WriteToJson(@dir + newSemester + "/");
             MessageBox.Show("The test is succesfuly saved!");
+            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
+            grInfo.Show();
+            Close();
         }
 
         private void button3_Click(object sender, EventArgs e) { // Add question
@@ -136,11 +131,7 @@ namespace Course_project {
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0) {
                 string clickedQText = (string)senderGrid.Rows[e.RowIndex].Cells[1].Value;
-                TestQuestion clickedQ = new TestQuestion();
-                foreach (TestQuestion q in test.Questions)
-                    if (string.Compare(clickedQText, q.Question) == 0)
-                        clickedQ = q;
-
+                TestQuestion clickedQ = test.Questions.Find(x => x.Question.Contains(clickedQText));
                 Add_Test_Question tq = new Add_Test_Question(this, clickedQ);
                 tq.Show();
                 Hide();
