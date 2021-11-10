@@ -43,15 +43,7 @@ namespace Course_project {
             checkBox1.Checked = test.RandQuestionOrder == true ? true : false;
             if (savedToOrder)
                 Text = "Edit test";
-
-            int i = 0;
-            foreach (TestQuestion q in test.Questions) {
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                dataGridView1.Rows[i].Cells[1].Value = q.Question;
-                dataGridView1.Rows[i].Cells[2].Value = "Edit";
-                i++;
-            }
+            Services.fillDGV(dataGridView1, test.getQuestions(), "View");
             FormClosing += new FormClosingEventHandler(beforeClosing);
         }
 

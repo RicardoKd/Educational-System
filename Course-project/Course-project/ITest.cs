@@ -14,5 +14,7 @@ namespace Course_project {
         int maxScore();
 
         void WriteToJson(string dir);
+
+        List<string> getQuestions();
     }
 }

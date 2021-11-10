@@ -30,11 +30,11 @@ namespace Course_project {
             Semester = 1;
         }
 
-        public string Name { get; set; }
-        public List<TestQuestion> Questions { get; set; }
-        public List<TestMark> StudentMarksList { get; set; } // List of students who took this test
         public bool RandQuestionOrder { get; set; }
         public int Semester { get; set; }
+        public List<TestMark> StudentMarksList { get; set; } // List of students who took this test
+        public List<TestQuestion> Questions { get; set; }
+        public string Name { get; set; }
 
         public int getStudentMark(string studentUsrName) {
             foreach (TestMark mark in StudentMarksList)
@@ -56,6 +56,13 @@ namespace Course_project {
             string output = JsonConvert.SerializeObject(this);
             sw.WriteLine(output);
             sw.Close();
+        }
+
+        public List<string> getQuestions() {
+            List<string> qList = new List<string>();
+            foreach (TestQuestion q in Questions)
+                qList.Add(q.Question);
+            return qList;
         }
     }
 }
