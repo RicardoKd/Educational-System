@@ -15,6 +15,8 @@ namespace Course_project {
         }
 
         private void StudentMainMenu_Load(object sender, EventArgs e) {
+            label1.Text = Student.Group;
+            label2.Text = "Hello, " + Student.Username;
             List<string> grSubjList = Rules.getSubjList(Student.Group);
             List<Button> btnList = Services.createBtnList(20, 150, grSubjList, DynamicButton_Click);
             foreach (Button btn in btnList)
@@ -22,8 +24,9 @@ namespace Course_project {
         }
 
         private void DynamicButton_Click(object sender, EventArgs e) {
-            string grName = (sender as Button).Text; // get text of the btn that was clicked
-            // create next form
+            string subject = (sender as Button).Text;
+            SubjectTasksStudent STS = new SubjectTasksStudent(subject, this);
+            STS.Show();
             Hide();
         }
 

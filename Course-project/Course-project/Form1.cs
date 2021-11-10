@@ -43,7 +43,7 @@ namespace Course_project {
                             textBox1.Clear();
                             textBox2.Clear();
                             reader.Close();
-                            /*Hide();*/
+                            Hide();
                             return;
                         }
                     } else {

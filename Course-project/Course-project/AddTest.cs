@@ -7,23 +7,23 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class AddTest : Form {
-        private GroupInfo grInfoForm;
-        private Test test;
-        private string dir; // without semester
-        private bool changed;
-        private bool editMode;
-        private bool savedToOrder; // true when this from is loaded for the first
-        private string oldName;
+        public bool Changed { get; set; }
+        public bool EditMode { get; set; }
+        public bool SavedToOrder { get; set; } // true when this from is loaded for the first
+        public GroupInfo GrInfoForm { get; set; }
+        public string Dir { get; set; } // without semester
+        public string OldName { get; set; }
+        public Test Test { get; set; }
 
         // Constructor for creating new tests
         public AddTest(GroupInfo grInfoForm) {
             InitializeComponent();
-            this.grInfoForm = grInfoForm;
-            test = new Test();
-            changed = false;
-            editMode = false;
-            savedToOrder = false;
-            dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
+            GrInfoForm = grInfoForm;
+            Test = new Test();
+            Changed = false;
+            EditMode = false;
+            SavedToOrder = false;
+            Dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
             FormClosing += new FormClosingEventHandler(beforeClosing);
             comboBox3.SelectedIndex = 0;
         }
@@ -31,13 +31,13 @@ namespace Course_project {
         // Constructor for editing tests
         public AddTest(GroupInfo grInfoForm, Test test, bool savedToOrder = false) {
             InitializeComponent();
-            this.grInfoForm = grInfoForm;
-            this.test = test;
-            this.savedToOrder = savedToOrder;
-            changed = false;
-            editMode = true;
-            oldName = test.Name;
-            dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
+            GrInfoForm = grInfoForm;
+            Test = test;
+            SavedToOrder = savedToOrder;
+            Changed = false;
+            EditMode = true;
+            OldName = test.Name;
+            Dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
             textBox1.Text = test.Name;
             comboBox3.Text = Convert.ToString(test.Semester);
             checkBox1.Checked = test.RandQuestionOrder == true ? true : false;
@@ -55,18 +55,14 @@ namespace Course_project {
             FormClosing += new FormClosingEventHandler(beforeClosing);
         }
 
-        public GroupInfo GrInfoForm { get => grInfoForm; set => grInfoForm = value; }
-        public Test Test { get => test; set => test = value; }
-        public bool SavedToOrder { get => savedToOrder; set => savedToOrder = value; }
-
         private void button1_Click(object sender, EventArgs e) { // Back
-            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
+            GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
             grInfo.Show();
             Close();
         }
 
         private void button2_Click(object sender, EventArgs e) { // Save
-            changed = false;
+            Changed = false;
             string newTName = textBox1.Text;
             bool randQOrder = checkBox1.Checked == true ? true : false;
             int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
@@ -75,14 +71,14 @@ namespace Course_project {
                 return;
             }
 
-            if (editMode && savedToOrder) {
-                List<string> testOrder = Services.getOrder(dir + test.Semester);
-                int testInd = testOrder.FindIndex(x => x.Equals(oldName));
+            if (EditMode && SavedToOrder) {
+                List<string> testOrder = Services.getOrder(Dir + Test.Semester);
+                int testInd = testOrder.FindIndex(x => x.Equals(OldName));
 
-                File.Delete(@dir + test.Semester + "/" + testOrder[testInd] + ".json"); // delete old version
-                if (newSemester == test.Semester) {
+                File.Delete(Dir + Test.Semester + "/" + testOrder[testInd] + ".json"); // delete old version
+                if (newSemester == Test.Semester) {
                     testOrder[testInd] = newTName;
-                    StreamWriter wr = new StreamWriter(File.Open(@dir + test.Semester + "/order.txt", FileMode.Create));
+                    StreamWriter wr = new StreamWriter(File.Open(Dir + Test.Semester + "/order.txt", FileMode.Create));
                     foreach (string lectName in testOrder)
                         wr.Write(lectName + ",");
                     wr.Close();
@@ -92,22 +88,22 @@ namespace Course_project {
                       Error happens here:
                     directory of new semester not found
                      */
-                    StreamWriter wr = new StreamWriter(File.Open(@dir + newSemester + "/order.txt", FileMode.Append));
+                    StreamWriter wr = new StreamWriter(File.Open(Dir + newSemester + "/order.txt", FileMode.Append));
                     wr.Write(newTName + ",");
                     wr.Close();
                 }
             } else {
-                if (!Directory.Exists(@dir + newSemester))
-                    Directory.CreateDirectory(@dir + newSemester);
-                StreamWriter wr = new StreamWriter(File.Open(@dir + newSemester + "/order.txt", FileMode.Append));
+                if (!Directory.Exists(Dir + newSemester))
+                    Directory.CreateDirectory(Dir + newSemester);
+                StreamWriter wr = new StreamWriter(File.Open(Dir + newSemester + "/order.txt", FileMode.Append));
                 wr.Write(newTName + ",");
                 wr.Close();
-                savedToOrder = true;
+                SavedToOrder = true;
             }
-            Test newTest = new Test(newTName, test.Questions, randQOrder, newSemester);
-            newTest.WriteToJson(@dir + newSemester + "/");
+            Test newTest = new Test(newTName, Test.Questions, randQOrder, newSemester);
+            newTest.WriteToJson(Dir + newSemester + "/");
             MessageBox.Show("The test is succesfuly saved!");
-            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
+            GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
             grInfo.Show();
             Close();
         }
@@ -130,7 +126,7 @@ namespace Course_project {
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0) {
                 string clickedQText = (string)senderGrid.Rows[e.RowIndex].Cells[1].Value;
-                TestQuestion clickedQ = test.Questions.Find(x => x.Question.Contains(clickedQText));
+                TestQuestion clickedQ = Test.Questions.Find(x => x.Question.Contains(clickedQText));
                 Add_Test_Question tq = new Add_Test_Question(this, clickedQ);
                 tq.Show();
                 Hide();
@@ -149,16 +145,16 @@ namespace Course_project {
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
             /*test.Name = textBox1.Text;*/
-            changed = true;
+            Changed = true;
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
             /*test.Semester = Convert.ToInt32(comboBox3.SelectedItem);*/
-            changed = true;
+            Changed = true;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-            changed = true;
+            Changed = true;
             /*test.RandQuestionOrder = checkBox1.Checked == true ? true : false;
             if (checkBox1.Checked)
                 button4.Enabled = false;

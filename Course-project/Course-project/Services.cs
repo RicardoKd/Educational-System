@@ -8,14 +8,21 @@ namespace Course_project {
 
     internal class Services {
 
+        public static int GetCurrentSemester() {
+            int semester = DateTime.Now.Month > 6 ? 1 : 2;
+            return semester;
+        }
+
         public static List<string> getOrder(string dir) {
+            if (!Directory.Exists(dir))
+                return new List<string>();
             if (!dir.EndsWith("/"))
                 dir += "/";
 
             StreamReader r = new StreamReader(File.Open(@dir + "order.txt", FileMode.Open));
-            List<string> testOrder = new List<string>(r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries));
+            List<string> order = new List<string>(r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries));
             r.Close();
-            return testOrder;
+            return order;
         }
 
         public delegate void btnOnClick(object sender, EventArgs e);
@@ -62,6 +69,24 @@ namespace Course_project {
                 }
                 return grListSort;
             }
+            return null;
+        }
+
+        public static void fillDGV(DataGridView dgw, List<string> nameList, string btnText) {
+            int i = 0;
+            foreach (string name in nameList) {
+                dgw.Rows.Add();
+                dgw.Rows[i].Cells[0].Value = i + 1;
+                dgw.Rows[i].Cells[1].Value = name;
+                dgw.Rows[i].Cells[2].Value = btnText;
+                i++;
+            }
+        }
+
+        public static string DGVCellContentClick(object sender, DataGridViewCellEventArgs e, int colInd) {
+            DataGridView senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+                return (string)senderGrid.Rows[e.RowIndex].Cells[colInd].Value;
             return null;
         }
     }

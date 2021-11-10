@@ -106,7 +106,7 @@ namespace Course_project {
             string[] grNameArr = grName.Split(".", StringSplitOptions.RemoveEmptyEntries);
             int spec = Convert.ToInt32(grNameArr[0]);
             int year = Convert.ToInt32(grNameArr[1]) - 1;
-            int semester = DateTime.Now.Month > 6 ? 0 : 1; // 1st semester = 1
+            int semester = Services.GetCurrentSemester() - 1;
             switch (spec) {
                 case 121:
                     subjList.AddRange(S121[year, semester].Split(","));

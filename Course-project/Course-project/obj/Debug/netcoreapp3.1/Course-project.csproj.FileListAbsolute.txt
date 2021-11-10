@@ -45,3 +45,5 @@ C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\bin\Debu
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.Add_Test_Question.resources
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.AddTest.resources
 C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\bin\Debug\netcoreapp3.1\LiteDB.dll
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course_project.SubjectTasksStudent.resources
+C:\Users\Ricardo\Documents\University\OOP\Course-project\Course-project\obj\Debug\netcoreapp3.1\Course-project.csproj.CopyComplete

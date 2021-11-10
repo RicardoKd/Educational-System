@@ -5,14 +5,13 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class TeacherMainMenu : Form {
-        private Form1 form1;
-
+        public Form1 Form1 { get; set; }
         public Teacher Teacher { get; set; }
 
         public TeacherMainMenu(Teacher teacher, Form1 form1) {
             InitializeComponent();
             Teacher = teacher;
-            this.form1 = form1;
+            this.Form1 = form1;
         }
 
         private void TeacherMainMenu_Load(object sender, EventArgs e) {
@@ -35,7 +34,7 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            form1.Show();
+            Form1.Show();
             Close();
         }
     }

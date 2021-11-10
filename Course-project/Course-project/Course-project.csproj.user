@@ -25,6 +25,9 @@
     <Compile Update="StudentMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SubjectTasksStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TeacherMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
