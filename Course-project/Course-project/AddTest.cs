@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,6 +13,8 @@ namespace Course_project {
         public string Dir { get; set; } // without semester
         public string OldName { get; set; }
         public Test Test { get; set; }
+        private int rowIndexFromMouseDown;
+        private DataGridViewRow rw;
 
         // Constructor for creating new tests
         public AddTest(GroupInfo grInfoForm) {
@@ -70,30 +71,17 @@ namespace Course_project {
                 File.Delete(Dir + Test.Semester + "/" + testOrder[testInd] + ".json"); // delete old version
                 if (newSemester == Test.Semester) {
                     testOrder[testInd] = newTName;
-                    StreamWriter wr = new StreamWriter(File.Open(Dir + Test.Semester + "/order.txt", FileMode.Create));
-                    foreach (string lectName in testOrder)
-                        wr.Write(lectName + ",");
-                    wr.Close();
+                    Services.rewriteOrder(Dir + newSemester, testOrder);
                 } else {
                     testOrder.RemoveAt(testInd); // delete the lecture because it's moved to another semester
-                    /*
-                      Error happens here:
-                    directory of new semester not found
-                     */
-                    StreamWriter wr = new StreamWriter(File.Open(Dir + newSemester + "/order.txt", FileMode.Append));
-                    wr.Write(newTName + ",");
-                    wr.Close();
+                    Services.rewriteOrder(Dir + Test.Semester, testOrder);
+                    Services.appendToOrder(Dir + newSemester, newTName);
                 }
-            } else {
-                if (!Directory.Exists(Dir + newSemester))
-                    Directory.CreateDirectory(Dir + newSemester);
-                StreamWriter wr = new StreamWriter(File.Open(Dir + newSemester + "/order.txt", FileMode.Append));
-                wr.Write(newTName + ",");
-                wr.Close();
-                SavedToOrder = true;
-            }
+            } else
+                Services.appendToOrder(Dir + newSemester, newTName);
+
             Test newTest = new Test(newTName, Test.Questions, randQOrder, newSemester);
-            newTest.WriteToJson(Dir + newSemester + "/");
+            newTest.WriteToJson(Dir + newSemester);
             MessageBox.Show("The test is succesfuly saved!");
             GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
             grInfo.Show();
@@ -157,31 +145,16 @@ namespace Course_project {
         private void checkBox2_CheckedChanged(object sender, EventArgs e) {
         }
 
-        // For reordering questions
-        private int rowIndexFromMouseDown;
-
-        private DataGridViewRow rw;
-
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e) {
-            if (dataGridView1.SelectedRows.Count == 1)
-                if (e.Button == MouseButtons.Left) {
-                    rw = dataGridView1.SelectedRows[0];
-                    rowIndexFromMouseDown = rw.Index;
-                    dataGridView1.DoDragDrop(rw, DragDropEffects.Move);
-                }
+            Services.DGVMouseClick((DataGridView)sender, e, ref rw, ref rowIndexFromMouseDown);
         }
 
         private void dataGridView1_DragEnter(object sender, DragEventArgs e) {
-            if (dataGridView1.SelectedRows.Count > 0)
-                e.Effect = DragDropEffects.Move;
+            Services.DGVDragEnter((DataGridView)sender, e);
         }
 
         private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
-            Point clientPoint = dataGridView1.PointToClient(new Point(e.X, e.Y));
-            if (e.Effect == DragDropEffects.Move) {
-                dataGridView1.Rows.RemoveAt(rowIndexFromMouseDown);
-                dataGridView1.Rows.Insert(dataGridView1.HitTest(clientPoint.X, clientPoint.Y).RowIndex, rw);
-            }
+            Services.DGVragDrop((DataGridView)sender, e, rw, rowIndexFromMouseDown);
         }
     }
 }

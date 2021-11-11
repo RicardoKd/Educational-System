@@ -31,5 +31,8 @@
     <Compile Update="TeacherMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ViewLecture.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

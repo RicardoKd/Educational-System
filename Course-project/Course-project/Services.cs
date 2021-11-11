@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -23,6 +24,25 @@ namespace Course_project {
             List<string> order = new List<string>(r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries));
             r.Close();
             return order;
+        }
+
+        public static void rewriteOrder(string dir, List<string> newOrder) {
+            if (!dir.EndsWith("/"))
+                dir += "/";
+            StreamWriter wr = new StreamWriter(File.Open(dir + "order.txt", FileMode.Create));
+            foreach (string lectName in newOrder)
+                wr.Write(lectName + ",");
+            wr.Close();
+        }
+
+        public static void appendToOrder(string dir, string nameToAppend) {
+            if (!dir.EndsWith("/"))
+                dir += "/";
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+            StreamWriter wr = new StreamWriter(File.Open(@dir + "order.txt", FileMode.Append));
+            wr.Write(nameToAppend + ",");
+            wr.Close();
         }
 
         public delegate void btnOnClick(object sender, EventArgs e);
@@ -88,6 +108,39 @@ namespace Course_project {
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
                 return (string)senderGrid.Rows[e.RowIndex].Cells[colInd].Value;
             return null;
+        }
+
+        public static T deserializeObj<T>(string filePath) {
+            StreamReader r = new StreamReader(File.Open(filePath, FileMode.Open));
+            T obj = JsonConvert.DeserializeObject<T>(r.ReadToEnd());
+            r.Close();
+            return obj;
+        }
+
+        /*Random random = new Random();
+        int number = random.Next(1, 4);*/
+
+        // For reordering rows
+        public static void DGVMouseClick(DataGridView dgv, MouseEventArgs e, ref DataGridViewRow Rw, ref int RowIndexFromMouseDown) {
+            if (dgv.SelectedRows.Count == 1)
+                if (e.Button == MouseButtons.Left) {
+                    Rw = dgv.SelectedRows[0];
+                    RowIndexFromMouseDown = Rw.Index;
+                    dgv.DoDragDrop(Rw, DragDropEffects.Move);
+                }
+        }
+
+        public static void DGVDragEnter(DataGridView dgv, DragEventArgs e) {
+            if (dgv.SelectedRows.Count > 0)
+                e.Effect = DragDropEffects.Move;
+        }
+
+        public static void DGVragDrop(DataGridView dgv, DragEventArgs e, DataGridViewRow Rw, int RowIndexFromMouseDown) {
+            Point clientPoint = dgv.PointToClient(new Point(e.X, e.Y));
+            if (e.Effect == DragDropEffects.Move) {
+                dgv.Rows.RemoveAt(RowIndexFromMouseDown);
+                dgv.Rows.Insert(dgv.HitTest(clientPoint.X, clientPoint.Y).RowIndex, Rw);
+            }
         }
     }
 }

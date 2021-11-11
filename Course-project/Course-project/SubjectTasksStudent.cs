@@ -22,6 +22,7 @@ namespace Course_project {
         }
 
         private void SubjectTasksStudent_Load(object sender, EventArgs e) {
+            label1.Text = Subject;
             Services.fillDGV(dataGridView1, Services.getOrder(LectDir), "View"); // Fill lecture list
             Services.fillDGV(dataGridView2, Services.getOrder(TestDir), "Start"); // Fill test list
         }
@@ -34,12 +35,10 @@ namespace Course_project {
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             string lectName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(lectName)) {
-                StreamReader r = new StreamReader(File.Open(LectDir + lectName + ".json", FileMode.Open));
-                Lecture lect = JsonConvert.DeserializeObject<Lecture>(r.ReadToEnd());
-                r.Close();
-                /*ViewLecture sl = new ViewLecture(this, lect);
-                sl.Show();
-                Hide();*/
+                Lecture lect = Services.deserializeObj<Lecture>(LectDir + lectName + ".json");
+                ViewLecture vl = new ViewLecture(this, lect);
+                vl.Show();
+                Hide();
             }
         }
 

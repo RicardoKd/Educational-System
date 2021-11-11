@@ -5,16 +5,16 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class Add_Test_Question : Form {
-        private AddTest addTestForm;
-        private string oldQText;
-        private bool editMode;
-        private bool changed;
+        public AddTest AddTestForm { get; set; }
+        public string OldQText { get; set; }
+        public bool EditMode { get; set; }
+        public bool Changed { get; set; }
 
         // Constructor for creating new questions
         public Add_Test_Question(AddTest addTestForm) {
             InitializeComponent();
-            this.addTestForm = addTestForm;
-            editMode = false;
+            AddTestForm = addTestForm;
+            EditMode = false;
             comboBox1.SelectedIndex = 0;
         }
 
@@ -22,9 +22,9 @@ namespace Course_project {
         public Add_Test_Question(AddTest addTestForm, TestQuestion question) {
             InitializeComponent();
             Text = "Edit question";
-            this.addTestForm = addTestForm;
-            editMode = true;
-            oldQText = question.Question;
+            AddTestForm = addTestForm;
+            EditMode = true;
+            OldQText = question.Question;
             textBox1.Text = question.Question;
             comboBox1.SelectedIndex = question.Value - 1;
             foreach (string ra in question.RightAns)
@@ -35,11 +35,11 @@ namespace Course_project {
 
         private void Add_Test_Question_Load(object sender, EventArgs e) {
             FormClosing += new FormClosingEventHandler(beforeClosing);
-            changed = false;
+            Changed = false;
         }
 
         private void button1_Click(object sender, EventArgs e) { // Back
-            AddTest at = new AddTest(addTestForm.GrInfoForm, addTestForm.Test, addTestForm.SavedToOrder);
+            AddTest at = new AddTest(AddTestForm.GrInfoForm, AddTestForm.Test, AddTestForm.SavedToOrder);
             at.Show();
             Close();
         }
@@ -57,16 +57,16 @@ namespace Course_project {
             tq.Value = Convert.ToInt32(comboBox1.SelectedItem);
             tq.RightAns = new List<string>(Convert.ToString(richTextBox1.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries));
             tq.WrongAns = new List<string>(Convert.ToString(richTextBox2.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries));
-            if (editMode) {
-                for (int i = 0; i < addTestForm.Test.Questions.Count; i++)
-                    if (string.Compare(oldQText, addTestForm.Test.Questions[i].Question) == 0) {
-                        addTestForm.Test.Questions[i] = tq;
+            if (EditMode) {
+                for (int i = 0; i < AddTestForm.Test.Questions.Count; i++)
+                    if (string.Compare(OldQText, AddTestForm.Test.Questions[i].Question) == 0) {
+                        AddTestForm.Test.Questions[i] = tq;
                         break;
                     }
             } else {
-                addTestForm.Test.Questions.Add(tq);
+                AddTestForm.Test.Questions.Add(tq);
             }
-            changed = false;
+            Changed = false;
             MessageBox.Show("Question is succesfuly saved!");
         }
 
@@ -81,19 +81,19 @@ namespace Course_project {
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
-            changed = true;
+            Changed = true;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-            changed = true;
+            Changed = true;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e) {
-            changed = true;
+            Changed = true;
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e) {
-            changed = true;
+            Changed = true;
         }
     }
 }

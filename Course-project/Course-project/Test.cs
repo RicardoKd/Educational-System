@@ -51,7 +51,10 @@ namespace Course_project {
         }
 
         public void WriteToJson(string dir) {
-            Directory.CreateDirectory(@dir);
+            if (!dir.EndsWith("/"))
+                dir += "/";
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(@dir);
             StreamWriter sw = new StreamWriter(File.Open(@dir + Name + ".json", FileMode.Create));
             string output = JsonConvert.SerializeObject(this);
             sw.WriteLine(output);

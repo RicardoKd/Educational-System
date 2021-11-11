@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Drawing;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,8 +9,8 @@ namespace Course_project {
         public string LectDir { get; set; } // with semester
         public string TestDir { get; set; } // with semester
         public TeacherMainMenu TeacherMM { get; set; }
-        public int RowIndexFromMouseDown { get; set; } // For reordering rows
-        public DataGridViewRow Rw { get; set; } // For reordering rows
+        private int rowIndexFromMouseDown; // For reordering rows
+        private DataGridViewRow rw;
 
         public GroupInfo(string grName, TeacherMainMenu teacherMM) {
             InitializeComponent();
@@ -78,12 +76,10 @@ namespace Course_project {
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             string lectName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(lectName)) {
-                StreamReader r = new StreamReader(File.Open(LectDir + lectName + ".json", FileMode.Open));
-                Lecture lect = JsonConvert.DeserializeObject<Lecture>(r.ReadToEnd());
-                r.Close();
+                Lecture lect = Services.deserializeObj<Lecture>(LectDir + lectName + ".json");
                 Add_Lecture al = new Add_Lecture(this, lect);
                 al.Show();
-                Hide();
+                Close();
             }
         }
 
@@ -91,59 +87,37 @@ namespace Course_project {
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             string testName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(testName)) {
-                StreamReader r = new StreamReader(File.Open(TestDir + testName + ".json", FileMode.Open));
-                Test test = JsonConvert.DeserializeObject<Test>(r.ReadToEnd());
-                r.Close();
+                Test test = Services.deserializeObj<Test>(TestDir + testName + ".json");
                 AddTest at = new AddTest(this, test, true);
                 at.Show();
-                Hide();
+                Close();
             }
         }
 
         // For reordering rows of lectures
         private void dataGridView2_MouseClick(object sender, MouseEventArgs e) {
-            if (dataGridView2.SelectedRows.Count == 1)
-                if (e.Button == MouseButtons.Left) {
-                    Rw = dataGridView2.SelectedRows[0];
-                    RowIndexFromMouseDown = Rw.Index;
-                    dataGridView2.DoDragDrop(Rw, DragDropEffects.Move);
-                }
+            Services.DGVMouseClick((DataGridView)sender, e, ref rw, ref rowIndexFromMouseDown);
         }
 
         private void dataGridView2_DragEnter(object sender, DragEventArgs e) {
-            if (dataGridView2.SelectedRows.Count > 0)
-                e.Effect = DragDropEffects.Move;
+            Services.DGVDragEnter((DataGridView)sender, e);
         }
 
         private void dataGridView2_DragDrop(object sender, DragEventArgs e) {
-            Point clientPoint = dataGridView2.PointToClient(new Point(e.X, e.Y));
-            if (e.Effect == DragDropEffects.Move) {
-                dataGridView2.Rows.RemoveAt(RowIndexFromMouseDown);
-                dataGridView2.Rows.Insert(dataGridView2.HitTest(clientPoint.X, clientPoint.Y).RowIndex, Rw);
-            }
+            Services.DGVragDrop((DataGridView)sender, e, rw, rowIndexFromMouseDown);
         }
 
         // For reordering rows of tests
         private void dataGridView3_MouseClick(object sender, MouseEventArgs e) {
-            if (dataGridView3.SelectedRows.Count == 1)
-                if (e.Button == MouseButtons.Left) {
-                    Rw = dataGridView3.SelectedRows[0];
-                    RowIndexFromMouseDown = Rw.Index;
-                    dataGridView3.DoDragDrop(Rw, DragDropEffects.Move);
-                }
+            Services.DGVMouseClick((DataGridView)sender, e, ref rw, ref rowIndexFromMouseDown);
         }
 
         private void dataGridView3_DragEnter(object sender, DragEventArgs e) {
-            if (dataGridView3.SelectedRows.Count > 0)
-                e.Effect = DragDropEffects.Move;
+            Services.DGVDragEnter((DataGridView)sender, e);
         }
 
         private void dataGridView3_DragDrop(object sender, DragEventArgs e) {
-            Point clientPoint = dataGridView3.PointToClient(new Point(e.X, e.Y));
-            if (e.Effect == DragDropEffects.Move) {
-                dataGridView3.Rows.RemoveAt(RowIndexFromMouseDown);
-                dataGridView3.Rows.Insert(dataGridView3.HitTest(clientPoint.X, clientPoint.Y).RowIndex, Rw);
-            }
+            Services.DGVragDrop((DataGridView)sender, e, rw, rowIndexFromMouseDown);
         }
     }
 }
