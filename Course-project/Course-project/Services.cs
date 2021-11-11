@@ -45,6 +45,16 @@ namespace Course_project {
             wr.Close();
         }
 
+        public static void saveOrder(string dir, DataGridView dgv) {
+            if (dgv.RowCount - 1 > 0) {
+                // Save test order
+                StreamWriter wr = new StreamWriter(File.Open(dir + "order.txt", FileMode.Create));
+                for (int i = 0; i < dgv.RowCount - 1; i++)
+                    wr.Write((string)dgv.Rows[i].Cells[1].Value + ",");
+                wr.Close();
+            }
+        }
+
         public delegate void btnOnClick(object sender, EventArgs e);
 
         public static List<Button> createBtnList(int x, int y, List<string> btnTextList, btnOnClick delFunc) {
@@ -92,24 +102,6 @@ namespace Course_project {
             return null;
         }
 
-        public static void fillDGV(DataGridView dgw, List<string> nameList, string btnText) {
-            int i = 0;
-            foreach (string name in nameList) {
-                dgw.Rows.Add();
-                dgw.Rows[i].Cells[0].Value = i + 1;
-                dgw.Rows[i].Cells[1].Value = name;
-                dgw.Rows[i].Cells[2].Value = btnText;
-                i++;
-            }
-        }
-
-        public static string DGVCellContentClick(object sender, DataGridViewCellEventArgs e, int colInd) {
-            DataGridView senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-                return (string)senderGrid.Rows[e.RowIndex].Cells[colInd].Value;
-            return null;
-        }
-
         public static T deserializeObj<T>(string filePath) {
             StreamReader r = new StreamReader(File.Open(filePath, FileMode.Open));
             T obj = JsonConvert.DeserializeObject<T>(r.ReadToEnd());
@@ -143,6 +135,24 @@ namespace Course_project {
 
         /*Random random = new Random();
         int number = random.Next(1, 4);*/
+
+        public static string DGVCellContentClick(object sender, DataGridViewCellEventArgs e, int colInd) {
+            DataGridView senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+                return (string)senderGrid.Rows[e.RowIndex].Cells[colInd].Value;
+            return null;
+        }
+
+        public static void fillDGV(DataGridView dgw, List<string> nameList, string btnText) {
+            int i = 0;
+            foreach (string name in nameList) {
+                dgw.Rows.Add();
+                dgw.Rows[i].Cells[0].Value = i + 1;
+                dgw.Rows[i].Cells[1].Value = name;
+                dgw.Rows[i].Cells[2].Value = btnText;
+                i++;
+            }
+        }
 
         // For reordering rows
         public static void DGVMouseClick(DataGridView dgv, MouseEventArgs e, ref DataGridViewRow Rw, ref int RowIndexFromMouseDown) {

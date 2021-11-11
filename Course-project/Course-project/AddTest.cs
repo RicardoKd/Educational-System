@@ -124,12 +124,10 @@ namespace Course_project {
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
-            /*test.Name = textBox1.Text;*/
             Changed = true;
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
-            /*test.Semester = Convert.ToInt32(comboBox3.SelectedItem);*/
             Changed = true;
         }
 

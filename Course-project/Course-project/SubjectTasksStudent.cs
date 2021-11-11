@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.IO;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Course_project {
@@ -45,12 +43,10 @@ namespace Course_project {
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             string testName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(testName)) {
-                StreamReader r = new StreamReader(File.Open(TestDir + testName + ".json", FileMode.Open));
-                Test test = JsonConvert.DeserializeObject<Test>(r.ReadToEnd());
-                r.Close();
-                /*ViewTest vt = new ViewTest(this, test, true);
+                Test test = Services.deserializeObj<Test>(TestDir + testName + ".json");
+                ViewTest vt = new ViewTest(this, test);
                 vt.Show();
-                Hide();*/
+                Hide();
             }
         }
     }

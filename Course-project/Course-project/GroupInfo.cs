@@ -23,17 +23,8 @@ namespace Course_project {
 
         private void GroupInfo_Load(object sender, EventArgs e) {
             label1.Text = CurGr.Name;
-            // Fill student list
-            int i = 0;
-            foreach (string stName in CurGr.Students) {
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = i + 1;
-                dataGridView1.Rows[i].Cells[1].Value = stName;
-                i++;
-            }
-            // Fill lecture list
+            Services.fillDGV(dataGridView1, CurGr.Students, "Statistics");
             Services.fillDGV(dataGridView2, Services.getOrder(LectDir), "Edit");
-            // Fill test list
             Services.fillDGV(dataGridView3, Services.getOrder(TestDir), "Edit");
         }
 
@@ -54,26 +45,23 @@ namespace Course_project {
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e) { // Save order (both for lectures and tests)
-            // Save lecture order
-            if (dataGridView2.RowCount - 1 > 0) { // check if empty
-                StreamWriter wr = new StreamWriter(File.Open(LectDir + "order.txt", FileMode.Create));
-                for (int i = 0; i < dataGridView2.RowCount - 1; i++)
-                    wr.Write((string)dataGridView2.Rows[i].Cells[1].Value + ",");
-                wr.Close();
-            }
-            if (dataGridView3.RowCount - 1 > 0) {
-                // Save test order
-                StreamWriter wr = new StreamWriter(File.Open(TestDir + "order.txt", FileMode.Create));
-                for (int i = 0; i < dataGridView3.RowCount - 1; i++)
-                    wr.Write((string)dataGridView3.Rows[i].Cells[1].Value + ",");
-                wr.Close();
-                MessageBox.Show("New order succesfully saved!");
+        private void button3_Click(object sender, EventArgs e) { // Save order
+            Services.saveOrder(LectDir, dataGridView2);
+            Services.saveOrder(TestDir, dataGridView3);
+            MessageBox.Show("New order succesfully saved!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            string studentUsrName = Services.DGVCellContentClick(sender, e, 1);
+            if (!string.IsNullOrEmpty(studentUsrName)) {
+                /*Student student = getStudentFromDBByUsername(studentUsrName);
+                StudentStatistics ss = new StudentStatistics(this, student);
+                ss.Show();
+                Hide();*/
             }
         }
 
-        // "Edit" btn OnClick in lecture list
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) { // "Edit" btn OnClick in lecture list
             string lectName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(lectName)) {
                 Lecture lect = Services.deserializeObj<Lecture>(LectDir + lectName + ".json");
@@ -83,8 +71,7 @@ namespace Course_project {
             }
         }
 
-        // "Edit" btn OnClick in test list
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e) { // "Edit" btn OnClick in test list
             string testName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(testName)) {
                 Test test = Services.deserializeObj<Test>(TestDir + testName + ".json");

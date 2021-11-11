@@ -1,1 +1,1 @@
-Lect 1,lect 2,Lect 3,Lect 4,Lect 5,Lect 6,
+Lect 1,lect 2,Lect 3,Lect 4,Lect 5,Lect6,
