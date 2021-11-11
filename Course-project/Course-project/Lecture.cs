@@ -17,6 +17,7 @@ namespace Course_project {
             Name = null;
             Text = null;
             Semester = 1;
+            ImgList = new List<string>();
         }
 
         public string Name { get; set; }

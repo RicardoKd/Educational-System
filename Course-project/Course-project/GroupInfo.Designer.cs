@@ -182,6 +182,7 @@ namespace Course_project {
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowDrop = true;
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

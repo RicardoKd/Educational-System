@@ -7,42 +7,51 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class Add_Lecture : Form {
-        private GroupInfo grInfoForm;
-        private string dir; // without semester
-        private bool editMode;
-        private Lecture lecture;
-        private List<string> imgList = new List<string>(); // for images
-        private int currentPic = -1; // for images
+        private int currentImg;
+        public bool Changed { get; set; }
+        public bool EditMode { get; set; }
+        public GroupInfo GrInfoForm { get; set; }
+        public int CurrentImg { get => currentImg; set => currentImg = value; }
+        public Lecture Lecture { get; set; }
+        public string Dir { get; set; } // without semester
 
         // Constructor for creating a new lect
         public Add_Lecture(GroupInfo grInfoForm) {
             InitializeComponent();
-            this.grInfoForm = grInfoForm;
-            dir = "Lectures/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
-            editMode = false;
+            GrInfoForm = grInfoForm;
+            EditMode = false;
+            CurrentImg = -1;
+            Lecture = new Lecture();
+            comboBox3.SelectedIndex = 0;
         }
 
         // Constructor for editing a lect
         public Add_Lecture(GroupInfo grInfoForm, Lecture lecture) {
             InitializeComponent();
             Text = "Edit lecture";
-            this.grInfoForm = grInfoForm;
-            this.lecture = lecture;
-            editMode = true;
-            dir = "Lectures/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
+            GrInfoForm = grInfoForm;
+            Lecture = lecture;
+            EditMode = true;
+            if (lecture.ImgList.Count != 0) { // check if empty
+                CurrentImg = 0;
+                pictureBox1.Image = Image.FromFile(lecture.ImgList[CurrentImg]);
+            } else {
+                CurrentImg = -1;
+                lecture.ImgList = new List<string>();
+            }
             comboBox3.Text = Convert.ToString(lecture.Semester);
             textBox1.Text = lecture.Name;
             richTextBox1.Text = lecture.Text;
-            imgList.AddRange(lecture.ImgList);
         }
 
         private void Add_Lecture_Load(object sender, EventArgs e) {
+            Dir = "Lectures/" + GrInfoForm.CurGr.Specialty + "/" + GrInfoForm.CurGr.Year + "/" + GrInfoForm.TeacherMM.Teacher.Subject + "/";
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             openFileDialog2.Filter = "Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*";
         }
 
         private void button1_Click(object sender, EventArgs e) { // Back
-            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
+            GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
             grInfo.Show();
             Close();
         }
@@ -51,56 +60,42 @@ namespace Course_project {
             if (openFileDialog2.ShowDialog() == DialogResult.Cancel)
                 return;
             string imgName = openFileDialog2.FileName;
-            imgList.Add(imgName);
+            Lecture.ImgList.Add(imgName);
             pictureBox1.Image = Image.FromFile(imgName);
-            if (currentPic == -1)
-                currentPic += 1;
+            if (CurrentImg == -1)
+                CurrentImg += 1;
             else
-                currentPic = imgList.Count - 1;
-            MessageBox.Show("Current picture: " + currentPic);
+                CurrentImg = Lecture.ImgList.Count - 1;
         }
 
         private void button3_Click(object sender, EventArgs e) { // Save
-            string newName = Convert.ToString(textBox1.Text);
+            Changed = false;
+            string name = Convert.ToString(textBox1.Text);
             string newText = Convert.ToString(richTextBox1.Text);
-            int newSemester = Convert.ToInt32(comboBox3.SelectedItem) == 1 ? 1 : 2;
-            if (string.IsNullOrEmpty(newName) || string.IsNullOrEmpty(newText)) {
+            int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(newText)) {
                 MessageBox.Show("Fill in all cells!");
                 return;
             }
+            if (EditMode) {
+                List<string> lectOrder = Services.getOrder(Dir + Lecture.Semester);
+                int lectInd = lectOrder.FindIndex(x => x.Equals(Lecture.Name));
 
-            if (editMode) {
-                List<string> lectOrder = Services.getOrder(dir + lecture.Semester);
-                int lectInd = lectOrder.FindIndex(x => x.Equals(lecture.Name));
-
-                File.Delete(@dir + lecture.Semester + "/" + lectOrder[lectInd] + ".json"); // delete old version
-                if (newSemester == lecture.Semester) {
-                    lectOrder[lectInd] = newName;
-                    StreamWriter wr = new StreamWriter(File.Open(@dir + lecture.Semester + "/order.txt", FileMode.Create));
-                    foreach (string lectName in lectOrder)
-                        wr.Write(lectName + ",");
-                    wr.Close();
+                File.Delete(Dir + Lecture.Semester + "/" + lectOrder[lectInd] + ".json"); // delete old version
+                if (newSemester == Lecture.Semester) {
+                    lectOrder[lectInd] = name;
+                    Services.rewriteOrder(Dir + newSemester, lectOrder);
                 } else {
-                    lectOrder[lectInd] = ""; // delete the lecture because it's moved to another semester
-                    /*
-                      Error happens here:
-                    directory of new semester not found
-                     */
-                    StreamWriter wr = new StreamWriter(File.Open(@dir + newSemester + "/order.txt", FileMode.Append));
-                    wr.Write(newName + ",");
-                    wr.Close();
+                    lectOrder.RemoveAt(lectInd); // delete the lecture because it's moved to another semester
+                    Services.rewriteOrder(Dir + Lecture.Semester, lectOrder);
+                    Services.appendToOrder(Dir + newSemester, name);
                 }
-            } else {
-                if (!Directory.Exists(@dir + newSemester))
-                    Directory.CreateDirectory(@dir + newSemester);
-                StreamWriter wr = new StreamWriter(File.Open(@dir + newSemester + "/order.txt", FileMode.Append));
-                wr.Write(newName + ",");
-                wr.Close();
-            }
-            Lecture lect = new Lecture(newName, newText, newSemester, imgList);
-            lect.WriteToJson(@dir + newSemester + "/");
+            } else
+                Services.appendToOrder(Dir + newSemester, name);
+            Lecture lect = new Lecture(name, newText, newSemester, Lecture.ImgList);
+            lect.WriteToJson(Dir + newSemester + "/");
             MessageBox.Show("The lecture is succesfuly added!");
-            GroupInfo grInfo = new GroupInfo(grInfoForm.CurGr.Name, grInfoForm.TeacherMM);
+            GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
             grInfo.Show();
             Close();
         }
@@ -111,6 +106,42 @@ namespace Course_project {
             string filename = openFileDialog1.FileName;
             string fileText = File.ReadAllText(filename);
             richTextBox1.Text = fileText;
+        }
+
+        private void button5_Click(object sender, EventArgs e) {
+            Services.previousImg(ref currentImg, Lecture, pictureBox1);
+        }
+
+        private void button6_Click(object sender, EventArgs e) {
+            Services.nextImg(ref currentImg, Lecture, pictureBox1);
+        }
+
+        private void button7_Click(object sender, EventArgs e) { // Delete img
+            if (CurrentImg == -1)
+                return;
+            if (Lecture.ImgList.Count == 1) {
+                Lecture.ImgList.RemoveAt(CurrentImg);
+                pictureBox1.Image = null;
+                CurrentImg = -1;
+                return;
+            }
+            if (CurrentImg == Lecture.ImgList.Count - 1) {
+                Lecture.ImgList.RemoveAt(CurrentImg);
+                pictureBox1.Image = Image.FromFile(Lecture.ImgList[0]);
+                CurrentImg = 0;
+                return;
+            } else if (CurrentImg == 0) {
+                Lecture.ImgList.RemoveAt(CurrentImg);
+
+                pictureBox1.Image = Image.FromFile(Lecture.ImgList[Lecture.ImgList.Count - 1]);
+                CurrentImg = Lecture.ImgList.Count - 1;
+                return;
+            } else {
+                Lecture.ImgList.RemoveAt(CurrentImg);
+                pictureBox1.Image = Image.FromFile(Lecture.ImgList[CurrentImg + 1]);
+                CurrentImg = CurrentImg + 1;
+                return;
+            }
         }
     }
 }

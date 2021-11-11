@@ -56,10 +56,10 @@ namespace Course_project {
 
         private void button2_Click(object sender, EventArgs e) { // Save
             Changed = false;
-            string newTName = textBox1.Text;
+            string name = textBox1.Text;
             bool randQOrder = checkBox1.Checked == true ? true : false;
             int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
-            if (string.IsNullOrEmpty(newTName)) {
+            if (string.IsNullOrEmpty(name)) {
                 MessageBox.Show("Fill in test name field!");
                 return;
             }
@@ -70,17 +70,17 @@ namespace Course_project {
 
                 File.Delete(Dir + Test.Semester + "/" + testOrder[testInd] + ".json"); // delete old version
                 if (newSemester == Test.Semester) {
-                    testOrder[testInd] = newTName;
+                    testOrder[testInd] = name;
                     Services.rewriteOrder(Dir + newSemester, testOrder);
                 } else {
                     testOrder.RemoveAt(testInd); // delete the lecture because it's moved to another semester
                     Services.rewriteOrder(Dir + Test.Semester, testOrder);
-                    Services.appendToOrder(Dir + newSemester, newTName);
+                    Services.appendToOrder(Dir + newSemester, name);
                 }
             } else
-                Services.appendToOrder(Dir + newSemester, newTName);
+                Services.appendToOrder(Dir + newSemester, name);
 
-            Test newTest = new Test(newTName, Test.Questions, randQOrder, newSemester);
+            Test newTest = new Test(name, Test.Questions, randQOrder, newSemester);
             newTest.WriteToJson(Dir + newSemester);
             MessageBox.Show("The test is succesfuly saved!");
             GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);

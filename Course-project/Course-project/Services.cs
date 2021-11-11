@@ -117,6 +117,30 @@ namespace Course_project {
             return obj;
         }
 
+        public static void nextImg(ref int currentImg, Lecture lecture, PictureBox pcb) {
+            if (currentImg == -1)
+                return;
+            if (currentImg == lecture.ImgList.Count - 1) {
+                pcb.Image = Image.FromFile(lecture.ImgList[0]);
+                currentImg = 0;
+            } else {
+                pcb.Image = Image.FromFile(lecture.ImgList[currentImg + 1]);
+                currentImg++;
+            }
+        }
+
+        public static void previousImg(ref int currentImg, Lecture lecture, PictureBox pcb) {
+            if (currentImg == -1)
+                return;
+            if (currentImg == 0) {
+                pcb.Image = Image.FromFile(lecture.ImgList[lecture.ImgList.Count - 1]);
+                currentImg = lecture.ImgList.Count - 1;
+            } else {
+                pcb.Image = Image.FromFile(lecture.ImgList[currentImg - 1]);
+                currentImg--;
+            }
+        }
+
         /*Random random = new Random();
         int number = random.Next(1, 4);*/
 
