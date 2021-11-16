@@ -1,1 +1,27 @@
-{"RandQuestionOrder":true,"Semester":1,"StudentMarksList":[],"Questions":[{"Value":2,"Question":"How to translate word \"Table\"","RightAns":["Stol"],"WrongAns":["Stul","Podushka","Miska"]},{"Value":2,"Question":"2 + 2 = ?","RightAns":["4"],"WrongAns":["10","12","13"]},{"Value":4,"Question":"4^2 = ?","RightAns":["16"],"WrongAns":[]},{"Value":4,"Question":"Какого цвета ананас?","RightAns":["Чёрный","Синий"],"WrongAns":["Красны","Синий"]}],"Name":"Test #1"}
+{
+  "RandQuestionOrder": true,
+  "Semester": 1,
+  "StudentMarksList": [],
+  "Questions": [
+    {
+      "Value": 2,
+      "Question": "How to translate word \"Table\"",
+      "RightAns": ["Stol"],
+      "WrongAns": ["Stul", "Podushka", "Miska"]
+    },
+    {
+      "Value": 2,
+      "Question": "2 + 2 = ?",
+      "RightAns": ["4"],
+      "WrongAns": ["10", "12", "13"]
+    },
+    { "Value": 4, "Question": "4^2 = ?", "RightAns": ["16"], "WrongAns": [] },
+    {
+      "Value": 4,
+      "Question": "Какого цвета ананас?",
+      "RightAns": ["Чёрный", "Синий"],
+      "WrongAns": ["Красны", "Синий"]
+    }
+  ],
+  "Name": "Test #1"
+}

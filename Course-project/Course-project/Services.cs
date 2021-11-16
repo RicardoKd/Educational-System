@@ -208,6 +208,19 @@ namespace Course_project {
             return new List<T>(Form.Controls.OfType<T>());
         }
 
+        public static TestMark derandomizeMarks(ViewTest vt, TimeSpan timeSpent) {
+            TestMark rightMark = new TestMark {
+                Marks = new List<int>(),
+                TimeSpent = timeSpent,
+                StudentUsrName = vt.SubjectTasksStudent.StudentMainMenu.Student.Username
+            };
+            foreach (TestQuestion item in vt.Test.Questions) {
+                int newOrderInd = vt.NewOrder.FindIndex(x => x.Question.Equals(item.Question));
+                rightMark.Marks.Add(vt.QuestionMarks[newOrderInd]);
+            }
+            return rightMark;
+        }
+
         public static string DGVCellContentClick(object sender, DataGridViewCellEventArgs e, int colInd) {
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)

@@ -9,7 +9,7 @@ namespace Course_project {
         public Test Test { get; set; }
         public DateTime StartTime { get; set; }
         public int QuestionInd { get; set; }
-        public TestMark CurrentMark { get; set; }
+        public List<int> QuestionMarks { get; set; }
         public List<TestQuestion> NewOrder { get; set; }
 
         public ViewTest(SubjectTasksStudent subjectTasksStudent, Test test) {
@@ -17,10 +17,10 @@ namespace Course_project {
             SubjectTasksStudent = subjectTasksStudent;
             Test = test;
             QuestionInd = 0;
-            CurrentMark = new TestMark {
-                Marks = new List<int>(),
-                StudentUsrName = SubjectTasksStudent.StudentMainMenu.Student.Username
-            };
+            QuestionMarks = new List<int>();
+
+            Test.StudentMarksList = new List<TestMark>();
+
             if (Test.RandQuestionOrder)
                 NewOrder = Services.randomizeList(Test.Questions); // here we use local test variable, because lists are sent as parameters by reference
             else
@@ -33,17 +33,32 @@ namespace Course_project {
         }
 
         private void button1_Click(object sender, EventArgs e) { // End test
-            CurrentMark.TimeSpent = DateTime.Now - StartTime;
+            TimeSpan TimeSpent = DateTime.Now - StartTime;
             saveResult();
-            Test.StudentMarksList.Add(CurrentMark);
             DialogResult dr = MessageBox.Show("Are you sure you want to end test?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK) {
                 SubjectTasksStudent.Show();
                 Close();
             }
             //order marks in CurrentMark according to initial
+            foreach (int item in QuestionMarks)
+                MessageBox.Show("Mark = " + item);
+            TestMark tm;
+            if (Test.RandQuestionOrder) {
+                tm = Services.derandomizeMarks(this, TimeSpent);
+            } else {
+                tm = new TestMark {
+                    Marks = new List<int>(QuestionMarks),
+                    TimeSpent = TimeSpent,
+                    StudentUsrName = SubjectTasksStudent.StudentMainMenu.Student.Username
+                };
+            }
+            Test.StudentMarksList.Add(tm);
+            foreach (int item in Test.StudentMarksList[0].Marks)
+                MessageBox.Show("Derand. Mark = " + item);
 
-            // Save result to file
+            MessageBox.Show("SubjectTasksStudent.LectDir: " + SubjectTasksStudent.LectDir);
+            Test.WriteToJson(SubjectTasksStudent.TestDir);
         }
 
         private void button6_Click(object sender, EventArgs e) { // Next
@@ -62,42 +77,37 @@ namespace Course_project {
         }
 
         private void saveResult() {
-            //Save
             TestQuestion currentQ = NewOrder[QuestionInd];
             int finalMark = 0;
             if (currentQ.WrongAns.Count == 0) { // detailed answer
                 int diff = string.Compare(richTextBox1.Text, currentQ.RightAns[0]);
-                CurrentMark.Marks.Add(currentQ.Value - diff);
+                /*QuestionMarks.Add(currentQ.Value - diff);*/
                 finalMark = diff >= 0 ? currentQ.Value - diff : 0;
                 richTextBox1.Visible = false;
             } else {
                 if (currentQ.RightAns.Count == 1) { // only one right answer
                     List<RadioButton> allRadBtn = Services.getCollection<RadioButton>(this);
 
-                    // Next 2 loops can be combined
-                    foreach (RadioButton rb in allRadBtn)
+                    foreach (RadioButton rb in allRadBtn) {
                         if (rb.Checked && currentQ.RightAns.Contains(rb.Text)) {
                             finalMark = currentQ.Value;
                             break;
                         }
-                    foreach (RadioButton rb in allRadBtn)
                         Controls.Remove(rb);
+                    }
                 } else if (currentQ.RightAns.Count > 1) { // multiple right answers
                     List<CheckBox> allChkBox = Services.getCollection<CheckBox>(this);
                     int checkedRightAnsCount = 0;
 
-                    // Next 2 loops can be combined
                     foreach (CheckBox cb in allChkBox) {
                         if (cb.Checked && currentQ.RightAns.Contains(cb.Text))
                             checkedRightAnsCount++;
-                    }
-                    foreach (CheckBox cb in allChkBox)
                         Controls.Remove(cb);
-
+                    }
                     finalMark = (currentQ.Value / currentQ.RightAns.Count) * checkedRightAnsCount;
                 }
             }
-            CurrentMark.Marks.Add(finalMark);
+            QuestionMarks.Add(finalMark);
         }
     }
 }
