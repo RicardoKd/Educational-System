@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Course_project {
 
-    public class TestMark {
-        private string studentUsrName;
-        private List<int> marks;
-
-        public string StudentUsrName { get => studentUsrName; set => studentUsrName = value; }
-        public List<int> Marks { get => marks; set => marks = value; }
+    public class TestMark : ITestMark {
+        public string StudentUsrName { get; set; }
+        public List<int> Marks { get; set; }
+        public TimeSpan TimeSpent { get; set; }
 
         public int getStudentMark(int maxScore) {
             int totalScore = 0;
-            foreach (int mark in marks)
+            foreach (int mark in Marks)
                 totalScore += mark;
             totalScore = (totalScore * 100) / maxScore; // formula to covert to 100-point scale
             return totalScore;

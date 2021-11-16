@@ -44,6 +44,7 @@ namespace Course_project {
             string testName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(testName)) {
                 Test test = Services.deserializeObj<Test>(TestDir + testName + ".json");
+                // Check if test is already done
                 ViewTest vt = new ViewTest(this, test);
                 vt.Show();
                 Hide();

@@ -3,11 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Course_project {
 
     internal class Services {
+
+        public static int getRand(int start, int end) {
+            Random random = new Random();
+            int i = random.Next(start, end);
+            return i;
+        }
 
         public static int GetCurrentSemester() {
             int semester = DateTime.Now.Month > 6 ? 1 : 2;
@@ -47,7 +54,6 @@ namespace Course_project {
 
         public static void saveOrder(string dir, DataGridView dgv) {
             if (dgv.RowCount - 1 > 0) {
-                // Save test order
                 StreamWriter wr = new StreamWriter(File.Open(dir + "order.txt", FileMode.Create));
                 for (int i = 0; i < dgv.RowCount - 1; i++)
                     wr.Write((string)dgv.Rows[i].Cells[1].Value + ",");
@@ -61,14 +67,14 @@ namespace Course_project {
             List<Button> btnList = new List<Button>();
             int posIncrement = 0;
             Button btn;
-            foreach (string item in btnTextList) {
+            foreach (string text in btnTextList) {
                 btn = new Button();
                 btn.Location = new Point(x, y + posIncrement);
                 btn.Height = 30;
                 btn.Width = 100;
                 btn.BackColor = Color.White;
                 btn.ForeColor = Color.Black;
-                btn.Text = item;
+                btn.Text = text;
                 btn.Name = "DynamicButton" + posIncrement;
                 btn.Font = new Font("Georgia", 10);
                 btn.Click += new EventHandler(delFunc);
@@ -76,6 +82,36 @@ namespace Course_project {
                 posIncrement += 30;
             }
             return btnList;
+        }
+
+        public static List<RadioButton> createRadioBtnList(int x, int y, List<string> btnTextList) {
+            List<RadioButton> radBtnList = new List<RadioButton>();
+            int posIncrement = 0;
+            foreach (string text in btnTextList) {
+                RadioButton radBtn = new RadioButton {
+                    Location = new Point(x, y + posIncrement),
+                    Text = text,
+                    Name = "RadioBtn" + posIncrement
+                };
+                radBtnList.Add(radBtn);
+                posIncrement += 20;
+            }
+            return radBtnList;
+        }
+
+        public static List<CheckBox> createChkBoxList(int x, int y, List<string> btnTextList) {
+            List<CheckBox> radBtnList = new List<CheckBox>();
+            int posIncrement = 0;
+            foreach (string text in btnTextList) {
+                CheckBox chkBox = new CheckBox {
+                    Location = new Point(x, y + posIncrement),
+                    Text = text,
+                    Name = "CheckBox" + posIncrement
+                };
+                radBtnList.Add(chkBox);
+                posIncrement += 20;
+            }
+            return radBtnList;
         }
 
         public static List<string> getGroupList() {
@@ -133,8 +169,44 @@ namespace Course_project {
             }
         }
 
-        /*Random random = new Random();
-        int number = random.Next(1, 4);*/
+        public static List<T> randomizeList<T>(List<T> listToRandomize) {
+            List<T> initialCopy = new List<T>();
+            foreach (T item in listToRandomize)
+                initialCopy.Add(item);
+
+            List<T> newOrder = new List<T>();
+            int initialListLength = initialCopy.Count;
+            for (int i = 0; i < initialListLength; i++) {
+                int ind = getRand(0, initialCopy.Count);
+                newOrder.Add(initialCopy[ind]);
+                initialCopy.RemoveAt(ind);
+            }
+            return newOrder;
+        }
+
+        public static void nexTQuestion(ViewTest ViewTest, List<TestQuestion> Order, int QuestionInd, RichTextBox rtb) {
+            TestQuestion currentQ = Order[QuestionInd];
+            if (currentQ.WrongAns.Count == 0) { // detailed answer
+                rtb.Visible = true;
+            } else {
+                List<string> rightWrong = new List<string>(currentQ.RightAns);
+                rightWrong.AddRange(currentQ.WrongAns);
+                List<string> randRightWrong = randomizeList(rightWrong);
+                if (currentQ.RightAns.Count == 1) { // only one right answer
+                    List<RadioButton> RadBtnList = createRadioBtnList(20, 150, randRightWrong);
+                    foreach (RadioButton rb in RadBtnList)
+                        ViewTest.Controls.Add(rb);
+                } else if (currentQ.RightAns.Count > 1) { // multiple right answers
+                    List<CheckBox> ChkBoxList = createChkBoxList(20, 150, randRightWrong);
+                    foreach (CheckBox cb in ChkBoxList)
+                        ViewTest.Controls.Add(cb);
+                }
+            }
+        }
+
+        public static List<T> getCollection<T>(Form Form) {
+            return new List<T>(Form.Controls.OfType<T>());
+        }
 
         public static string DGVCellContentClick(object sender, DataGridViewCellEventArgs e, int colInd) {
             DataGridView senderGrid = (DataGridView)sender;
