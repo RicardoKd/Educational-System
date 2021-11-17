@@ -7,6 +7,7 @@ namespace Course_project {
         string Name { get; set; }
         int Semester { get; set; }
         string Text { get; set; }
+        List<TestMark> StudentMarksList { get; set; }
 
         bool addImg(string fileName);
 

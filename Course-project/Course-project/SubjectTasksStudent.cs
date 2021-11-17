@@ -4,8 +4,8 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class SubjectTasksStudent : Form {
-        public string Subject { get; set; }
         public string LectDir { get; set; } // with semester
+        public string Subject { get; set; }
         public string TestDir { get; set; } // with semester
         public StudentMainMenu StudentMainMenu { get; set; }
 
@@ -21,8 +21,8 @@ namespace Course_project {
 
         private void SubjectTasksStudent_Load(object sender, EventArgs e) {
             label1.Text = Subject;
-            Services.fillDGV(dataGridView1, Services.getOrder(LectDir), "View"); // Fill lecture list
-            Services.fillDGV(dataGridView2, Services.getOrder(TestDir), "Start"); // Fill test list
+            Services.fillDGV(dataGridView1, Services.getOrder(LectDir), "View");
+            Services.fillDGV(dataGridView2, Services.getOrder(TestDir), "Start");
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -44,8 +44,14 @@ namespace Course_project {
             string testName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(testName)) {
                 Test test = Services.deserializeObj<Test>(TestDir + testName + ".json");
-                // Check if test is already done
-                // Check if test has no questions
+                if (test.StudentMarksList.Exists(x => x.StudentUsrName == StudentMainMenu.Student.Username)) {
+                    MessageBox.Show("You have already passed this test");
+                    return;
+                }
+                if (test.Questions.Count == 0) {
+                    MessageBox.Show("Test isn't ready yet!");
+                    return;
+                }
                 ViewTest vt = new ViewTest(this, test);
                 vt.Show();
                 Hide();

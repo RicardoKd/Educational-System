@@ -5,12 +5,12 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class ViewTest : Form {
-        public SubjectTasksStudent SubjectTasksStudent { get; set; }
-        public Test Test { get; set; }
         public DateTime StartTime { get; set; }
         public int QuestionInd { get; set; }
         public List<int> QuestionMarks { get; set; }
         public List<TestQuestion> NewOrder { get; set; }
+        public SubjectTasksStudent SubjectTasksStudent { get; set; }
+        public Test Test { get; set; }
 
         public ViewTest(SubjectTasksStudent subjectTasksStudent, Test test) {
             InitializeComponent();
@@ -67,7 +67,6 @@ namespace Course_project {
             int finalMark = 0;
             if (currentQ.WrongAns.Count == 0) { // detailed answer
                 int diff = string.Compare(richTextBox1.Text, currentQ.RightAns[0]);
-                /*QuestionMarks.Add(currentQ.Value - diff);*/
                 finalMark = diff >= 0 ? currentQ.Value - diff : 0;
                 richTextBox1.Visible = false;
             } else {

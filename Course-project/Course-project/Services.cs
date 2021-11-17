@@ -195,7 +195,7 @@ namespace Course_project {
                 rightWrong.AddRange(currentQ.WrongAns);
                 List<string> randRightWrong = randomizeList(rightWrong);
                 if (currentQ.RightAns.Count == 1) { // only one right answer
-                    List<RadioButton> RadBtnList = createRadioBtnList(50, 10, randRightWrong);
+                    List<RadioButton> RadBtnList = createRadioBtnList(50, 130, randRightWrong);
                     foreach (RadioButton rb in RadBtnList)
                         ViewTest.Controls.Add(rb);
                 } else if (currentQ.RightAns.Count > 1) { // multiple right answers

@@ -67,7 +67,6 @@ namespace Course_project {
             if (EditMode && SavedToOrder) {
                 List<string> testOrder = Services.getOrder(Dir + Test.Semester);
                 int testInd = testOrder.FindIndex(x => x.Equals(OldName));
-
                 File.Delete(Dir + Test.Semester + "/" + testOrder[testInd] + ".json"); // delete old version
                 if (newSemester == Test.Semester) {
                     testOrder[testInd] = name;
@@ -101,8 +100,7 @@ namespace Course_project {
             }
         }
 
-        // "Edit" btn OnClick in question list
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { // "Edit" btn OnClick in question list
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0) {
                 string clickedQText = (string)senderGrid.Rows[e.RowIndex].Cells[1].Value;
