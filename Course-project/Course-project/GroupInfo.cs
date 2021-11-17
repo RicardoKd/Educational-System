@@ -53,10 +53,9 @@ namespace Course_project {
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             string studentUsrName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(studentUsrName)) {
-                /*Student student = getStudentFromDBByUsername(studentUsrName);
-                StudentStatistics ss = new StudentStatistics(this, student);
+                StudentStatistics ss = new StudentStatistics(this, studentUsrName);
                 ss.Show();
-                Hide();*/
+                Hide();
             }
         }
 

@@ -1,1 +1,33 @@
-{"RandQuestionOrder":true,"Semester":1,"StudentMarksList":[{"StudentUsrName":"Student#1","Marks":[0,0,0,0],"TimeSpent":"00:00:03.4618475"}],"Questions":[{"Value":1,"Question":"How to translate word \"Table\"?","RightAns":["Stol"],"WrongAns":["Stul","Podushka","Shkaf"]},{"Value":2,"Question":"2 + 2 = ?","RightAns":["4"],"WrongAns":["10","12","13"]},{"Value":3,"Question":"4^2 = ?","RightAns":["16"],"WrongAns":[]},{"Value":4,"Question":"Какого цвета ананас?","RightAns":["Жёлтый","Оранжевый"],"WrongAns":["Зелёный","Синий","Фиолетовый"]}],"Name":"Test #1"}
+{
+  "RandQuestionOrder": true,
+  "Semester": 1,
+  "StudentMarksList": [
+    {
+      "StudentUsrName": "Student#1",
+      "Marks": [0, 0, 0, 0],
+      "TimeSpent": "00:00:03.4618475"
+    }
+  ],
+  "Questions": [
+    {
+      "Value": 1,
+      "Question": "How to translate word \"Table\"?",
+      "RightAns": ["Stol"],
+      "WrongAns": ["Stul", "Podushka", "Shkaf"]
+    },
+    {
+      "Value": 2,
+      "Question": "2 + 2 = ?",
+      "RightAns": ["4"],
+      "WrongAns": ["10", "12", "13"]
+    },
+    { "Value": 3, "Question": "4^2 = ?", "RightAns": ["16"], "WrongAns": [] },
+    {
+      "Value": 4,
+      "Question": "Какого цвета ананас?",
+      "RightAns": ["Жёлтый", "Оранжевый"],
+      "WrongAns": ["Зелёный", "Синий", "Фиолетовый"]
+    }
+  ],
+  "Name": "Test #1"
+}
