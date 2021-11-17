@@ -25,6 +25,8 @@ namespace Course_project {
             Services.fillDGV(dataGridView1, CurGr.Students, "Statistics");
             Services.fillDGV(dataGridView2, Services.getOrder(LectDir), "Edit");
             Services.fillDGV(dataGridView3, Services.getOrder(TestDir), "Edit");
+            if (string.Compare(TeacherMM.Teacher.Subject, "English") == 0 && string.Compare(CurGr.Name, "121.2") == 0)
+                button5.Visible = true;
         }
 
         private void button1_Click_1(object sender, EventArgs e) { // Back
@@ -38,16 +40,20 @@ namespace Course_project {
             Close();
         }
 
+        private void button3_Click(object sender, EventArgs e) { // Save order
+            Services.saveOrder(LectDir, dataGridView2);
+            Services.saveOrder(TestDir, dataGridView3);
+            MessageBox.Show("New order succesfully saved!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void button4_Click(object sender, EventArgs e) { // Add test
             AddTest at = new AddTest(this);
             at.Show();
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e) { // Save order
-            Services.saveOrder(LectDir, dataGridView2);
-            Services.saveOrder(TestDir, dataGridView3);
-            MessageBox.Show("New order succesfully saved!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void button5_Click(object sender, EventArgs e) { // Course project
+            Services.openCP(this);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {

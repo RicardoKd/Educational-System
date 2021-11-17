@@ -24,17 +24,14 @@ namespace Course_project {
             string year = Convert.ToString(comboBox1.Text);
             string spec = Convert.ToString(comboBox2.Text);
             string subject = Convert.ToString(comboBox3.Text);
-
             if (string.IsNullOrEmpty(secrA) || (!radBtn1.Checked && !radBtn2.Checked)) {
                 label4.Visible = true;
                 return;
             }
-
             if (radBtn1.Checked && string.IsNullOrEmpty(subject)) { // if variable fields are empty
                 label4.Visible = true;
                 return;
             }
-
             if (radBtn2.Checked && (string.IsNullOrEmpty(year) || string.IsNullOrEmpty(spec))) { // if variable fields are empty
                 label4.Visible = true;
                 return;
@@ -63,15 +60,12 @@ namespace Course_project {
 
                     string dir = "Groups/" + grName + "/";
                     string fName = grName + ".txt";
-                    string tracker = dir + usrName + "-tracker.txt";
                     if (Directory.Exists(@dir)) {
-                        File.Create(tracker);
                         StreamWriter grWriter = new StreamWriter(File.Open(dir + fName, FileMode.Append));
                         grWriter.Write(", " + usrName);
                         grWriter.Close();
                     } else {
                         Directory.CreateDirectory(dir);
-                        File.Create(tracker);
                         StreamWriter grWriter = new StreamWriter(File.Open(dir + fName, FileMode.OpenOrCreate));
                         grWriter.WriteLine(spec);
                         grWriter.WriteLine(year);

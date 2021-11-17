@@ -10,16 +10,14 @@ namespace Course_project {
         public bool EditMode { get; set; }
         public bool Changed { get; set; }
 
-        // Constructor for creating new questions
-        public Add_Test_Question(AddTest addTestForm) {
+        public Add_Test_Question(AddTest addTestForm) { // Constructor for creating new questions
             InitializeComponent();
             AddTestForm = addTestForm;
             EditMode = false;
             comboBox1.SelectedIndex = 0;
         }
 
-        // Constructor for editing questions
-        public Add_Test_Question(AddTest addTestForm, TestQuestion question) {
+        public Add_Test_Question(AddTest addTestForm, TestQuestion question) { // Constructor for editing questions
             InitializeComponent();
             Text = "Edit question";
             AddTestForm = addTestForm;
@@ -45,18 +43,17 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) { // Save
-            // might contain errors
-            // make the checking more specific
+            // might contain errors, make the checking more specific
             if (string.IsNullOrEmpty(textBox1.Text) || (string.IsNullOrEmpty(richTextBox1.Text) && string.IsNullOrEmpty(richTextBox1.Text))) {
                 MessageBox.Show("Fill in all cells!");
                 return;
             }
-
-            TestQuestion tq = new TestQuestion();
-            tq.Question = textBox1.Text;
-            tq.Value = Convert.ToInt32(comboBox1.SelectedItem);
-            tq.RightAns = new List<string>(Convert.ToString(richTextBox1.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries));
-            tq.WrongAns = new List<string>(Convert.ToString(richTextBox2.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries));
+            TestQuestion tq = new TestQuestion {
+                Question = textBox1.Text,
+                Value = Convert.ToInt32(comboBox1.SelectedItem),
+                RightAns = new List<string>(Convert.ToString(richTextBox1.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries)),
+                WrongAns = new List<string>(Convert.ToString(richTextBox2.Text).Split("\n", StringSplitOptions.RemoveEmptyEntries))
+            };
             if (EditMode) {
                 for (int i = 0; i < AddTestForm.Test.Questions.Count; i++)
                     if (string.Compare(OldQText, AddTestForm.Test.Questions[i].Question) == 0) {
@@ -68,6 +65,9 @@ namespace Course_project {
             }
             Changed = false;
             MessageBox.Show("Question is succesfuly saved!");
+            AddTest at = new AddTest(AddTestForm.GrInfoForm, AddTestForm.Test, AddTestForm.SavedToOrder);
+            at.Show();
+            Close();
         }
 
         private void beforeClosing(object sender, FormClosingEventArgs e) {

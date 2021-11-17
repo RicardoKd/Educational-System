@@ -9,6 +9,7 @@ namespace Course_project {
     public partial class Add_Lecture : Form {
         private int currentImg;
         public bool Changed { get; set; }
+        public bool CourseProject { get; set; }
         public bool EditMode { get; set; }
         public GroupInfo GrInfoForm { get; set; }
         public int CurrentImg { get => currentImg; set => currentImg = value; }
@@ -16,22 +17,24 @@ namespace Course_project {
         public string Dir { get; set; } // without semester
 
         // Constructor for creating a new lect
-        public Add_Lecture(GroupInfo grInfoForm) {
+        public Add_Lecture(GroupInfo grInfoForm, bool courseProject = false) {
             InitializeComponent();
             GrInfoForm = grInfoForm;
             EditMode = false;
             CurrentImg = -1;
             Lecture = new Lecture();
+            CourseProject = courseProject;
             comboBox3.SelectedIndex = 0;
         }
 
         // Constructor for editing a lect
-        public Add_Lecture(GroupInfo grInfoForm, Lecture lecture) {
+        public Add_Lecture(GroupInfo grInfoForm, Lecture lecture, bool courseProject = false) {
             InitializeComponent();
             Text = "Edit lecture";
             GrInfoForm = grInfoForm;
             Lecture = lecture;
             EditMode = true;
+            CourseProject = courseProject;
             if (lecture.ImgList.Count != 0) { // check if empty
                 CurrentImg = 0;
                 pictureBox1.Image = Image.FromFile(lecture.ImgList[CurrentImg]);
@@ -48,6 +51,12 @@ namespace Course_project {
             Dir = "Lectures/" + GrInfoForm.CurGr.Specialty + "/" + GrInfoForm.CurGr.Year + "/" + GrInfoForm.TeacherMM.Teacher.Subject + "/";
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             openFileDialog2.Filter = "Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*";
+            if (CourseProject) {
+                label1.Visible = false;
+                label2.Visible = false;
+                textBox1.Visible = false;
+                comboBox3.Visible = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e) { // Back
@@ -73,6 +82,15 @@ namespace Course_project {
             string name = Convert.ToString(textBox1.Text);
             string newText = Convert.ToString(richTextBox1.Text);
             int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
+            if (CourseProject) {
+                Lecture cp = new Lecture("cp", newText, 0, Lecture.ImgList);
+                cp.WriteToJson("cp/");
+                MessageBox.Show("Course project succesfuly saved");
+                GroupInfo grInfoForm = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
+                grInfoForm.Show();
+                Close();
+                return;
+            }
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(newText)) {
                 MessageBox.Show("Fill in all cells!");
                 return;
@@ -94,7 +112,7 @@ namespace Course_project {
                 Services.appendToOrder(Dir + newSemester, name);
             Lecture lect = new Lecture(name, newText, newSemester, Lecture.ImgList);
             lect.WriteToJson(Dir + newSemester + "/");
-            MessageBox.Show("The lecture is succesfuly added!");
+            MessageBox.Show("The lecture is succesfuly saved");
             GroupInfo grInfo = new GroupInfo(GrInfoForm.CurGr.Name, GrInfoForm.TeacherMM);
             grInfo.Show();
             Close();

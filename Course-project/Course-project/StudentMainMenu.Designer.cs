@@ -64,9 +64,9 @@ namespace Course_project {
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.label1.Location = new System.Drawing.Point(97, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 30);
+            this.label1.Size = new System.Drawing.Size(95, 30);
             this.label1.TabIndex = 9;
-            this.label1.Text = "*Subject*";
+            this.label1.Text = "*Group*";
             // 
             // StudentMainMenu
             // 

@@ -141,7 +141,7 @@ namespace Course_project {
         }
 
         public static T deserializeObj<T>(string filePath) {
-            StreamReader r = new StreamReader(File.Open(filePath, FileMode.Open));
+            StreamReader r = new StreamReader(File.Open(@filePath, FileMode.Open));
             T obj = JsonConvert.DeserializeObject<T>(r.ReadToEnd());
             r.Close();
             return obj;
@@ -221,6 +221,16 @@ namespace Course_project {
                 rightMark.Marks.Add(vt.QuestionMarks[newOrderInd]);
             }
             return rightMark;
+        }
+
+        public static void openCP(GroupInfo groupInfo) {
+            Add_Lecture al;
+            if (File.Exists(@"cp/cp.json"))
+                al = new Add_Lecture(groupInfo, deserializeObj<Lecture>("cp/cp.json"), true);
+            else
+                al = new Add_Lecture(groupInfo, true);
+            al.Show();
+            groupInfo.Close();
         }
 
         public static string DGVCellContentClick(object sender, DataGridViewCellEventArgs e, int colInd) {
