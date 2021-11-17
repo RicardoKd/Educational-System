@@ -1,13 +1,19 @@
 {
   "RandQuestionOrder": true,
   "Semester": 1,
-  "StudentMarksList": [],
+  "StudentMarksList": [
+    {
+      "StudentUsrName": "Student#1",
+      "Marks": [0, 2, 0, 0],
+      "TimeSpent": "00:00:04.8592881"
+    }
+  ],
   "Questions": [
     {
-      "Value": 2,
-      "Question": "How to translate word \"Table\"",
+      "Value": 1,
+      "Question": "How to translate word \"Table\"?",
       "RightAns": ["Stol"],
-      "WrongAns": ["Stul", "Podushka", "Miska"]
+      "WrongAns": ["Stul", "Podushka", "Shkaf"]
     },
     {
       "Value": 2,
@@ -15,12 +21,12 @@
       "RightAns": ["4"],
       "WrongAns": ["10", "12", "13"]
     },
-    { "Value": 4, "Question": "4^2 = ?", "RightAns": ["16"], "WrongAns": [] },
+    { "Value": 3, "Question": "4^2 = ?", "RightAns": ["16"], "WrongAns": [] },
     {
       "Value": 4,
       "Question": "Какого цвета ананас?",
-      "RightAns": ["Чёрный", "Синий"],
-      "WrongAns": ["Красны", "Синий"]
+      "RightAns": ["Жёлтый", "Оранжевый"],
+      "WrongAns": ["Зелёный", "Синий", "Фиолетовый"]
     }
   ],
   "Name": "Test #1"

@@ -8,6 +8,18 @@ namespace Course_project {
         public List<int> Marks { get; set; }
         public TimeSpan TimeSpent { get; set; }
 
+        public TestMark() {
+            StudentUsrName = null;
+            Marks = new List<int>();
+            TimeSpent = TimeSpan.Zero;
+        }
+
+        public TestMark(string studentUsrName, List<int> marks, TimeSpan timeSpent) {
+            StudentUsrName = studentUsrName;
+            Marks = new List<int>(marks);
+            TimeSpent = timeSpent;
+        }
+
         public int getStudentMark(int maxScore) {
             int totalScore = 0;
             foreach (int mark in Marks)

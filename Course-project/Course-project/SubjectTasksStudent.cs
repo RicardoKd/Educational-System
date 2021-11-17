@@ -45,6 +45,7 @@ namespace Course_project {
             if (!string.IsNullOrEmpty(testName)) {
                 Test test = Services.deserializeObj<Test>(TestDir + testName + ".json");
                 // Check if test is already done
+                // Check if test has no questions
                 ViewTest vt = new ViewTest(this, test);
                 vt.Show();
                 Hide();

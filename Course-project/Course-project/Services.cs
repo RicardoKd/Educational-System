@@ -91,7 +91,8 @@ namespace Course_project {
                 RadioButton radBtn = new RadioButton {
                     Location = new Point(x, y + posIncrement),
                     Text = text,
-                    Name = "RadioBtn" + posIncrement
+                    Name = "RadioBtn" + posIncrement,
+                    ForeColor = Color.White
                 };
                 radBtnList.Add(radBtn);
                 posIncrement += 20;
@@ -106,7 +107,8 @@ namespace Course_project {
                 CheckBox chkBox = new CheckBox {
                     Location = new Point(x, y + posIncrement),
                     Text = text,
-                    Name = "CheckBox" + posIncrement
+                    Name = "CheckBox" + posIncrement,
+                    ForeColor = Color.White
                 };
                 radBtnList.Add(chkBox);
                 posIncrement += 20;
@@ -184,8 +186,8 @@ namespace Course_project {
             return newOrder;
         }
 
-        public static void nexTQuestion(ViewTest ViewTest, List<TestQuestion> Order, int QuestionInd, RichTextBox rtb) {
-            TestQuestion currentQ = Order[QuestionInd];
+        public static void nextQuestion(ViewTest ViewTest, RichTextBox rtb) {
+            TestQuestion currentQ = ViewTest.NewOrder[ViewTest.QuestionInd];
             if (currentQ.WrongAns.Count == 0) { // detailed answer
                 rtb.Visible = true;
             } else {
@@ -193,11 +195,11 @@ namespace Course_project {
                 rightWrong.AddRange(currentQ.WrongAns);
                 List<string> randRightWrong = randomizeList(rightWrong);
                 if (currentQ.RightAns.Count == 1) { // only one right answer
-                    List<RadioButton> RadBtnList = createRadioBtnList(20, 150, randRightWrong);
+                    List<RadioButton> RadBtnList = createRadioBtnList(50, 10, randRightWrong);
                     foreach (RadioButton rb in RadBtnList)
                         ViewTest.Controls.Add(rb);
                 } else if (currentQ.RightAns.Count > 1) { // multiple right answers
-                    List<CheckBox> ChkBoxList = createChkBoxList(20, 150, randRightWrong);
+                    List<CheckBox> ChkBoxList = createChkBoxList(50, 130, randRightWrong);
                     foreach (CheckBox cb in ChkBoxList)
                         ViewTest.Controls.Add(cb);
                 }

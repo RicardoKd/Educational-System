@@ -18,11 +18,9 @@ namespace Course_project {
             Test = test;
             QuestionInd = 0;
             QuestionMarks = new List<int>();
-
             Test.StudentMarksList = new List<TestMark>();
-
             if (Test.RandQuestionOrder)
-                NewOrder = Services.randomizeList(Test.Questions); // here we use local test variable, because lists are sent as parameters by reference
+                NewOrder = Services.randomizeList(Test.Questions);
             else
                 NewOrder = new List<TestQuestion>(Test.Questions);
         }
@@ -37,28 +35,16 @@ namespace Course_project {
             saveResult();
             DialogResult dr = MessageBox.Show("Are you sure you want to end test?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK) {
+                TestMark tm;
+                if (Test.RandQuestionOrder)
+                    tm = Services.derandomizeMarks(this, TimeSpent);
+                else
+                    tm = new TestMark(SubjectTasksStudent.StudentMainMenu.Student.Username, QuestionMarks, TimeSpent);
+                Test.StudentMarksList.Add(tm);
+                Test.WriteToJson(SubjectTasksStudent.TestDir);
                 SubjectTasksStudent.Show();
                 Close();
             }
-            //order marks in CurrentMark according to initial
-            foreach (int item in QuestionMarks)
-                MessageBox.Show("Mark = " + item);
-            TestMark tm;
-            if (Test.RandQuestionOrder) {
-                tm = Services.derandomizeMarks(this, TimeSpent);
-            } else {
-                tm = new TestMark {
-                    Marks = new List<int>(QuestionMarks),
-                    TimeSpent = TimeSpent,
-                    StudentUsrName = SubjectTasksStudent.StudentMainMenu.Student.Username
-                };
-            }
-            Test.StudentMarksList.Add(tm);
-            foreach (int item in Test.StudentMarksList[0].Marks)
-                MessageBox.Show("Derand. Mark = " + item);
-
-            MessageBox.Show("SubjectTasksStudent.LectDir: " + SubjectTasksStudent.LectDir);
-            Test.WriteToJson(SubjectTasksStudent.TestDir);
         }
 
         private void button6_Click(object sender, EventArgs e) { // Next
@@ -69,7 +55,7 @@ namespace Course_project {
 
         private void NextQ() {
             label1.Text = NewOrder[QuestionInd].Question;
-            Services.nexTQuestion(this, NewOrder, QuestionInd, richTextBox1);
+            Services.nextQuestion(this, richTextBox1);
             if (QuestionInd == Test.Questions.Count - 1) {
                 button1.Visible = true;
                 button6.Visible = false;
@@ -87,23 +73,21 @@ namespace Course_project {
             } else {
                 if (currentQ.RightAns.Count == 1) { // only one right answer
                     List<RadioButton> allRadBtn = Services.getCollection<RadioButton>(this);
-
-                    foreach (RadioButton rb in allRadBtn) {
+                    foreach (RadioButton rb in allRadBtn)
                         if (rb.Checked && currentQ.RightAns.Contains(rb.Text)) {
                             finalMark = currentQ.Value;
                             break;
                         }
+                    foreach (RadioButton rb in allRadBtn)
                         Controls.Remove(rb);
-                    }
                 } else if (currentQ.RightAns.Count > 1) { // multiple right answers
                     List<CheckBox> allChkBox = Services.getCollection<CheckBox>(this);
                     int checkedRightAnsCount = 0;
-
-                    foreach (CheckBox cb in allChkBox) {
+                    foreach (CheckBox cb in allChkBox)
                         if (cb.Checked && currentQ.RightAns.Contains(cb.Text))
                             checkedRightAnsCount++;
+                    foreach (CheckBox cb in allChkBox)
                         Controls.Remove(cb);
-                    }
                     finalMark = (currentQ.Value / currentQ.RightAns.Count) * checkedRightAnsCount;
                 }
             }
