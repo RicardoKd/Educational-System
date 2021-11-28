@@ -1,0 +1,16 @@
+@startuml
+class Lecture {
+    + Lecture(name:string, text:string, semester:int, imgList:List<string>)
+    + Lecture()
+    + Name : string <<get>> <<set>>
+    + Text : string <<get>> <<set>>
+    + Semester : int <<get>> <<set>>
+    + addImg(fileName:string) : bool
+    + WriteToJson(dir:string) : void
+}
+class "List`1"<T> {
+}
+ILecture <|-- Lecture
+Lecture --> "ImgList<string>" "List`1"
+Lecture --> "StudentMarksList<TestMark>" "List`1"
+@enduml

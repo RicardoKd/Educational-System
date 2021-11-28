@@ -1,0 +1,19 @@
+@startuml
+class Test {
+    + Test(name:string, questions:List<TestQuestion>, studentMarksList:List<TestMark>, randQuestionOrder:bool, semester:int)
+    + Test(name:string, questions:List<TestQuestion>, randQuestionOrder:bool, semester:int)
+    + Test()
+    + RandQuestionOrder : bool <<get>> <<set>>
+    + Semester : int <<get>> <<set>>
+    + Name : string <<get>> <<set>>
+    + getStudentMark(studentUsrName:string) : int
+    + maxScore() : int
+    + WriteToJson(dir:string) : void
+    + getQuestions() : List<string>
+}
+class "List`1"<T> {
+}
+ITest <|-- Test
+Test --> "StudentMarksList<TestMark>" "List`1"
+Test --> "Questions<TestQuestion>" "List`1"
+@enduml

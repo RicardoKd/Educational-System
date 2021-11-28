@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Course_project {
 
@@ -81,50 +80,29 @@ namespace Course_project {
             }
         };
 
-        public string[] getSubjList(string spec, string year) {
-            int semester = DateTime.Now.Month > 6 ? 0 : 1; // 1st semester = 1
-            switch (Convert.ToInt32(spec)) {
-                case 121:
-                    return S121[Convert.ToInt32(year) - 1, semester].Split(",");
-
-                case 122:
-                    return S122[Convert.ToInt32(year) - 1, semester].Split(",");
-
-                case 123:
-                    return S123[Convert.ToInt32(year) - 1, semester].Split(",");
-
-                case 172:
-                    return S172[Convert.ToInt32(year) - 1, semester].Split(",");
-
-                default:
-                    return null;
-            }
+        public static string[] getSubjList(string spec, string year) {
+            int semester = Services.GetCurrentSemester() - 1;
+            int yearConv = Convert.ToInt32(year) - 1;
+            return Convert.ToInt32(spec) switch {
+                121 => S121[yearConv, semester].Split(","),
+                122 => S122[yearConv, semester].Split(","),
+                123 => S123[yearConv, semester].Split(","),
+                172 => S172[yearConv, semester].Split(","),
+                _ => null,
+            };
         }
 
-        public static List<string> getSubjList(string grName) {
-            List<string> subjList = new List<string>();
+        public static string[] getSubjList(string grName) {
             string[] grNameArr = grName.Split(".", StringSplitOptions.RemoveEmptyEntries);
-            int spec = Convert.ToInt32(grNameArr[0]);
             int year = Convert.ToInt32(grNameArr[1]) - 1;
             int semester = Services.GetCurrentSemester() - 1;
-            switch (spec) {
-                case 121:
-                    subjList.AddRange(S121[year, semester].Split(","));
-                    break;
-
-                case 122:
-                    subjList.AddRange(S122[year, semester].Split(","));
-                    break;
-
-                case 123:
-                    subjList.AddRange(S123[year, semester].Split(","));
-                    break;
-
-                case 172:
-                    subjList.AddRange(S172[year, semester].Split(","));
-                    break;
-            }
-            return subjList;
+            return Convert.ToInt32(grNameArr[0]) switch {
+                121 => S121[year, semester].Split(","),
+                122 => S122[year, semester].Split(","),
+                123 => S123[year, semester].Split(","),
+                172 => S172[year, semester].Split(","),
+                _ => null,
+            };
         }
     }
 }

@@ -1,0 +1,6 @@
+@startuml
+class Rules {
+    + getSubjList(spec:string, year:string) : string[]
+    + {static} getSubjList(grName:string) : List<string>
+}
+@enduml

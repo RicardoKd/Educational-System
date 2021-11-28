@@ -1,0 +1,28 @@
+@startuml
+class Services {
+    + {static} getRand(start:int, end:int) : int
+    + {static} GetCurrentSemester() : int
+    + {static} getOrder(dir:string) : List<string>
+    + {static} rewriteOrder(dir:string, newOrder:List<string>) : void
+    + {static} appendToOrder(dir:string, nameToAppend:string) : void
+    + {static} saveOrder(dir:string, dgv:DataGridView) : void
+    + {static} createBtnList(x:int, y:int, btnTextList:List<string>, delFunc:btnOnClick) : List<Button>
+    + {static} createRadioBtnList(x:int, y:int, btnTextList:List<string>) : List<RadioButton>
+    + {static} createChkBoxList(x:int, y:int, btnTextList:List<string>) : List<CheckBox>
+    + {static} getGroupList() : List<string>
+    + {static} getGroupsWithSubj(subject:string) : List<string>
+    + {static} deserializeObj(filePath:string) : T
+    + {static} nextImg(currentImg:int, lecture:Lecture, pcb:PictureBox) : void
+    + {static} previousImg(currentImg:int, lecture:Lecture, pcb:PictureBox) : void
+    + {static} randomizeList(listToRandomize:List<T>) : List<T>
+    + {static} nextQuestion(ViewTest:ViewTest, rtb:RichTextBox) : void
+    + {static} getCollection(Form:Form) : List<T>
+    + {static} derandomizeMarks(vt:ViewTest, timeSpent:TimeSpan) : TestMark
+    + {static} openCP(groupInfo:GroupInfo) : void
+    + {static} DGVCellContentClick(sender:object, e:DataGridViewCellEventArgs, colInd:int) : string
+    + {static} fillDGV(dgw:DataGridView, nameList:List<string>, btnText:string) : void
+    + {static} DGVMouseClick(dgv:DataGridView, e:MouseEventArgs, Rw:DataGridViewRow, RowIndexFromMouseDown:int) : void
+    + {static} DGVDragEnter(dgv:DataGridView, e:DragEventArgs) : void
+    + {static} DGVragDrop(dgv:DataGridView, e:DragEventArgs, Rw:DataGridViewRow, RowIndexFromMouseDown:int) : void
+}
+@enduml

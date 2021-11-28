@@ -1,0 +1,14 @@
+@startuml
+class Add_Lecture <<partial>> {
+    + Changed : bool <<get>> <<set>>
+    + CourseProject : bool <<get>> <<set>>
+    + EditMode : bool <<get>> <<set>>
+    + CurrentImg : int <<get>> <<set>>
+    + Dir : string <<get>> <<set>>
+    + Add_Lecture(grInfoForm:GroupInfo, courseProject:bool)
+    + Add_Lecture(grInfoForm:GroupInfo, lecture:Lecture, courseProject:bool)
+}
+Form <|-- Add_Lecture
+Add_Lecture --> "GrInfoForm" GroupInfo
+Add_Lecture --> "Lecture" Lecture
+@enduml

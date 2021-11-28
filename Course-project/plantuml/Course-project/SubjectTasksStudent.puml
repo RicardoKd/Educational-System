@@ -1,0 +1,10 @@
+@startuml
+class SubjectTasksStudent <<partial>> {
+    + LectDir : string <<get>> <<set>>
+    + Subject : string <<get>> <<set>>
+    + TestDir : string <<get>> <<set>>
+    + SubjectTasksStudent(subject:string, studentMainMenu:StudentMainMenu)
+}
+Form <|-- SubjectTasksStudent
+SubjectTasksStudent --> "StudentMainMenu" StudentMainMenu
+@enduml

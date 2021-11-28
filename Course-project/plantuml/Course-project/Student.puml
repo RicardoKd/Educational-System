@@ -1,0 +1,13 @@
+@startuml
+class Student {
+    + Student(username:string, password:string, secretQuestion:string, secretAnswer:string, group:string)
+    + Student(username:string, password:string, secretQuestion:string, secretAnswer:string, group:string, studyTime:TimeSpan)
+    + Group : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+    + SecretAnswer : string <<get>> <<set>>
+    + SecretQuestion : string <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+}
+IUser <|-- Student
+Student --> "StudyTime" TimeSpan
+@enduml

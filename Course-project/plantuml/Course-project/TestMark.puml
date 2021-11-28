@@ -1,0 +1,13 @@
+@startuml
+class TestMark {
+    + StudentUsrName : string <<get>> <<set>>
+    + TestMark()
+    + TestMark(studentUsrName:string, marks:List<int>, timeSpent:TimeSpan)
+    + getStudentMark(maxScore:int) : int
+}
+class "List`1"<T> {
+}
+ITestMark <|-- TestMark
+TestMark --> "Marks<int>" "List`1"
+TestMark --> "TimeSpent" TimeSpan
+@enduml

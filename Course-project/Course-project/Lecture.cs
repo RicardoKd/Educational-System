@@ -5,6 +5,11 @@ using System.IO;
 namespace Course_project {
 
     public class Lecture : ILecture {
+        public int Semester { get; set; }
+        public List<string> ImgList { get; set; }
+        public List<TestMark> StudentMarksList { get; set; }
+        public string Name { get; set; }
+        public string Text { get; set; }
 
         public Lecture(string name, string text, int semester, List<string> imgList) {
             Name = name;
@@ -21,12 +26,6 @@ namespace Course_project {
             ImgList = new List<string>();
             StudentMarksList = new List<TestMark>();
         }
-
-        public string Name { get; set; }
-        public string Text { get; set; }
-        public int Semester { get; set; }
-        public List<string> ImgList { get; set; }
-        public List<TestMark> StudentMarksList { get; set; }
 
         public bool addImg(string fileName) {
             if (!string.IsNullOrEmpty(fileName)) {

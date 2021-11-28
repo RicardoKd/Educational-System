@@ -5,11 +5,11 @@ using System.IO;
 namespace Course_project {
 
     public partial class Registration : Form {
-        private Form1 form1;
+        public Form1 Form1 { get; set; }
 
         public Registration(Form1 form1) {
             InitializeComponent();
-            this.form1 = form1;
+            Form1 = form1;
         }
 
         private void Registration_Load(object sender, EventArgs e) {
@@ -132,7 +132,7 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            form1.Show();
+            Form1.Show();
             Close();
         }
     }

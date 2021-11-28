@@ -1,0 +1,13 @@
+@startuml
+interface ILecture {
+    Name : string <<get>> <<set>>
+    Semester : int <<get>> <<set>>
+    Text : string <<get>> <<set>>
+    addImg(fileName:string) : bool
+    WriteToJson(dir:string) : void
+}
+class "List`1"<T> {
+}
+ILecture --> "ImgList<string>" "List`1"
+ILecture --> "StudentMarksList<TestMark>" "List`1"
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class ViewLecture <<partial>> {
+    + CurrentImg : int <<get>> <<set>>
+    + ViewLecture(subjectTasksStudent:SubjectTasksStudent, lecture:Lecture)
+}
+Form <|-- ViewLecture
+ViewLecture --> "StartTime" DateTime
+ViewLecture --> "Lecture" Lecture
+ViewLecture --> "SubjectTasksStudent" SubjectTasksStudent
+@enduml

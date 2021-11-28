@@ -1,0 +1,4 @@
+@startuml
+class TeacherMainMenu <<partial>> {
+}
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class TestQuestion {
+    + Value : int <<get>> <<set>> = 1
+    + Question : string <<get>> <<set>>
+}
+class "List`1"<T> {
+}
+ITestQuestion <|-- TestQuestion
+TestQuestion --> "RightAns<string>" "List`1"
+TestQuestion --> "WrongAns<string>" "List`1"
+@enduml

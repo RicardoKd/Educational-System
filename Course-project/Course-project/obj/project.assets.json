@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "LiteDB/5.0.11": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/LiteDB.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/LiteDB.dll": {}
-        }
-      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -23,26 +14,6 @@
     }
   },
   "libraries": {
-    "LiteDB/5.0.11": {
-      "sha512": "6cL4bOmVCUB0gIK+6qIr68HeqjjHZicPDGQjvJ87mIOvkFsEsJWkIps3yoKNeLpHhJQur++yoQ9Q8gxsdos0xQ==",
-      "type": "package",
-      "path": "litedb/5.0.11",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "AppVeyorSettings.json",
-        "LICENSE",
-        "icon_64x64.png",
-        "lib/net45/LiteDB.dll",
-        "lib/net45/LiteDB.xml",
-        "lib/netstandard1.3/LiteDB.dll",
-        "lib/netstandard1.3/LiteDB.xml",
-        "lib/netstandard2.0/LiteDB.dll",
-        "lib/netstandard2.0/LiteDB.xml",
-        "litedb.5.0.11.nupkg.sha512",
-        "litedb.nuspec"
-      ]
-    },
     "Newtonsoft.Json/13.0.1": {
       "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
@@ -73,7 +44,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "LiteDB >= 5.0.11",
       "Newtonsoft.Json >= 13.0.1"
     ]
   },
@@ -116,10 +86,6 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
-          "LiteDB": {
-            "target": "Package",
-            "version": "[5.0.11, )"
-          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"

@@ -1,0 +1,31 @@
+@startuml this is name
+!include Course-project\Add Lecture.puml
+!include Course-project\Add Test Question.puml
+!include Course-project\AddTest.puml
+!include Course-project\ForgotPass.puml
+!include Course-project\Form1.puml
+!include Course-project\Group.puml
+!include Course-project\GroupInfo.puml
+!include Course-project\IGroup.puml
+!include Course-project\ILecture.puml
+!include Course-project\ITest.puml
+!include Course-project\ITestMark.puml
+!include Course-project\ITestQuestion.puml
+!include Course-project\IUser.puml
+!include Course-project\Lecture.puml
+!include Course-project\Registration.puml
+!include Course-project\RegistrationServices.puml
+!include Course-project\Rules.puml
+!include Course-project\Services.puml
+!include Course-project\Student.puml
+!include Course-project\StudentMainMenu.puml
+!include Course-project\StudentStatistics.puml
+!include Course-project\SubjectTasksStudent.puml
+!include Course-project\Teacher.puml
+!include Course-project\TeacherMainMenu.puml
+!include Course-project\Test.puml
+!include Course-project\TestMark.puml
+!include Course-project\TestQuestion.puml
+!include Course-project\ViewLecture.puml
+!include Course-project\ViewTest.puml
+@enduml

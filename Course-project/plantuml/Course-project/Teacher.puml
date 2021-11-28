@@ -1,0 +1,11 @@
+@startuml
+class Teacher {
+    + Teacher(username:string, password:string, secretQuestion:string, secretAnswer:string, subject:string)
+    + Subject : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+    + SecretAnswer : string <<get>> <<set>>
+    + SecretQuestion : string <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+}
+IUser <|-- Teacher
+@enduml

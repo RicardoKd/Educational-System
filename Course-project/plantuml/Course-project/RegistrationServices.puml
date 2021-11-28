@@ -1,0 +1,7 @@
+@startuml
+class RegistrationServices {
+    + {static} validateUsrName(usrName:string) : bool
+    + {static} validatePass(password:string) : bool
+    + {static} passMatch(password:string, repeatPass:string) : bool
+}
+@enduml

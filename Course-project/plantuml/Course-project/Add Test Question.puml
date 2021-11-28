@@ -1,0 +1,11 @@
+@startuml
+class Add_Test_Question <<partial>> {
+    + OldQText : string <<get>> <<set>>
+    + EditMode : bool <<get>> <<set>>
+    + Changed : bool <<get>> <<set>>
+    + Add_Test_Question(addTestForm:AddTest)
+    + Add_Test_Question(addTestForm:AddTest, question:TestQuestion)
+}
+Form <|-- Add_Test_Question
+Add_Test_Question --> "AddTestForm" AddTest
+@enduml

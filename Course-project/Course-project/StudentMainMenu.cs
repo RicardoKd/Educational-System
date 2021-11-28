@@ -5,19 +5,19 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class StudentMainMenu : Form {
-        private Form1 form1;
+        public Form1 Form1 { get; set; }
         public Student Student { get; set; }
 
         public StudentMainMenu(Student student, Form1 form1) {
             InitializeComponent();
-            this.form1 = form1;
+            Form1 = form1;
             Student = student;
         }
 
         private void StudentMainMenu_Load(object sender, EventArgs e) {
             label1.Text = Student.Group;
             label2.Text = "Hello, " + Student.Username;
-            List<string> grSubjList = Rules.getSubjList(Student.Group);
+            List<string> grSubjList = new List<string>(Rules.getSubjList(Student.Group));
             List<Button> btnList = Services.createBtnList(80, 150, grSubjList, DynamicButton_Click);
             foreach (Button btn in btnList)
                 Controls.Add(btn);
@@ -31,7 +31,7 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            form1.Show();
+            Form1.Show();
             Close();
         }
     }

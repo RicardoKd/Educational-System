@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Course_project.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAYA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Add_Lecture" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAAAAAACAAABAwBgCAQAAiAMA7IAAAGHAfAAJAAAA=</HashCode>
+      <FileName>Add Lecture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Add_Test_Question" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAQAACAAAACAAAYAAAAEAAQAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.AddTest" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAQAACAAAACAEg4AAAAEAAAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.ForgotPass" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAABAAAACAAABCAAA4AAAAEAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Form1" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAQAACAAABAAAACACAACAAA4AAAAEHQAAABAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Group" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAABAAAAAAAAAAAAAQAAAgCAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Group.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Course_project.GroupInfo" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="System.Windows.Forms.Form" ManuallyRouted="true">
+      <Path>
+        <Point X="8.5" Y="1.5" />
+        <Point X="8.5" Y="2.345" />
+        <Point X="3" Y="2.345" />
+        <Point X="3" Y="2.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAIKAQABABAQCAAAgKAPi8ZxoCADAMCAgAAAQ=</HashCode>
+      <FileName>GroupInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Lecture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAgAAIAAAAAQAAAAAAAAAABAACgAAAAA=</HashCode>
+      <FileName>Lecture.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Course_project.Program" Collapsed="true">
+    <Position X="12.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Registration" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="System.Windows.Forms.Form" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="2.191" />
+        <Point X="8.5" Y="2.345" />
+        <Point X="6.5" Y="2.345" />
+        <Point X="6.5" Y="2.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ECAAAAAAACAAABAQAACAAABCsAAYAAAAEAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.RegistrationServices" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAABAAAAA=</HashCode>
+      <FileName>RegistrationServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Rules" Collapsed="true">
+    <Position X="4" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAQAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Services" Collapsed="true">
+    <Position X="5.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDAAAAAACASCwACAIAAACJAAAAAAQEAgQEgAAAAgCCE=</HashCode>
+      <FileName>Services.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Student" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAEAQAAAAAAAAAQAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.203" />
+  </Class>
+  <Class Name="Course_project.StudentMainMenu" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAAQAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.StudentStatistics" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAABCAAACAAAACABg4BAgAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.SubjectTasksStudent" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAQABCCAICBAAgKABg4AAgAAGAAAAAAAAA=</HashCode>
+      <FileName>SubjectTasksStudent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Teacher" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAYAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
+      <FileName>Teacher.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Course_project.TeacherMainMenu" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAABAAAACgAAACCAAQAAAAAGAAAAAAAAA=</HashCode>
+      <FileName>TeacherMainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.Test" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACEAAAAAAIAAAAAQAAAQAAAAEQBAAAAAAAAA=</HashCode>
+      <FileName>Test.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Course_project.TestMark" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAAQAQAAAAAAAA=</HashCode>
+      <FileName>TestMark.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Course_project.TestQuestion" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAgAAAAAAA=</HashCode>
+      <FileName>TestQuestion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Course_project.ViewLecture" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAA4AAAAAAAQAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course_project.ViewTest" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="System.Windows.Forms.Form" ManuallyRouted="true">
+      <Path>
+        <Point X="8.5" Y="1.5" />
+        <Point X="8.5" Y="2.345" />
+        <Point X="1.25" Y="2.345" />
+        <Point X="1.25" Y="2.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAAJAAAAAAAQAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="System.Windows.Forms.Form.ControlCollection" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Course_project.IGroup" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAABAAAAAAAAAAAAAQAAAgCAAAAAAAAAAACAAA=</HashCode>
+      <FileName>IGroup.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Course_project.ILecture" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAgAAIAAAAAQAAAAAAAAAABAACgAAAAA=</HashCode>
+      <FileName>ILecture.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Course_project.ITest" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACEAAAAAAIAAAAAQAAAQAAAAEQBAAAAAAAAA=</HashCode>
+      <FileName>ITest.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Course_project.ITestMark" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAAQAQAAAAAAAA=</HashCode>
+      <FileName>ITestMark.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Course_project.ITestQuestion" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAgAAAAAAA=</HashCode>
+      <FileName>ITestQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Course_project.IUser" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAQAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
+      <FileName>IUser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

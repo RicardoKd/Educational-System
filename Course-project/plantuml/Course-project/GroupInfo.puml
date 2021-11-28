@@ -1,0 +1,10 @@
+@startuml
+class GroupInfo <<partial>> {
+    + LectDir : string <<get>> <<set>>
+    + TestDir : string <<get>> <<set>>
+    + GroupInfo(grName:string, teacherMM:TeacherMainMenu)
+}
+Form <|-- GroupInfo
+GroupInfo --> "CurGr" Group
+GroupInfo --> "TeacherMM" TeacherMainMenu
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+class AddTest <<partial>> {
+    + Changed : bool <<get>> <<set>>
+    + EditMode : bool <<get>> <<set>>
+    + SavedToOrder : bool <<get>> <<set>>
+    + Dir : string <<get>> <<set>>
+    + OldName : string <<get>> <<set>>
+    + AddTest(grInfoForm:GroupInfo)
+    + AddTest(grInfoForm:GroupInfo, test:Test, savedToOrder:bool)
+}
+Form <|-- AddTest
+AddTest --> "GrInfoForm" GroupInfo
+AddTest --> "Test" Test
+@enduml

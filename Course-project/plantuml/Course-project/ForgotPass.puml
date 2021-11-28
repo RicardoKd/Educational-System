@@ -1,0 +1,6 @@
+@startuml
+class ForgotPass <<partial>> {
+    + ForgotPass(form1:Form1)
+}
+Form <|-- ForgotPass
+@enduml

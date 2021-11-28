@@ -5,14 +5,11 @@ using System.IO;
 namespace Course_project {
 
     public class Test : ITest {
-
-        public Test(string name, List<TestQuestion> questions, List<TestMark> studentMarksList, bool randQuestionOrder, int semester) {
-            Name = name;
-            Questions = questions;
-            StudentMarksList = studentMarksList;
-            RandQuestionOrder = randQuestionOrder;
-            Semester = semester;
-        }
+        public bool RandQuestionOrder { get; set; }
+        public int Semester { get; set; }
+        public List<TestMark> StudentMarksList { get; set; } // List of students who took this test
+        public List<TestQuestion> Questions { get; set; }
+        public string Name { get; set; }
 
         public Test(string name, List<TestQuestion> questions, bool randQuestionOrder, int semester) {
             Name = name;
@@ -29,12 +26,6 @@ namespace Course_project {
             RandQuestionOrder = false;
             Semester = 1;
         }
-
-        public bool RandQuestionOrder { get; set; }
-        public int Semester { get; set; }
-        public List<TestMark> StudentMarksList { get; set; } // List of students who took this test
-        public List<TestQuestion> Questions { get; set; }
-        public string Name { get; set; }
 
         public int getStudentMark(string studentUsrName) {
             foreach (TestMark mark in StudentMarksList)

@@ -1,0 +1,9 @@
+@startuml
+class StudentStatistics <<partial>> {
+    + StudentUsrName : string <<get>> <<set>>
+    + StudentStatistics(groupInfoForm:GroupInfo, studentUsrName:string)
+}
+Form <|-- StudentStatistics
+StudentStatistics --> "GroupInfoForm" GroupInfo
+StudentStatistics --> "TotalTime" TimeSpan
+@enduml

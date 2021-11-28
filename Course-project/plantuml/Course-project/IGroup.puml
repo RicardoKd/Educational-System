@@ -1,0 +1,13 @@
+@startuml
+interface IGroup {
+    Name : string <<get>> <<set>>
+    Specialty : string <<get>> <<set>>
+    Year : string <<get>> <<set>>
+    addStudent(username:string) : bool
+    rmStudent(username:string) : bool
+}
+class "List`1"<T> {
+}
+IGroup --> "Students<string>" "List`1"
+IGroup --> "Subjects<string>" "List`1"
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+class Group {
+    + Group(specialty:string, year:string)
+    + Group(grName:string)
+    + Name : string <<get>> <<set>>
+    + Specialty : string <<get>> <<set>>
+    + Year : string <<get>> <<set>>
+    + addStudent(username:string) : bool
+    + rmStudent(username:string) : bool
+}
+class "List`1"<T> {
+}
+IGroup <|-- Group
+Group --> "Students<string>" "List`1"
+Group --> "Subjects<string>" "List`1"
+@enduml

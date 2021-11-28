@@ -27,7 +27,7 @@ namespace Course_project {
             if (!dir.EndsWith("/"))
                 dir += "/";
 
-            StreamReader r = new StreamReader(File.Open(@dir + "order.txt", FileMode.Open));
+            StreamReader r = new StreamReader(File.Open(@dir + "order.txt", FileMode.OpenOrCreate));
             List<string> order = new List<string>(r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries));
             r.Close();
             return order;
@@ -131,7 +131,7 @@ namespace Course_project {
             if (grList.Count > 0) {
                 List<string> grListSort = new List<string>();
                 foreach (string grName in grList) {
-                    List<string> grSubjList = Rules.getSubjList(grName);
+                    List<string> grSubjList = new List<string>(Rules.getSubjList(grName));
                     if (grSubjList.Contains(subject))
                         grListSort.Add(grName);
                 }

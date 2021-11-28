@@ -1,0 +1,14 @@
+@startuml
+class ViewTest <<partial>> {
+    + QuestionInd : int <<get>> <<set>>
+    + ViewTest(subjectTasksStudent:SubjectTasksStudent, test:Test)
+}
+class "List`1"<T> {
+}
+Form <|-- ViewTest
+ViewTest --> "StartTime" DateTime
+ViewTest --> "QuestionMarks<int>" "List`1"
+ViewTest --> "NewOrder<TestQuestion>" "List`1"
+ViewTest --> "SubjectTasksStudent" SubjectTasksStudent
+ViewTest --> "Test" Test
+@enduml

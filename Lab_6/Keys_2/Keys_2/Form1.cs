@@ -30,18 +30,6 @@ namespace Keys_2 {
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e) {
-            /*
-             * if (e.KeyCode != Keys.Shift) {
-                if (e.Modifiers == Keys.Shift) {
-                    label1.Text += "\n" + date + "    Combination: " + "Shift + " + e.KeyData.ToString();
-                } else if (e.Modifiers == Keys.Control) {
-                    label1.Text += "\n" + date + "    Combination: " + "Ctrl + " + e.KeyData.ToString();
-                } else if (e.Modifiers == Keys.Alt) {
-                    label1.Text += "\n" + date + "    Combination: " + "Alt + " + e.KeyData.ToString();
-                } else {
-                    label1.Text += "\n" + date + "    Key: " + e.KeyData.ToString();
-                }
-            }*/
         }
     }
 }

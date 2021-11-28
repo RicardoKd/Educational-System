@@ -1,0 +1,8 @@
+@startuml
+class TeacherMainMenu <<partial>> {
+    + TeacherMainMenu(teacher:Teacher, form1:Form1)
+}
+Form <|-- TeacherMainMenu
+TeacherMainMenu --> "Form1" Form1
+TeacherMainMenu --> "Teacher" Teacher
+@enduml

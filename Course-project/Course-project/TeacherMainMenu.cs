@@ -11,7 +11,7 @@ namespace Course_project {
         public TeacherMainMenu(Teacher teacher, Form1 form1) {
             InitializeComponent();
             Teacher = teacher;
-            this.Form1 = form1;
+            Form1 = form1;
         }
 
         private void TeacherMainMenu_Load(object sender, EventArgs e) {

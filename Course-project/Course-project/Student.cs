@@ -10,15 +10,7 @@ namespace Course_project {
             Password = password;
             SecretQuestion = secretQuestion;
             SecretAnswer = secretAnswer;
-        }
-
-        public Student(string username, string password, string secretQuestion, string secretAnswer, string group, TimeSpan studyTime) {
-            Group = group;
-            Username = username;
-            Password = password;
-            SecretQuestion = secretQuestion;
-            SecretAnswer = secretAnswer;
-            StudyTime = studyTime;
+            // StudyTime = TimeSpan.Zero; Not sure if needed
         }
 
         public string Group { get; set; }

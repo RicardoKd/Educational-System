@@ -8,19 +8,10 @@
     ".NETCoreApp,Version=v3.1": {
       "Course-project/1.0.0": {
         "dependencies": {
-          "LiteDB": "5.0.11",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "Course-project.dll": {}
-        }
-      },
-      "LiteDB/5.0.11": {
-        "runtime": {
-          "lib/netstandard2.0/LiteDB.dll": {
-            "assemblyVersion": "5.0.11.0",
-            "fileVersion": "5.0.11.0"
-          }
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -38,13 +29,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "LiteDB/5.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-6cL4bOmVCUB0gIK+6qIr68HeqjjHZicPDGQjvJ87mIOvkFsEsJWkIps3yoKNeLpHhJQur++yoQ9Q8gxsdos0xQ==",
-      "path": "litedb/5.0.11",
-      "hashPath": "litedb.5.0.11.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",

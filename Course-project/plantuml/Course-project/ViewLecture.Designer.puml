@@ -1,0 +1,4 @@
+@startuml
+class ViewLecture <<partial>> {
+}
+@enduml

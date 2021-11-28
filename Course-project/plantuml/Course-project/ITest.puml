@@ -1,0 +1,15 @@
+@startuml
+interface ITest {
+    Name : string <<get>> <<set>>
+    RandQuestionOrder : bool <<get>> <<set>>
+    Semester : int <<get>> <<set>>
+    getStudentMark(studentUsrName:string) : int
+    maxScore() : int
+    WriteToJson(dir:string) : void
+    getQuestions() : List<string>
+}
+class "List`1"<T> {
+}
+ITest --> "Questions<TestQuestion>" "List`1"
+ITest --> "StudentMarksList<TestMark>" "List`1"
+@enduml
