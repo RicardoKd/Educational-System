@@ -24,7 +24,7 @@ namespace Course_project {
             int totalScore = 0;
             foreach (int mark in Marks)
                 totalScore += mark;
-            totalScore = (totalScore * 100) / maxScore; // formula to covert to 100-point scale
+            totalScore = (totalScore * 100) / maxScore; // formula to convert to a 100-point scale
             return totalScore;
         }
     }

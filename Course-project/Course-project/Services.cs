@@ -26,7 +26,6 @@ namespace Course_project {
                 return new List<string>();
             if (!dir.EndsWith("/"))
                 dir += "/";
-
             StreamReader r = new StreamReader(File.Open(@dir + "order.txt", FileMode.OpenOrCreate));
             List<string> order = new List<string>(r.ReadToEnd().Split(",", StringSplitOptions.RemoveEmptyEntries));
             r.Close();
@@ -68,15 +67,16 @@ namespace Course_project {
             int posIncrement = 0;
             Button btn;
             foreach (string text in btnTextList) {
-                btn = new Button();
-                btn.Location = new Point(x, y + posIncrement);
-                btn.Height = 30;
-                btn.Width = 100;
-                btn.BackColor = Color.White;
-                btn.ForeColor = Color.Black;
-                btn.Text = text;
-                btn.Name = "DynamicButton" + posIncrement;
-                btn.Font = new Font("Georgia", 10);
+                btn = new Button {
+                    Location = new Point(x, y + posIncrement),
+                    Height = 30,
+                    Width = 100,
+                    BackColor = Color.White,
+                    ForeColor = Color.Black,
+                    Text = text,
+                    Name = "DynamicButton" + posIncrement,
+                    Font = new Font("Georgia", 10)
+                };
                 btn.Click += new EventHandler(delFunc);
                 btnList.Add(btn);
                 posIncrement += 30;

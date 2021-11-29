@@ -60,9 +60,8 @@ namespace Course_project {
                         AddTestForm.Test.Questions[i] = tq;
                         break;
                     }
-            } else {
+            } else
                 AddTestForm.Test.Questions.Add(tq);
-            }
             Changed = false;
             MessageBox.Show("Question is succesfuly saved!");
             AddTest at = new AddTest(AddTestForm.GrInfoForm, AddTestForm.Test, AddTestForm.SavedToOrder);

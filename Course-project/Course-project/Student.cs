@@ -18,6 +18,6 @@ namespace Course_project {
         public string SecretAnswer { get; set; }
         public string SecretQuestion { get; set; }
         public string Username { get; set; }
-        public TimeSpan StudyTime { get; set; }
+        public TimeSpan StudyTime { get; set; } // is it needed?
     }
 }
