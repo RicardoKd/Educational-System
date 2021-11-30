@@ -1,4 +1,0 @@
-@startuml
-class Add_Lecture <<partial>> {
-}
-@enduml

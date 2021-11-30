@@ -1,4 +1,4 @@
-@startuml
+@startuml Add_Lecture
 class Add_Lecture <<partial>> {
     + Changed : bool <<get>> <<set>>
     + CourseProject : bool <<get>> <<set>>

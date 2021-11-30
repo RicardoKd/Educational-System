@@ -1,4 +1,0 @@
-@startuml
-class Add_Test_Question <<partial>> {
-}
-@enduml

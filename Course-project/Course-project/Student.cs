@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Course_project {
+﻿namespace Course_project {
 
     public class Student : IUser {
 
@@ -10,7 +8,6 @@ namespace Course_project {
             Password = password;
             SecretQuestion = secretQuestion;
             SecretAnswer = secretAnswer;
-            // StudyTime = TimeSpan.Zero; Not sure if needed
         }
 
         public string Group { get; set; }
@@ -18,6 +15,5 @@ namespace Course_project {
         public string SecretAnswer { get; set; }
         public string SecretQuestion { get; set; }
         public string Username { get; set; }
-        public TimeSpan StudyTime { get; set; } // is it needed?
     }
 }

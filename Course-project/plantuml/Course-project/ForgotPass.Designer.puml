@@ -1,4 +1,0 @@
-@startuml
-class ForgotPass <<partial>> {
-}
-@enduml

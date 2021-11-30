@@ -1,4 +1,0 @@
-@startuml
-class AddTest <<partial>> {
-}
-@enduml
