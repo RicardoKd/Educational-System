@@ -1,0 +1,33 @@
+{
+  "RandQuestionOrder": false,
+  "Semester": 1,
+  "StudentMarksList": [
+    {
+      "StudentUsrName": "AnnaAndreevna*1",
+      "Marks": [1, 1, 0, 0],
+      "TimeSpent": "00:00:07.6565488"
+    }
+  ],
+  "Questions": [
+    {
+      "Value": 1,
+      "Question": "3+3 =?",
+      "RightAns": ["6"],
+      "WrongAns": ["7", "8", "9"]
+    },
+    {
+      "Value": 1,
+      "Question": "3^2=?",
+      "RightAns": ["9"],
+      "WrongAns": ["8", "9", "10"]
+    },
+    { "Value": 1, "Question": "7+7", "RightAns": ["14"], "WrongAns": [] },
+    {
+      "Value": 4,
+      "Question": "10+10=?",
+      "RightAns": ["20", "8 + 12"],
+      "WrongAns": ["4", "5", "6", "7", "8", "9"]
+    }
+  ],
+  "Name": "Test #2"
+}

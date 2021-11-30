@@ -18,7 +18,6 @@ namespace Course_project {
             Test = test;
             QuestionInd = 0;
             QuestionMarks = new List<int>();
-            Test.StudentMarksList = new List<TestMark>();
             if (Test.RandQuestionOrder)
                 NewOrder = Services.randomizeList(Test.Questions);
             else

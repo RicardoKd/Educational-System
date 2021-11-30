@@ -1,13 +1,7 @@
 {
   "RandQuestionOrder": false,
   "Semester": 1,
-  "StudentMarksList": [
-    {
-      "StudentUsrName": "Student#1",
-      "Marks": [1, 1, 0, 4],
-      "TimeSpent": "00:00:22.4109543"
-    }
-  ],
+  "StudentMarksList": [],
   "Questions": [
     {
       "Value": 1,

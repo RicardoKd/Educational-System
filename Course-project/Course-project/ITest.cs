@@ -9,7 +9,7 @@ namespace Course_project {
         List<TestQuestion> Questions { get; set; }
         string Name { get; set; }
 
-        int getStudentMark(string studentUsrName);
+        int getFinalStudentMark(string studentUsrName);
 
         int maxScore();
 

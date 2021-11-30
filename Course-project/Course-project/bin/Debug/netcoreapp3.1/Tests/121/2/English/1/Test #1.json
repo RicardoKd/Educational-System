@@ -1,0 +1,37 @@
+{
+  "RandQuestionOrder": true,
+  "Semester": 1,
+  "StudentMarksList": [
+    {
+      "StudentUsrName": "VitaliyIvanov#200",
+      "Marks": [0, 0, 4],
+      "TimeSpent": "00:00:07.7502275"
+    },
+    {
+      "StudentUsrName": "GalkinAndrey&3",
+      "Marks": [0, 3, 4],
+      "TimeSpent": "00:00:09.0360132"
+    }
+  ],
+  "Questions": [
+    {
+      "Value": 2,
+      "Question": "how to translate word apple in russian?",
+      "RightAns": ["Яблоко"],
+      "WrongAns": ["Апельсин", "Банан", "Киви"]
+    },
+    {
+      "Value": 3,
+      "Question": "Select all items that belong to furniture.",
+      "RightAns": ["Table", "Sofa", "Shelf"],
+      "WrongAns": ["Pen", "Monitor", "Spoon"]
+    },
+    {
+      "Value": 4,
+      "Question": "How many tenses there are in English?",
+      "RightAns": ["12"],
+      "WrongAns": []
+    }
+  ],
+  "Name": "Test #1"
+}

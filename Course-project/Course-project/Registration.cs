@@ -59,7 +59,7 @@ namespace Course_project {
                     string fName = grName + ".txt";
                     if (Directory.Exists(@dir)) {
                         StreamWriter grWriter = new StreamWriter(File.Open(dir + fName, FileMode.Append));
-                        grWriter.Write(", " + usrName);
+                        grWriter.Write("," + usrName);
                         grWriter.Close();
                     } else {
                         Directory.CreateDirectory(dir);

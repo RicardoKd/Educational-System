@@ -27,7 +27,7 @@ namespace Course_project {
             Semester = 1;
         }
 
-        public int getStudentMark(string studentUsrName) {
+        public int getFinalStudentMark(string studentUsrName) {
             foreach (TestMark mark in StudentMarksList)
                 if (string.Compare(mark.StudentUsrName, studentUsrName) == 0)
                     return mark.getStudentMark(maxScore());

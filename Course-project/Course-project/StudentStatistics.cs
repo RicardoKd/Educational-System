@@ -40,7 +40,7 @@ namespace Course_project {
                 if (studentIndex != -1) {
                     TimeSpan ts = t.StudentMarksList[studentIndex].TimeSpent;
                     dataGridView2.Rows[i].Cells[2].Value = ts.Hours + ":" + ts.Minutes + ":" + ts.Seconds;
-                    dataGridView2.Rows[i].Cells[3].Value = t.getStudentMark(StudentUsrName);
+                    dataGridView2.Rows[i].Cells[3].Value = t.getFinalStudentMark(StudentUsrName);
                     TotalTime += t.StudentMarksList[studentIndex].TimeSpent;
                 } else {
                     dataGridView2.Rows[i].Cells[2].Value = "Not passed";
