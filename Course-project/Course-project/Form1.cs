@@ -10,9 +10,6 @@ namespace Course_project {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-        }
-
         private void button1_Click(object sender, EventArgs e) { // Log in
             string loginUsrname = Convert.ToString(textBox1.Text);
             string loginPass = Convert.ToString(textBox2.Text);
@@ -67,12 +64,6 @@ namespace Course_project {
             ForgotPass f = new ForgotPass(this);
             f.Show();
             Hide();
-        }
-
-        private void label1_Click(object sender, EventArgs e) {
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e) {
         }
     }
 }

@@ -193,7 +193,6 @@ namespace Course_project {
             this.Controls.Add(this.button2);
             this.Name = "ForgotPass";
             this.Text = "Forgot password";
-            this.Load += new System.EventHandler(this.ForgotPass_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

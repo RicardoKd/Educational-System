@@ -101,7 +101,6 @@ namespace Course_project {
             this.label1.TabIndex = 3;
             this.label1.Text = "Welcome to GrabIt!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -122,7 +121,6 @@ namespace Course_project {
             this.textBox2.Size = new System.Drawing.Size(151, 29);
             this.textBox2.TabIndex = 6;
             this.textBox2.UseSystemPasswordChar = true;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // pictureBox1
             // 
@@ -150,7 +148,6 @@ namespace Course_project {
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "GrabIt!";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

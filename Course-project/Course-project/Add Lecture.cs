@@ -8,7 +8,6 @@ namespace Course_project {
 
     public partial class Add_Lecture : Form {
         private int currentImg;
-        public bool Changed { get; set; }
         public bool CourseProject { get; set; }
         public bool EditMode { get; set; }
         public GroupInfo GrInfoForm { get; set; }
@@ -16,8 +15,7 @@ namespace Course_project {
         public Lecture Lecture { get; set; }
         public string Dir { get; set; } // without semester
 
-        // Constructor for creating a new lect
-        public Add_Lecture(GroupInfo grInfoForm, bool courseProject = false) {
+        public Add_Lecture(GroupInfo grInfoForm, bool courseProject = false) { // Constructor for creating a new lect
             InitializeComponent();
             GrInfoForm = grInfoForm;
             EditMode = false;
@@ -27,8 +25,7 @@ namespace Course_project {
             comboBox3.SelectedIndex = 0;
         }
 
-        // Constructor for editing a lect
-        public Add_Lecture(GroupInfo grInfoForm, Lecture lecture, bool courseProject = false) {
+        public Add_Lecture(GroupInfo grInfoForm, Lecture lecture, bool courseProject = false) { // Constructor for editing a lect
             InitializeComponent();
             Text = "Edit lecture";
             GrInfoForm = grInfoForm;
@@ -72,13 +69,12 @@ namespace Course_project {
             Lecture.ImgList.Add(imgName);
             pictureBox1.Image = Image.FromFile(imgName);
             if (CurrentImg == -1)
-                CurrentImg += 1;
+                CurrentImg++;
             else
                 CurrentImg = Lecture.ImgList.Count - 1;
         }
 
         private void button3_Click(object sender, EventArgs e) { // Save
-            Changed = false;
             string name = Convert.ToString(textBox1.Text);
             string newText = Convert.ToString(richTextBox1.Text);
             int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
@@ -150,14 +146,13 @@ namespace Course_project {
                 return;
             } else if (CurrentImg == 0) {
                 Lecture.ImgList.RemoveAt(CurrentImg);
-
                 pictureBox1.Image = Image.FromFile(Lecture.ImgList[Lecture.ImgList.Count - 1]);
                 CurrentImg = Lecture.ImgList.Count - 1;
                 return;
             } else {
                 Lecture.ImgList.RemoveAt(CurrentImg);
                 pictureBox1.Image = Image.FromFile(Lecture.ImgList[CurrentImg + 1]);
-                CurrentImg = CurrentImg + 1;
+                CurrentImg++;
                 return;
             }
         }

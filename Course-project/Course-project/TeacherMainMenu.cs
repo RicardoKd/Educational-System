@@ -18,19 +18,16 @@ namespace Course_project {
             label1.Text = Teacher.Subject;
             label2.Text = "Hello, " + Teacher.Username;
             List<string> grListSort = Services.getGroupsWithSubj(Teacher.Subject);
-            List<Button> btnList = Services.createBtnList(20, 150, grListSort, DynamicButton_Click);
+            List<Button> btnList = Services.createBtnList(20, 150, grListSort, dynamicBtn_Click);
             foreach (Button btn in btnList)
                 Controls.Add(btn);
         }
 
-        private void DynamicButton_Click(object sender, EventArgs e) {
+        private void dynamicBtn_Click(object sender, EventArgs e) {
             string grName = (sender as Button).Text; // get text of the btn that was clicked
             GroupInfo grInfo = new GroupInfo(grName, this);
             grInfo.Show();
             Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
         }
 
         private void button2_Click(object sender, EventArgs e) {

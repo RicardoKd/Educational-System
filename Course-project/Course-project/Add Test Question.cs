@@ -8,7 +8,6 @@ namespace Course_project {
         public AddTest AddTestForm { get; set; }
         public string OldQText { get; set; }
         public bool EditMode { get; set; }
-        public bool Changed { get; set; }
 
         public Add_Test_Question(AddTest addTestForm) { // Constructor for creating new questions
             InitializeComponent();
@@ -31,11 +30,6 @@ namespace Course_project {
                 richTextBox2.Text += wa + "\n";
         }
 
-        private void Add_Test_Question_Load(object sender, EventArgs e) {
-            FormClosing += new FormClosingEventHandler(beforeClosing);
-            Changed = false;
-        }
-
         private void button1_Click(object sender, EventArgs e) { // Back
             AddTest at = new AddTest(AddTestForm.GrInfoForm, AddTestForm.Test, AddTestForm.SavedToOrder);
             at.Show();
@@ -43,7 +37,6 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) { // Save
-            // might contain errors, make the checking more specific
             if (string.IsNullOrEmpty(textBox1.Text) || (string.IsNullOrEmpty(richTextBox1.Text) && string.IsNullOrEmpty(richTextBox1.Text))) {
                 MessageBox.Show("Fill in all cells!");
                 return;
@@ -62,37 +55,10 @@ namespace Course_project {
                     }
             } else
                 AddTestForm.Test.Questions.Add(tq);
-            Changed = false;
             MessageBox.Show("Question is succesfuly saved!");
             AddTest at = new AddTest(AddTestForm.GrInfoForm, AddTestForm.Test, AddTestForm.SavedToOrder);
             at.Show();
             Close();
-        }
-
-        private void beforeClosing(object sender, FormClosingEventArgs e) {
-            /*if (changed) {
-                DialogResult dr = MessageBox.Show("Data is not saved. Want to exit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dr == DialogResult.No) {
-                    e.Cancel = true;
-                    return;
-                }
-            }*/
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-            Changed = true;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-            Changed = true;
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e) {
-            Changed = true;
-        }
-
-        private void richTextBox2_TextChanged(object sender, EventArgs e) {
-            Changed = true;
         }
     }
 }

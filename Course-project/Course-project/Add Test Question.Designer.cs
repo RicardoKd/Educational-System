@@ -64,7 +64,6 @@ namespace Course_project {
             this.textBox1.PlaceholderText = "question";
             this.textBox1.Size = new System.Drawing.Size(624, 29);
             this.textBox1.TabIndex = 16;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -91,7 +90,6 @@ namespace Course_project {
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 29);
             this.comboBox1.TabIndex = 17;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -122,7 +120,6 @@ namespace Course_project {
             this.richTextBox1.Size = new System.Drawing.Size(626, 140);
             this.richTextBox1.TabIndex = 20;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // richTextBox2
             // 
@@ -131,7 +128,6 @@ namespace Course_project {
             this.richTextBox2.Size = new System.Drawing.Size(626, 170);
             this.richTextBox2.TabIndex = 22;
             this.richTextBox2.Text = "";
-            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // label4
             // 
@@ -203,7 +199,6 @@ namespace Course_project {
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Add_Test_Question";
             this.Text = "Add question";
-            this.Load += new System.EventHandler(this.Add_Test_Question_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

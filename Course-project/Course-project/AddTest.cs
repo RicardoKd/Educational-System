@@ -6,36 +6,28 @@ using System.Windows.Forms;
 namespace Course_project {
 
     public partial class AddTest : Form {
-        public bool Changed { get; set; }
         public bool EditMode { get; set; }
         public bool SavedToOrder { get; set; } // true when this from is loaded for the first
         public GroupInfo GrInfoForm { get; set; }
         public string Dir { get; set; } // without semester
         public string OldName { get; set; }
         public Test Test { get; set; }
-        private int rowIndexFromMouseDown;
-        private DataGridViewRow rw;
 
-        // Constructor for creating new tests
-        public AddTest(GroupInfo grInfoForm) {
+        public AddTest(GroupInfo grInfoForm) { // Constructor for creating new tests
             InitializeComponent();
             GrInfoForm = grInfoForm;
             Test = new Test();
-            Changed = false;
             EditMode = false;
             SavedToOrder = false;
             Dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
-            FormClosing += new FormClosingEventHandler(beforeClosing);
             comboBox3.SelectedIndex = 0;
         }
 
-        // Constructor for editing tests
-        public AddTest(GroupInfo grInfoForm, Test test, bool savedToOrder = false) {
+        public AddTest(GroupInfo grInfoForm, Test test, bool savedToOrder = false) { // Constructor for editing tests
             InitializeComponent();
             GrInfoForm = grInfoForm;
             Test = test;
             SavedToOrder = savedToOrder;
-            Changed = false;
             EditMode = true;
             OldName = test.Name;
             Dir = "Tests/" + grInfoForm.CurGr.Specialty + "/" + grInfoForm.CurGr.Year + "/" + grInfoForm.TeacherMM.Teacher.Subject + "/";
@@ -45,7 +37,6 @@ namespace Course_project {
             if (savedToOrder)
                 Text = "Edit test";
             Services.fillDGV(dataGridView1, test.getQuestions(), "View");
-            FormClosing += new FormClosingEventHandler(beforeClosing);
         }
 
         private void button1_Click(object sender, EventArgs e) { // Back
@@ -55,7 +46,6 @@ namespace Course_project {
         }
 
         private void button2_Click(object sender, EventArgs e) { // Save
-            Changed = false;
             string name = textBox1.Text;
             bool randQOrder = checkBox1.Checked == true ? true : false;
             int newSemester = Convert.ToInt32(comboBox3.SelectedItem);
@@ -93,13 +83,6 @@ namespace Course_project {
             Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e) { // Save order
-            if (dataGridView1.RowCount - 1 > 0) { // check if empty
-                for (int i = 0; i < dataGridView1.RowCount - 1; i++) { }
-                // chanche the order of questions in test.Questions
-            }
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { // "Edit" btn OnClick in question list
             DataGridView senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0) {
@@ -109,48 +92,6 @@ namespace Course_project {
                 tq.Show();
                 Hide();
             }
-        }
-
-        private void beforeClosing(object sender, FormClosingEventArgs e) {
-            /*if (changed) {
-                DialogResult dr = MessageBox.Show("Data is not saved. Want to exit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dr == DialogResult.No) {
-                    e.Cancel = true;
-                    return;
-                }
-            }*/
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-            Changed = true;
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
-            Changed = true;
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-            Changed = true;
-            /*test.RandQuestionOrder = checkBox1.Checked == true ? true : false;
-            if (checkBox1.Checked)
-                button4.Enabled = false;
-            else
-                button4.Enabled = true;*/
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e) {
-        }
-
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e) {
-            Services.DGVMouseClick((DataGridView)sender, e, ref rw, ref rowIndexFromMouseDown);
-        }
-
-        private void dataGridView1_DragEnter(object sender, DragEventArgs e) {
-            Services.DGVDragEnter((DataGridView)sender, e);
-        }
-
-        private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
-            Services.DGVragDrop((DataGridView)sender, e, rw, rowIndexFromMouseDown);
         }
     }
 }

@@ -12,9 +12,6 @@ namespace Course_project {
             Form1 = form1;
         }
 
-        private void Registration_Load(object sender, EventArgs e) {
-        }
-
         private void button1_Click(object sender, EventArgs e) {
             string usrName = Convert.ToString(textBox1.Text);
             string pass = Convert.ToString(textBox2.Text);

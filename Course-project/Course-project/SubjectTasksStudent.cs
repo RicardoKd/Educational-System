@@ -33,6 +33,13 @@ namespace Course_project {
             Close();
         }
 
+        private void button2_Click(object sender, EventArgs e) {
+            Lecture cp = Services.deserializeObj<Lecture>("cp/cp.json");
+            ViewLecture vl = new ViewLecture(this, cp);
+            vl.Show();
+            Hide();
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             string lectName = Services.DGVCellContentClick(sender, e, 1);
             if (!string.IsNullOrEmpty(lectName)) {
@@ -59,13 +66,6 @@ namespace Course_project {
                 vt.Show();
                 Hide();
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e) {
-            Lecture cp = Services.deserializeObj<Lecture>("cp/cp.json");
-            ViewLecture vl = new ViewLecture(this, cp);
-            vl.Show();
-            Hide();
         }
     }
 }

@@ -37,7 +37,6 @@ namespace Course_project {
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +78,6 @@ namespace Course_project {
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(149, 23);
             this.comboBox3.TabIndex = 27;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -90,7 +88,6 @@ namespace Course_project {
             this.textBox1.PlaceholderText = "name";
             this.textBox1.Size = new System.Drawing.Size(149, 29);
             this.textBox1.TabIndex = 26;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -130,7 +127,6 @@ namespace Course_project {
             this.checkBox1.TabIndex = 30;
             this.checkBox1.Text = "Random\r\nquestion order";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // dataGridView1
             // 
@@ -145,9 +141,6 @@ namespace Course_project {
             this.dataGridView1.Size = new System.Drawing.Size(524, 426);
             this.dataGridView1.TabIndex = 32;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragDrop);
-            this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragEnter);
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // Column1
             // 
@@ -186,29 +179,12 @@ namespace Course_project {
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.button4.Location = new System.Drawing.Point(138, 372);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(120, 30);
-            this.button4.TabIndex = 34;
-            this.button4.Text = "Save order";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // AddTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.checkBox1);
@@ -238,7 +214,6 @@ namespace Course_project {
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewButtonColumn Column3;
