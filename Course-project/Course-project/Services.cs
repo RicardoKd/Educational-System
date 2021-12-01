@@ -69,17 +69,20 @@ namespace Course_project {
             foreach (string text in btnTextList) {
                 btn = new Button {
                     Location = new Point(x, y + posIncrement),
-                    Height = 30,
+                    Height = 37,
                     Width = 100,
-                    BackColor = Color.White,
-                    ForeColor = Color.Black,
+                    BackColor = Color.FromArgb(41, 128, 185),
+                    ForeColor = Color.FromArgb(236, 240, 241),
                     Text = text,
                     Name = "DynamicButton" + posIncrement,
-                    Font = new Font("Georgia", 10)
+                    Font = new Font("Segoe UI Symbol", 12, FontStyle.Bold),
+                    FlatStyle = FlatStyle.Flat
                 };
+                btn.FlatAppearance.BorderSize = 0;
+                btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(39, 174, 96);
                 btn.Click += new EventHandler(delFunc);
                 btnList.Add(btn);
-                posIncrement += 30;
+                posIncrement += 40;
             }
             return btnList;
         }

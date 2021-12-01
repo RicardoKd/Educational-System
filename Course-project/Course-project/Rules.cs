@@ -84,10 +84,10 @@ namespace Course_project {
             int semester = Services.GetCurrentSemester() - 1;
             int yearConv = Convert.ToInt32(year) - 1;
             return Convert.ToInt32(spec) switch {
-                121 => S121[yearConv, semester].Split(","),
-                122 => S122[yearConv, semester].Split(","),
-                123 => S123[yearConv, semester].Split(","),
-                172 => S172[yearConv, semester].Split(","),
+                121 => S121[yearConv, semester].Split(", "),
+                122 => S122[yearConv, semester].Split(", "),
+                123 => S123[yearConv, semester].Split(", "),
+                172 => S172[yearConv, semester].Split(", "),
                 _ => null,
             };
         }
@@ -97,10 +97,10 @@ namespace Course_project {
             int year = Convert.ToInt32(grNameArr[1]) - 1;
             int semester = Services.GetCurrentSemester() - 1;
             return Convert.ToInt32(grNameArr[0]) switch {
-                121 => S121[year, semester].Split(","),
-                122 => S122[year, semester].Split(","),
-                123 => S123[year, semester].Split(","),
-                172 => S172[year, semester].Split(","),
+                121 => S121[year, semester].Split(", "),
+                122 => S122[year, semester].Split(", "),
+                123 => S123[year, semester].Split(", "),
+                172 => S172[year, semester].Split(", "),
                 _ => null,
             };
         }

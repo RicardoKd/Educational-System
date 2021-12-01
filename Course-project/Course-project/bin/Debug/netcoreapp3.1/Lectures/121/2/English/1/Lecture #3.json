@@ -1,7 +1,13 @@
 {
-  "Name": "Lecture #3",
-  "Text": "lect 3",
   "Semester": 1,
   "ImgList": [],
-  "StudentMarksList": []
+  "StudentMarksList": [
+    {
+      "StudentUsrName": "VitaliyIvanov#200",
+      "Marks": [],
+      "TimeSpent": "00:00:38.0722370"
+    }
+  ],
+  "Name": "Lecture #3",
+  "Text": "lect 3"
 }

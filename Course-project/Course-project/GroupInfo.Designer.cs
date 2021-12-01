@@ -258,9 +258,9 @@ namespace Course_project {
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.button5.Location = new System.Drawing.Point(993, 9);
+            this.button5.Location = new System.Drawing.Point(933, 9);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 30);
+            this.button5.Size = new System.Drawing.Size(167, 30);
             this.button5.TabIndex = 15;
             this.button5.Text = "Edit Course Project";
             this.button5.UseVisualStyleBackColor = false;

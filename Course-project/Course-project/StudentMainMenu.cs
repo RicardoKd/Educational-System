@@ -18,7 +18,7 @@ namespace Course_project {
             label1.Text = Student.Group;
             label2.Text = "Hello, " + Student.Username;
             List<string> grSubjList = new List<string>(Rules.getSubjList(Student.Group));
-            List<Button> btnList = Services.createBtnList(80, 150, grSubjList, DynamicButton_Click);
+            List<Button> btnList = Services.createBtnList(115, 150, grSubjList, DynamicButton_Click);
             foreach (Button btn in btnList)
                 Controls.Add(btn);
         }

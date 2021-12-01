@@ -1,1 +1,13 @@
-{"Name":"Lecture #6","Text":"Lecture #","Semester":1,"ImgList":[],"StudentMarksList":[]}
+{
+  "Semester": 1,
+  "ImgList": [],
+  "StudentMarksList": [
+    {
+      "StudentUsrName": "VitaliyIvanov#200",
+      "Marks": [],
+      "TimeSpent": "00:59:00.8086931"
+    }
+  ],
+  "Name": "Lecture #6",
+  "Text": "Lecture #"
+}

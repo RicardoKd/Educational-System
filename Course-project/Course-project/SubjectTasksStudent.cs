@@ -23,7 +23,7 @@ namespace Course_project {
             label1.Text = Subject;
             Services.fillDGV(dataGridView1, Services.getOrder(LectDir), "View");
             Services.fillDGV(dataGridView2, Services.getOrder(TestDir), "Start");
-            if (string.Compare(Subject, "English") == 0 && string.Compare(StudentMainMenu.Student.Group, "121.2") == 0 && DateTime.Now.Month >= 9 && DateTime.Now.Month < 12)
+            if (string.Compare(Subject, "English") == 0 && string.Compare(StudentMainMenu.Student.Group, "121.2") == 0 && DateTime.Now.Month >= 9 && DateTime.Now.Month <= 12)
                 if (!(DateTime.Now.Month == 9 && DateTime.Now.Day < 21))
                     button2.Visible = true;
         }
