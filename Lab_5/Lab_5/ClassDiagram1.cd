@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lab_5.Organization">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAICAAAAQgAAAEICAAACAgAAAAAgA=</HashCode>
+      <FileName>Organization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab_5.Factory">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <InheritanceLine Type="Lab_5.Organization" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="4.164" />
+        <Point X="6.5" Y="4.164" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Factory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lab_5.Insurance">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <InheritanceLine Type="Lab_5.Organization" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="4.263" />
+        <Point X="9.75" Y="4.263" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAECBAAAA=</HashCode>
+      <FileName>Insurance.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Lab_5.ITurnover">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITurnover.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

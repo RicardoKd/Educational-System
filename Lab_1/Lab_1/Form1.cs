@@ -3,16 +3,18 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace Lab_1 {
+
     public partial class Form1 : Form {
+
         public Form1() {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-                    }
+        }
 
         private void button1_Click(object sender, EventArgs e) {
-            Graphics g = this.CreateGraphics();
+            Graphics g = CreateGraphics();
             g.Clear(BackColor);
 
             Pen blackPen = new Pen(Color.Black, 3);
@@ -43,10 +45,6 @@ namespace Lab_1 {
             g.FillRectangle(greenBrush, rect);
             g.DrawEllipse(greenPen, ovalRect);
             g.FillEllipse(redBrush, ovalRect);
-
-
-
-
 
             g.DrawLine(blackPen, 50, 350, 50, 400);
             Rectangle rRect = new Rectangle(50, 350, 30, 30);
